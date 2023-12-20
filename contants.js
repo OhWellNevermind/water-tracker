@@ -1,1 +1,3 @@
-const colors = {};
+export const colors = {
+  WHITE: "#FFF",
+};
