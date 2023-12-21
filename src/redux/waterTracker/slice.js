@@ -5,7 +5,7 @@ const waterTrackerInitState = {};
 const waterTrackerSlice = createSlice({
   name: "waterTracker",
   initialState: waterTrackerInitState,
-  extraReducers: (builder) => builder.addCase(),
+  // extraReducers: (builder) => builder.addCase(),
 });
 
 // const {} = userSlice.actions;

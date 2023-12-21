@@ -5,7 +5,7 @@ const usersInitState = {};
 const usersSlice = createSlice({
   name: "user",
   initialState: usersInitState,
-  extraReducers: (builder) => builder.addCase(),
+  // extraReducers: (builder) => builder.addCase(),
 });
 
 // const {} = userSlice.actions;

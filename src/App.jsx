@@ -1,14 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-// import { LogoIcon } from "./components/icons/LogoIcon";
-// import { colors } from "../contants";
+import { Home } from "./pages/Home/Home";
 
 export const App = () => {
   return (
-    // <div>
-    //   <LogoIcon width={100} height={100} />
-    // </div>
     <Routes>
-      <Route />
+      <Route index element={<Home />} />
     </Routes>
   );
 };
