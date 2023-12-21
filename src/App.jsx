@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-// import { CirclePlus } from "./components/icons/CirclePlus";
+// import { LogoIcon } from "./components/icons/LogoIcon";
 // import { colors } from "../contants";
 
 export const App = () => {
   return (
     // <div>
-    //   <CirclePlus width={24} height={24} color={colors.PROVINCIAL_PINK} />
+    //   <LogoIcon width={100} height={100} />
     // </div>
     <Routes>
       <Route />
