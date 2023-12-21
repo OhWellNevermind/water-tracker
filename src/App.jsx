@@ -1,15 +1,14 @@
 import { Routes, Route } from "react-router-dom";
-import { BackIcon } from "./components/icons/BackIcon";
-import { colors } from "../contants";
-import {
-  BackButtonStyled,
-  StyledDiv,
-} from "./components/icons/BackIcon.styled";
+// import { CirclePlus } from "./components/icons/CirclePlus";
+// import { colors } from "../contants";
 
 export const App = () => {
   return (
-    <StyledDiv>
-      <BackIcon />
-    </StyledDiv>
+    // <div>
+    //   <CirclePlus width={24} height={24} color={colors.PROVINCIAL_PINK} />
+    // </div>
+    <Routes>
+      <Route />
+    </Routes>
   );
 };

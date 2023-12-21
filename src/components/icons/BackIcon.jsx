@@ -1,9 +1,11 @@
-export const BackIcon = ({ width, height, color, hoverColor, fill }) => {
+export const BackIcon = ({ width, height, color, fill }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
+      color={color}
+      fill={fill}
       viewBox="0 0 24 24"
     >
       <path
