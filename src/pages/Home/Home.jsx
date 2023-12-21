@@ -1,3 +1,3 @@
 export const Home = () => {
-  return <div>Home</div>;
+  return <div style={{ fontWeight: 500, fontSize: 32 }}>Home</div>;
 };
