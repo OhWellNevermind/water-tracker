@@ -1,5 +1,6 @@
 import { useState } from "react";
 import BaseModalWrap from "../../components/modals/ModalWrap/ModalWrap";
+import { colors } from "../../constants";
 
 export const Home = () => {
   const [open, setOpen] = useState(false);
@@ -7,13 +8,13 @@ export const Home = () => {
     <>
       <div style={{ fontWeight: 500, fontSize: 32 }}>Home</div>
       <button
-        style={{ width: "50px", height: "30px" }}
+        style={{ width: "50px", height: "30px", backgroundColor: colors.BLUE }}
         onClick={() => setOpen(true)}
       >
         Open
       </button>
       {open && (
-        <BaseModalWrap Onclose={() => setOpen(false)}>
+        <BaseModalWrap onClose={() => setOpen(false)}>
           <div
             style={{
               width: "400px",
