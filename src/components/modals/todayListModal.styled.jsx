@@ -27,3 +27,4 @@ export const Modal = styled.div`
 export const ShadowCirclePlus = styled(CirclePlus)`
   box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.2);
 `;
+/////////////////////////////////
