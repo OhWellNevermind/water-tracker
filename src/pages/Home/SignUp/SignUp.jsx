@@ -1,12 +1,15 @@
+import { HiddenIcon } from "../../../components/icons/HiddenIcon";
 import {
   FormContent,
   SignUpForm,
   Label,
   Input,
-  Button,
+  SignUpButton,
   Link,
   Title,
   StyledBackground,
+  IconButton,
+  InputContainer,
 } from "./SignUp.styled";
 
 export const SignUp = () => {
@@ -25,21 +28,32 @@ export const SignUp = () => {
           ></Input>
 
           <Label>Enter your password</Label>
-          <Input
-            type="password"
-            placeholder="Password"
-            name="psw"
-            required
-          ></Input>
+          <InputContainer>
+            <Input
+              type="password"
+              placeholder="Password"
+              name="psw"
+              required
+            ></Input>
+            <IconButton>
+              <HiddenIcon width={16} height={16} stroke={"blue"}></HiddenIcon>
+            </IconButton>
+          </InputContainer>
 
           <Label>Repeat Password</Label>
-          <Input
-            type="password"
-            placeholder="Repeat Password"
-            name="psw-repeat"
-            required
-          ></Input>
-          <Button>Sign Up</Button>
+          <InputContainer>
+            <Input
+              type="password"
+              placeholder="Repeat Password"
+              name="psw-repeat"
+              required
+            ></Input>
+            <IconButton>
+              <HiddenIcon width={16} height={16} stroke={"blue"}></HiddenIcon>
+            </IconButton>
+          </InputContainer>
+
+          <SignUpButton>Sign Up</SignUpButton>
           <Link href="">Sign In</Link>
           <img
             src="/src/assets/images/mobile/BottleForSigninMobile-min.png"

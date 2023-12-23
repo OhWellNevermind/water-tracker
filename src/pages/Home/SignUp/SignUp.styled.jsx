@@ -23,13 +23,14 @@ export const StyledBackground = styled.div`
 
 export const SignUpForm = styled.form`
   /* width: 280px; */
-  padding: 24px 20px;
+  /* padding: 24px 20px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 
 export const Title = styled.h1`
+  font-family: "Roboto", sans-serif;
   margin: 0 0 16px;
   font-size: 26px;
   font-weight: 500;
@@ -37,6 +38,9 @@ export const Title = styled.h1`
 `;
 
 export const Label = styled.label`
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 1.33;
   margin-bottom: 8px;
 `;
 
@@ -44,15 +48,23 @@ export const Input = styled.input`
   margin-bottom: 16px;
   padding: 12px 10px;
   border-radius: 6px;
-  border: 1px solid ${colors.LIGHT_BLUE};
-  background: var(#fff);
+  border: 1px solid ${colors.PROVINCIAL_PINK};
 
-  color: ${colors.LIGHT_GRAY};
+  font-family: "Roboto", sans-serif;
+
+  /* color: ${colors.LIGHT_BLUE}; */
   font-size: 16px;
   line-height: 1.25; /* 125% */
+  width: 100%;
+  height: 44px;
+  /* position: relative; */
+
+  &::placeholder {
+    color: ${colors.LIGHT_BLUE};
+  }
 `;
 
-export const Button = styled.button`
+export const SignUpButton = styled.button`
   margin-bottom: 16px;
   padding: 8px 30px;
   border: none;
@@ -63,6 +75,18 @@ export const Button = styled.button`
 `;
 
 export const Link = styled.a`
+  font-family: "Roboto", sans-serif;
   text-decoration: none;
   color: ${colors.BLUE};
+`;
+export const IconButton = styled.div`
+  position: absolute;
+
+  /* position: relative; */
+  left: calc(100% - 26px);
+  top: 12px;
+`;
+
+export const InputContainer = styled.div`
+  position: relative;
 `;
