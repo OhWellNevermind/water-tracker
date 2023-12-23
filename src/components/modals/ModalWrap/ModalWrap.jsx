@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import { Backdrop, ContentWrap, Wrap } from "../ModalWrap.styled";
 import { useEffect, useState } from "react";
 
-const BaseModalWrap = ({ children, Onclose}) => {
+const BaseModalWrap = ({ children, onClose }) => {
   const [closing, setClosing] = useState(false);
   document.body.style.overflow = "hidden";
   const CloseModal = (e) => {
@@ -11,7 +11,7 @@ const BaseModalWrap = ({ children, Onclose}) => {
       setTimeout(() => {
         setClosing(false);
         document.body.style.overflow = "auto";
-        Onclose()
+        onClose();
       }, 750);
     }
   };

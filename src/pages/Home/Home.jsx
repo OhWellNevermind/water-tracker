@@ -1,28 +1,22 @@
 import { useState } from "react";
 import BaseModalWrap from "../../components/modals/ModalWrap/ModalWrap";
+import { colors } from "../../constants";
+import DailyNorma from "../../components/modals/DailyNorma/DailyNorma";
 
 export const Home = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   return (
     <>
       <div style={{ fontWeight: 500, fontSize: 32 }}>Home</div>
       <button
-        style={{ width: "50px", height: "30px" }}
+        style={{ width: "50px", height: "30px", backgroundColor: colors.BLUE }}
         onClick={() => setOpen(true)}
       >
         Open
       </button>
       {open && (
-        <BaseModalWrap Onclose={() => setOpen(false)}>
-          <div
-            style={{
-              width: "400px",
-              height: "500px",
-              backgroundColor: "white",
-            }}
-          >
-            <h2>Some content</h2>
-          </div>
+        <BaseModalWrap onClose={() => setOpen(false)}>
+          <DailyNorma />
         </BaseModalWrap>
       )}
     </>
