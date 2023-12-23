@@ -81,6 +81,9 @@ export const GenderInput = styled.input`
   border: 2px solid ${colors.BLUE};
   border-radius: 50%;
   transition: all 0.1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &::after {
     content: "";
@@ -88,7 +91,6 @@ export const GenderInput = styled.input`
     border-radius: 50%;
     width: 7px;
     height: 7px;
-    margin: 2px;
   }
 
   &:checked::after {
@@ -130,4 +132,8 @@ export const SubmitButton = styled.button`
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const TextInputContainer = styled.div`
+  margin-bottom: 24px;
 `;

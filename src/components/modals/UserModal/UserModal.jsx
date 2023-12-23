@@ -18,6 +18,7 @@ import {
 import { UploadIcon } from "../../icons/UploadIcon";
 import { colors } from "../../../constants";
 import { useFormik } from "formik";
+import { TextInputContainer } from "./UserModal.styled";
 
 export const UserModal = ({ setIsOpen }) => {
   const formik = useFormik({
@@ -50,7 +51,7 @@ export const UserModal = ({ setIsOpen }) => {
             </UploadImageContainer>
           </ImageContainer> */}
           <Form onSubmit={formik.handleSubmit}>
-            <Subtitle>Your gender identity</Subtitle>
+            <Subtitle type="main">Your gender identity</Subtitle>
             <GenderContainer>
               <GenderInputContainer>
                 <GenderInput
@@ -64,7 +65,7 @@ export const UserModal = ({ setIsOpen }) => {
                   type="radio"
                   name="gender"
                 />
-                <GenderText htmlFor="gender-male">Female</GenderText>
+                <GenderText htmlFor="gender-female">Female</GenderText>
               </GenderInputContainer>
               <GenderInputContainer>
                 <GenderInput
@@ -81,8 +82,8 @@ export const UserModal = ({ setIsOpen }) => {
                 <GenderText htmlFor="gender-male">Male</GenderText>
               </GenderInputContainer>
             </GenderContainer>
-            <Subtitle>
-              Your name
+            <TextInputContainer>
+              <Subtitle>Your name</Subtitle>
               <input
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -92,9 +93,9 @@ export const UserModal = ({ setIsOpen }) => {
                 type="text"
                 name="name"
               />
-            </Subtitle>
-            <Subtitle>
-              E-mail
+            </TextInputContainer>
+            <TextInputContainer>
+              <Subtitle>E-mail</Subtitle>
               <input
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -104,7 +105,7 @@ export const UserModal = ({ setIsOpen }) => {
                 type="email"
                 name="email"
               />
-            </Subtitle>
+            </TextInputContainer>
             <Subtitle type="main">Password</Subtitle>
             <InputContainer>
               <Text htmlFor="oldPassword">Outdated password:</Text>
