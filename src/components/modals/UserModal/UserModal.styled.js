@@ -124,7 +124,7 @@ export const RadioButton = styled.div`
   justify-content: center;
   align-items: center;
 
-  ${GenderInput}:checked + &::after {
+  ${HiddentInput}:checked + &::after {
     content: "";
     /* display: block; */
     border-radius: 50%;
@@ -145,7 +145,7 @@ export const Form = styled.form`
 
 export const SubmitButton = styled.button`
   width: 100%;
-  margin-top: 24px;
+  margin-top: 12px;
   padding: 8px 0;
   text-align: center;
   font-size: 16px;
@@ -172,8 +172,43 @@ export const SubmitButton = styled.button`
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 12px;
 `;
 
 export const TextInputContainer = styled.div`
   margin-bottom: 24px;
+`;
+
+export const TextInput = styled.input`
+  width: 100%;
+  border: 1px solid ${colors.PROVINCIAL_PINK};
+  border-radius: 6px;
+  padding: 12px 0 12px 10px;
+  color: ${colors.BLUE};
+  &::placeholder {
+    color: ${colors.PROVINCIAL_PINK};
+  }
+`;
+
+export const IconInputContainer = styled.div`
+  position: relative;
+`;
+
+export const InputIcon = styled.button`
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 13px;
+  right: 10px;
+`;
+
+export const InputWithIcon = styled.input`
+  width: 100%;
+  border: 1px solid ${colors.PROVINCIAL_PINK};
+  border-radius: 6px;
+  padding: 12px 0 12px 10px;
+  color: ${colors.BLUE};
+  &::placeholder {
+    color: ${colors.PROVINCIAL_PINK};
+  }
 `;
