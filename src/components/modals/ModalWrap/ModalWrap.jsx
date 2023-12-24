@@ -16,11 +16,15 @@ const BaseModalWrap = ({ children, onClose }) => {
     }
   };
   useEffect(() => {
+    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", CloseModal);
+
     return () => {
+      document.body.style.overflow = "auto";
       window.removeEventListener("keydown", CloseModal);
     };
   }, []);
+
   return createPortal(
     <Backdrop id="modalWrap" $closing={closing} onClick={CloseModal}>
       <Wrap>
