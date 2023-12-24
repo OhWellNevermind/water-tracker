@@ -2,9 +2,6 @@ import BaseModalWrap from "../ModalWrap/ModalWrap";
 import {
   Form,
   GenderContainer,
-  GenderInput,
-  GenderInputContainer,
-  GenderText,
   Image,
   ImageContainer,
   InputContainer,
@@ -13,12 +10,17 @@ import {
   Subtitle,
   Text,
   Title,
-  UploadImageContainer,
+  UploadImageLabel,
 } from "./UserModal.styled";
 import { UploadIcon } from "../../icons/UploadIcon";
 import { colors } from "../../../constants";
 import { useFormik } from "formik";
 import { TextInputContainer } from "./UserModal.styled";
+import { GenderInputLabel } from "./UserModal.styled";
+import { RadioButton } from "./UserModal.styled";
+import { Container } from "./UserModal.styled";
+import { HiddentInput } from "./UserModal.styled";
+import { CustomUploadContainer } from "./UserModal.styled";
 
 export const UserModal = ({ setIsOpen }) => {
   const formik = useFormik({
@@ -38,49 +40,51 @@ export const UserModal = ({ setIsOpen }) => {
     <BaseModalWrap onClose={() => setIsOpen(false)}>
       <ModalContainer>
         <Title>Settings</Title>
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <Container style={{ display: "flex", flexDirection: "column" }}>
           <Subtitle type="main">Your photo</Subtitle>
-          {/* <ImageContainer>
+          <ImageContainer>
             <Image>
               <img src="" alt="" />
             </Image>
-            <UploadImageContainer>
-              <input type="file" />
-              <UploadIcon width={16} height={16} stroke={colors.BLUE} />
-              <p>Upload photo</p>
-            </UploadImageContainer>
-          </ImageContainer> */}
+            <UploadImageLabel>
+              <HiddentInput type="file" />
+              <CustomUploadContainer>
+                <UploadIcon width={16} height={16} stroke={colors.BLUE} />
+                <p>Upload photo</p>
+              </CustomUploadContainer>
+            </UploadImageLabel>
+          </ImageContainer>
           <Form onSubmit={formik.handleSubmit}>
             <Subtitle type="main">Your gender identity</Subtitle>
             <GenderContainer>
-              <GenderInputContainer>
-                <GenderInput
-                  value="female"
+              <GenderInputLabel>
+                <HiddentInput
                   onChange={(e) => {
                     formik.setFieldValue("gender", e.currentTarget.value);
                   }}
-                  onBlur={formik.handleBlur}
                   checked={formik.values.gender === "female"}
-                  id="gender-female"
+                  value="female"
                   type="radio"
                   name="gender"
+                  id="gender-female"
                 />
-                <GenderText htmlFor="gender-female">Female</GenderText>
-              </GenderInputContainer>
-              <GenderInputContainer>
-                <GenderInput
-                  value="male"
+                <RadioButton />
+                Female
+              </GenderInputLabel>
+              <GenderInputLabel>
+                <HiddentInput
                   onChange={(e) => {
                     formik.setFieldValue("gender", e.currentTarget.value);
                   }}
-                  onBlur={formik.handleBlur}
                   checked={formik.values.gender === "male"}
+                  value="male"
                   type="radio"
                   name="gender"
                   id="gender-male"
                 />
-                <GenderText htmlFor="gender-male">Male</GenderText>
-              </GenderInputContainer>
+                <RadioButton />
+                Male
+              </GenderInputLabel>
             </GenderContainer>
             <TextInputContainer>
               <Subtitle>Your name</Subtitle>
@@ -145,7 +149,7 @@ export const UserModal = ({ setIsOpen }) => {
             </InputContainer>
             <SubmitButton type="submit">Save</SubmitButton>
           </Form>
-        </div>
+        </Container>
       </ModalContainer>
     </BaseModalWrap>
   );

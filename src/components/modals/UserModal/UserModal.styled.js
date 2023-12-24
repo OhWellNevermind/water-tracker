@@ -16,6 +16,11 @@ export const Title = styled.h2`
   margin-bottom: 24px;
 `;
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Subtitle = styled.h3`
   font-size: 18px;
   font-weight: 500;
@@ -45,11 +50,37 @@ export const Image = styled.div`
 export const ImageContainer = styled.div`
   display: flex;
   align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
 `;
 
-export const UploadImageContainer = styled.div`
+export const UploadImageLabel = styled.label`
   display: flex;
   align-items: center;
+  color: ${colors.BLUE};
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.28; /* 128.571% */
+`;
+
+export const HiddentInput = styled.input`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+`;
+
+export const CustomUploadContainer = styled.div`
+  display: flex;
+  gap: 8px;
 `;
 
 export const GenderContainer = styled.div`
@@ -59,41 +90,50 @@ export const GenderContainer = styled.div`
   margin-bottom: 24px;
 `;
 
-export const GenderInputContainer = styled.div`
+export const GenderInputLabel = styled.label`
+  color: ${colors.GRAY};
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
   display: flex;
   align-items: center;
   gap: 8px;
 `;
 
-export const GenderText = styled.label`
-  color: ${colors.GRAY};
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.25;
+export const GenderInput = styled.input`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 `;
 
-export const GenderInput = styled.input`
-  appearance: none;
-  margin: 0;
+export const RadioButton = styled.div`
+  position: relative;
   width: 14px;
   height: 14px;
-  border: 2px solid ${colors.BLUE};
   border-radius: 50%;
-  transition: all 0.1s ease-in-out;
+  border: 2px solid ${colors.BLUE};
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
-  &::after {
+  ${GenderInput}:checked + &::after {
     content: "";
-    display: block;
+    /* display: block; */
     border-radius: 50%;
     width: 7px;
     height: 7px;
-  }
-
-  &:checked::after {
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
     background-color: ${colors.BLUE};
   }
 `;
