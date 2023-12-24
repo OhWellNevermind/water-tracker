@@ -47,7 +47,7 @@ const formSchema = Yup.object({
   newPassword: Yup.string()
     .min("Password must contain minimum 8 symbols")
     .max("Password must contain maximum 64 symbols"),
-  gender: Yup.string().oneOf(["mail", "female"]),
+  gender: Yup.string().oneOf(["male", "female"]),
 });
 
 export const UserModal = ({ setIsOpen }) => {
@@ -72,7 +72,7 @@ export const UserModal = ({ setIsOpen }) => {
     <BaseModalWrap onClose={() => setIsOpen(false)}>
       <ModalContainer>
         <Title>Settings</Title>
-        <Container style={{ display: "flex", flexDirection: "column" }}>
+        <Container>
           <Subtitle type="main">Your photo</Subtitle>
           <ImageContainer>
             <Image>

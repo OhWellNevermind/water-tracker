@@ -2,10 +2,17 @@ import styled from "styled-components";
 import { colors } from "../../../constants";
 
 export const ModalContainer = styled.div`
-  max-height: 90%;
+  height: 600px;
+  overflow-y: scroll;
+  width: 100%;
   padding: 32px 12px;
   background-color: white;
   border-radius: 10px;
+
+  @media (min-width: 767px) {
+    width: 656px;
+    padding: 32px 24px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -38,6 +45,7 @@ export const Text = styled.label`
   font-weight: 400;
   line-height: 1.25;
   margin-bottom: 8px;
+  white-space: nowrap;
 `;
 
 export const Image = styled.div`
@@ -167,6 +175,10 @@ export const SubmitButton = styled.button`
   @media (min-width: 321px) {
     width: 256px;
   }
+  @media (min-width: 767px) {
+    width: 100px;
+    align-self: flex-end;
+  }
 `;
 
 export const InputContainer = styled.div`
@@ -188,10 +200,17 @@ export const TextInput = styled.input`
   &::placeholder {
     color: ${colors.PROVINCIAL_PINK};
   }
+
+  @media (min-width: 767px) {
+    width: 372px;
+  }
 `;
 
 export const IconInputContainer = styled.div`
   position: relative;
+  @media (min-width: 767px) {
+    width: 372px;
+  }
 `;
 
 export const InputIcon = styled.button`
