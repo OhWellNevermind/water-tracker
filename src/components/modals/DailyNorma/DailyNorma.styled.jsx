@@ -22,7 +22,12 @@ export const Window = styled.div`
 export const TitleWrap = styled.div`
   width: 100%;
   position: relative;
-  & svg {
+  & button {
+    padding: 0;
+    height: 24px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
     position: absolute;
     right: 0;
     top: 4px;

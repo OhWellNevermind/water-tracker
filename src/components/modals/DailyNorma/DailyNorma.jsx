@@ -23,7 +23,7 @@ import {
 } from "./DailyNorma.styled";
 import { CirclePlus } from "../../icons/CloseIcon";
 import { colors } from "../../../constants";
-import { Formik } from "formik";
+import { Formik, useFormikContext } from "formik";
 import * as Yup from "yup";
 import { useEffect, useState } from "react";
 
@@ -41,38 +41,46 @@ const schema = Yup.object().shape({
     .max(10, "Too big value")
     .required("This field is required"),
 });
-const DailyNorma = () => {
-  const [formData, setFormData] = useState({
-    gender: "girl",
-    weight: "0",
-    time: "0",
-  });
-  const [result, setResult] = useState(0);
-  const onChange = (e) => {
-    if (!["time", "weight", "gender"].includes(e.target.id)) return;
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
 
+const FormContext = ({updateResult}) => {
+  const {values} = useFormikContext();
   useEffect(() => {
-    switch (formData.gender) {
-      case "girl":
-        const normaG =
-          (Number(formData.weight) * 0.03 + Number(formData.time) * 0.4).toFixed(1);
-          setResult(normaG)
+    switch (values.gender) {
+      case "girl": {
+        const normaG = (
+          Number(values.weight) * 0.03 +
+          Number(values.time) * 0.4
+        ).toFixed(1);
+        updateResult(normaG);
         break;
-      case "man":
-        const normaM =
-        (Number(formData.weight) * 0.04 + Number(formData.time) * 0.6).toFixed(1);
-        setResult(normaM)
+      }
+      case "man": {
+        const normaM = (
+          Number(values.weight) * 0.04 +
+          Number(values.time) * 0.6
+        ).toFixed(1);
+        updateResult(normaM);
+        break;
+      }
       default:
         break;
     }
-  }, [formData]);
+  }, [values]);
+return null
+}
+const DailyNorma = ({onClose}) => {
+  const [result, setResult] = useState(0);
+
+  const updateResult = (res) => {
+    setResult(res);
+  }
   return (
     <Window>
       <TitleWrap>
         <Title>My daily norma</Title>
-        <CirclePlus stroke={colors.BLUE} width={24} height={24} />
+        <button onClick={onClose}>
+          <CirclePlus stroke={colors.BLUE} width={24} height={24} />
+        </button>
       </TitleWrap>
       <div>
         <FormulaWrap>
@@ -102,7 +110,7 @@ const DailyNorma = () => {
         validationSchema={schema}
       >
         {({ errors, touched }) => (
-          <StyledForm onChange={onChange}>
+          <StyledForm>
             <DataWrap>
               <Subtitle>Calculate your rate:</Subtitle>
               <OptWrap>
@@ -176,6 +184,7 @@ const DailyNorma = () => {
               </div>
             </DataWrap>
             <SaveBtn type="submit">Save</SaveBtn>
+            <FormContext updateResult={updateResult}/>
           </StyledForm>
         )}
       </Formik>
