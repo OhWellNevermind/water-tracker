@@ -21,8 +21,10 @@ export const Content = styled.div`
     padding: 32px 16px;
   }
   @media (min-width: 1440px) {
-    width: 1404px;
+    width: 494px;
     margin-top: 34px;
+    margin-left: 81px;
+    margin-right: 0;
   }
 `;
 
@@ -43,6 +45,11 @@ export const Container = styled.div`
     margin-left: auto;
     margin-right: auto;
     width: 704px;
+  }
+  @media (min-width: 1440px) {
+    width: 494px;
+    margin-left: 0;
+    margin-right: 0;
   }
 `;
 export const List = styled.li`

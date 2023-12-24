@@ -8,6 +8,9 @@ export const StyledList = styled.ul`
   @media (min-width: 768px) {
     display: flex;
     gap: 16px;
+  }
+  @media (min-width: 1440px) {
+    display: block;
     
   }
 `;
@@ -29,8 +32,12 @@ export const Button = styled.button`
   }
   @media (min-width: 768px) {
     width: 336px;
-    margin-top:24px;
-    margin-right:368px;
+    margin-top: 24px;
+    margin-right: 368px;
+  }
+  @media (min-width: 1440px) {
+    width: 384px;
+    margin-right: 0;
   }
 `;
 export const BtnText = styled.span`
@@ -57,14 +64,19 @@ export const BenefitList = styled.li`
   @media (max-width: 767px) {
     &:not(:first-child) {
       margin-top: 16px;
-      margin-right:64px;
+      margin-right: 64px;
     }
   }
   @media (min-width: 768px) {
     width: 224px;
   }
+  @media (min-width: 1440px) {
+    width: 248px;
+    margin-top: 16px;
+    margin-right: 191px;
+  }
   gap: 8px;
-  `;
+`;
 
 export const ContainerConsumption = styled.div`
   width: 280px;
@@ -77,28 +89,33 @@ export const ContainerConsumption = styled.div`
     width: 704px;
   }
   @media (min-width: 1440px) {
-    width: 1404px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 439px;
+    display: block;
   }
-  `;
+`;
 export const H2 = styled.h2`
-  width:246px;
-  margin:0 34px 0 0 ;
-   
-    color: ${colors.GRAY};
-    font-family: Roboto;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 32px;
-    @media (min-width: 768px) {
-      font-size: 36px;
-      line-height: 42px;
-      margin-right: 265px;
-      width:439px;
-    }
-  `;
+  width: 246px;
+  margin: 0 34px 0 0;
+  color: ${colors.GRAY};
+  font-family: Roboto;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+  @media (min-width: 768px) {
+    font-size: 36px;
+    line-height: 42px;
+    margin-right: 265px;
+    width: 439px;
+  }
+  @media (min-width: 1440px) {
+    margin-right: 0;
+  }
+`;
 export const ParagrafOne = styled.p`
-margin:16px 83px 24px 0;
+  margin: 16px 83px 24px 0;
   color: ${colors.GRAY};
   font-family: Roboto;
   font-size: 24px;
@@ -111,21 +128,29 @@ margin:16px 83px 24px 0;
     font-size: 26px;
     line-height: 32px;
     width: 404px;
-    margin-right: 300px;
+
+  }
+  @media (min-width: 1440px) {
+    margin-right: 0;
+  
+    
   }
 `;
 export const ParagrafTwo = styled.p`
-  margin: 0;
-  margin-right: 148px;
-  @media (min-width: 768px) {
-    margin-right: 572px;
-  }
   color: ${colors.GRAY};
   font-family: Roboto;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
+  margin: 0;
+  margin-right: 148px;
+  @media (min-width: 768px) {
+    margin-right: 572px;
+  }
+  @media (min-width: 1440px) {
+    margin-right: 0;
+  }
 `;
 export const IconStyle = styled.div`
   width: 32px;
