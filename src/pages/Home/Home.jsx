@@ -16,7 +16,7 @@ export const Home = () => {
       </button>
       {open && (
         <BaseModalWrap onClose={() => setOpen(false)}>
-          <DailyNorma />
+          <DailyNorma onClose={() => setOpen(false)}/>
         </BaseModalWrap>
       )}
     </>
