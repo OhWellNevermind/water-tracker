@@ -33,7 +33,7 @@ import { CustomUploadContainer } from "./UserModal.styled";
 import { IconInputContainer } from "./UserModal.styled";
 import { InputIcon } from "./UserModal.styled";
 import { InputWithIcon } from "./UserModal.styled";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const formSchema = Yup.object({
   name: Yup.string()
@@ -59,6 +59,23 @@ export const UserModal = ({ setIsOpen }) => {
   const [isOldPasswordVisible, setIsOldPasswordVisible] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false);
+  const [avatar, setAvatar] = useState("");
+  const [preview, setPreview] = useState("");
+
+  useEffect(() => {
+    if (!avatar) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(avatar);
+    setPreview(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [avatar]);
+
+  console.log(avatar);
   const formik = useFormik({
     initialValues: {
       gender: "male",
@@ -73,6 +90,17 @@ export const UserModal = ({ setIsOpen }) => {
     },
     validationSchema: formSchema,
   });
+
+  const onSelectFile = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setAvatar(undefined);
+      return;
+    }
+
+    // I've kept this example simple by using the first image instead of multiple
+    setAvatar(e.target.files[0]);
+  };
+
   return (
     <BaseModalWrap onClose={() => setIsOpen(false)}>
       <ModalContainer>
@@ -85,11 +113,13 @@ export const UserModal = ({ setIsOpen }) => {
         <Container>
           <Subtitle type="main">Your photo</Subtitle>
           <ImageContainer>
-            <Image>
-              <img src="" alt="" />
-            </Image>
+            {preview && <Image src={preview} alt="Your avatar" />}
             <UploadImageLabel>
-              <HiddentInput type="file" />
+              <HiddentInput
+                // value={avatar}
+                onChange={onSelectFile}
+                type="file"
+              />
               <CustomUploadContainer>
                 <UploadIcon width={16} height={16} stroke={colors.BLUE} />
                 <p>Upload photo</p>

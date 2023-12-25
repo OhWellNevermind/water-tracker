@@ -64,11 +64,11 @@ export const Text = styled.label`
   white-space: nowrap;
 `;
 
-export const Image = styled.div`
+export const Image = styled.img`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: black;
+  object-fit: cover;
 `;
 
 export const ImageContainer = styled.div`
@@ -181,7 +181,6 @@ export const InputsContainer = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-  width: 100%;
   margin-top: 12px;
   padding: 8px 0;
   text-align: center;
@@ -195,14 +194,12 @@ export const SubmitButton = styled.button`
   background-color: ${colors.BLUE};
   color: ${colors.WHITE};
   cursor: pointer;
+  width: 256px;
   &:hover {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
   }
   &:active {
     box-shadow: 0px 0px 0px 0px rgba(64, 123, 255, 0.34);
-  }
-  @media (min-width: 321px) {
-    width: 256px;
   }
   @media (min-width: 767px) {
     width: 100px;
