@@ -78,7 +78,7 @@ export const UserModal = ({ setIsOpen }) => {
       <ModalContainer>
         <TitleContainer>
           <Title>Settings</Title>
-          <CloseIconContainer>
+          <CloseIconContainer onClick={() => setIsOpen(false)}>
             <CloseIcon width={24} heigth={24} stroke={colors.BLUE} />
           </CloseIconContainer>
         </TitleContainer>
