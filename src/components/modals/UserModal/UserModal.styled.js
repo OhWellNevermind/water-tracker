@@ -151,6 +151,7 @@ export const RadioButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   ${HiddentInput}:checked + &::after {
     content: "";
@@ -264,6 +265,7 @@ export const InputIcon = styled.button`
   position: absolute;
   top: 13px;
   right: 10px;
+  cursor: pointer;
 `;
 
 export const InputWithIcon = styled.input`
