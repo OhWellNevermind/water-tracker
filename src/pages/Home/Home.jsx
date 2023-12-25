@@ -1,3 +1,17 @@
+import { useState } from "react";
+import BaseModalWrap from "../../components/modals/ModalWrap/ModalWrap";
+import { colors } from "../../constants";
+
 export const Home = () => {
-  return <></>;
-};
+  const [open, setOpen] = useState(true);
+  return (
+    <>
+      <div style={{ fontWeight: 500, fontSize: 32 }}>Home</div>
+      <button
+        style={{ width: "50px", height: "30px", backgroundColor: colors.BLUE }}
+        onClick={() => setOpen(true)}
+      >
+        Open
+      </button>
+    </>
+  );
