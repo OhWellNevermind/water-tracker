@@ -12,7 +12,9 @@ export const StyledBackground = styled.div`
   /* content: ""; */
   position: fixed;
   /* top: 154px; */
-  top: 51px;
+  /* top: 51px;
+   */
+  top: 70px;
   left: 0;
   width: 100%;
   height: 100vh;
@@ -54,14 +56,34 @@ export const Bottle = styled.div`
 `;
 
 export const SignInForm = styled.form`
-  /* width: 280px; */
-  padding: 24px 20px;
+  /* width: 280px;
+   */
+  /* width: calc(100% - 40px); */
+  width: 100%;
+  max-width: 386px;
+  /* padding: 24px 20px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  /* align-content: center; */
+
+  /* flex-wrap: wrap; */
+  /* align-content: normal; */
   @media (min-width: 768px) {
-    justify-content: left;
-    padding: 108px 32px 16px;
+    margin-left: 0;
+    margin-right: 0;
+    /* width: 336px; */
+    /* padding: 108px 32px 16px; */
+    align-content: start;
+  }
+  @media (min-width: 1440px) {
+    /* align-content: end; */
+    /* padding: 162px 198px 32px 16px; */
+
+    /* flex-wrap: wrap;
+    align-content: end; */
   }
 `;
 
@@ -90,7 +112,9 @@ export const Input = styled.input`
   color: ${colors.GRAY};
   font-size: 16px;
   line-height: 1.25; /* 125% */
-  width: 100%;
+  width: 280px;
+  /* margin-left: auto;
+  margin-right: auto; */
   /* max-width: 336px; */
   &::placeholder {
     color: ${colors.LIGHT_BLUE};
@@ -98,6 +122,9 @@ export const Input = styled.input`
   @media (min-width: 768px) {
     width: 336px;
     height: 44px;
+  }
+  @media (min-width: 1440px) {
+    width: 386px;
   }
 `;
 
