@@ -10,6 +10,7 @@ import {
   Bottle,
   InputContainer,
   IconButton,
+  FormContainer,
 } from "./SignIn.styled";
 import { HiddenIcon } from "../../components/icons/HiddenIcon";
 import { useState } from "react";
@@ -47,64 +48,70 @@ export const SignIn = () => {
   //     e.preventDefault();
   //   };
   return (
-    <SignInForm onSubmit={formik.handleSubmit}>
+    <FormContainer>
       <StyledBackground />
-      <Title>Sign In</Title>
-      <FormContent>
-        <Label>Enter your email</Label>
-        <Input
-          type="email"
-          placeholder="E-mail"
-          name="email"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.email}
-          required
-        ></Input>
-        <Label>Enter your password</Label>
-        <InputContainer>
+      <SignInForm onSubmit={formik.handleSubmit}>
+        <Title>Sign In</Title>
+        <FormContent>
+          <Label>Enter your email</Label>
           <Input
-            // type="password"
-            type={isPasswordVisible ? "text" : "password"}
-            // value={password}
-            placeholder="Password"
-            name="password"
-            onChange={(e) => {
-              formik.handleChange(e);
-            }}
+            type="email"
+            placeholder="E-mail"
+            name="email"
+            onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.password}
+            value={formik.values.email}
             required
           ></Input>
-          <IconButton
-            onClick={() => {
-              setIsPasswordVisible(!isPasswordVisible);
-            }}
-          >
-            {isPasswordVisible ? (
-              <>
-                <VisibleIcon
-                  width={16}
-                  height={16}
-                  stroke={"blue"}
-                ></VisibleIcon>
-              </>
-            ) : (
-              <>
-                <HiddenIcon width={16} height={16} stroke={"blue"}></HiddenIcon>
-              </>
-            )}
-          </IconButton>
-        </InputContainer>
+          <Label>Enter your password</Label>
+          <InputContainer>
+            <Input
+              // type="password"
+              type={isPasswordVisible ? "text" : "password"}
+              // value={password}
+              placeholder="Password"
+              name="password"
+              onChange={(e) => {
+                formik.handleChange(e);
+              }}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              required
+            ></Input>
+            <IconButton
+              onClick={() => {
+                setIsPasswordVisible(!isPasswordVisible);
+              }}
+            >
+              {isPasswordVisible ? (
+                <>
+                  <VisibleIcon
+                    width={16}
+                    height={16}
+                    stroke={"blue"}
+                  ></VisibleIcon>
+                </>
+              ) : (
+                <>
+                  <HiddenIcon
+                    width={16}
+                    height={16}
+                    stroke={"blue"}
+                  ></HiddenIcon>
+                </>
+              )}
+            </IconButton>
+          </InputContainer>
 
-        <SignInButton type="submit">Sign In</SignInButton>
-        <Link href="">Sign Up</Link>
-        {/* <img
-          src="/src/assets/images/mobile/BottleForSigninMobile-min.png"
-          alt="Bottle"
-        /> */}
-        <Bottle />
-      </FormContent>
-    </SignInForm>
+          <SignInButton type="submit">Sign In</SignInButton>
+          <Link href="/src/pages/SignUp/SignUp.jsx">Sign Up</Link>
+          {/* <img
+           src="/src/assets/images/mobile/BottleForSigninMobile-min.png"
+           alt="Bottle"
+         /> */}
+          <Bottle />
+        </FormContent>
+      </SignInForm>
+    </FormContainer>
   );
 };

@@ -18,16 +18,39 @@ export const StyledBackground = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
+  /* max-width: 386px; */
   background-image: url("/src/assets/images/mobile/BackgroundElementSignin-min.png");
   background-repeat: no-repeat;
+  /* background: url("/src/assets/images/mobile/BackgroundElementSignin-min.png")
+    center/contain no-repeat; */
+  background-size: auto;
   /* background-position: bottom; */
   z-index: -2;
+  @media (min-width: 321px) {
+    /* background-image: url("/src/assets/images/tablet/BackgroundBubblesSignInTabletimin.png"); */
+    /* background-repeat: no-repeat; */
+    /* background: url("/src/assets/images/mobile/BackgroundElementSignin-min.png")
+    center/contain no-repeat; */
+    background-size: cover;
+    top: 52px;
+    /* width: 760px; */
+  }
   @media (min-width: 768px) {
-    background: url("/src/assets/images/tablet/BackgroundBubblesSignInTabletimin.png")
-      center/contain no-repeat;
-    top: 0px;
+    /* background: url("/src/assets/images/tablet/BackgroundBubblesSignInTabletimin.png")
+      center/contain no-repeat; */
+    background-image: url("/src/assets/images/tablet/BackgroundBubblesSignInTabletimin.png");
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    /* width: 100%; */
+    top: 0;
     left: 0;
-    height: 680px;
+    /* height: 680px; */
+  }
+  @media (min-width: 1440px) {
+    background-image: url("/src/assets/images/desktop/BackgroundBubblesHomeDesktop-min.png");
+    /* background-repeat: no-repeat; */
+    background-size: contain;
+    top: 70px;
   }
 `;
 
@@ -41,9 +64,10 @@ export const Bottle = styled.div`
   /* top: 51px;  */
 
   /* left: 50%; */
-  margin-right: auto;
-  margin-left: auto;
-  width: 100%;
+  /* margin-right: auto;
+  margin-left: auto; */
+  /* width: 100%; */
+  width: 320px;
   height: 100vh;
   @media (min-width: 768px) {
     background: url("/src/assets/images/tablet/BottleHomeTablet-min.png")
@@ -53,13 +77,23 @@ export const Bottle = styled.div`
     height: 548px;
     width: 736px;
   }
+  @media (min-width: 1440px) {
+    background: url("/src/assets/images/desktop/BottleForSigninDesktop-min.png")
+      center/contain no-repeat;
+    /* top: calc(40px); */
+    margin-bottom: 40px;
+    left: -50px;
+    top: 50px;
+    height: 680px;
+    width: 916px;
+  }
 `;
 
 export const SignInForm = styled.form`
   /* width: 280px;
    */
   /* width: calc(100% - 40px); */
-  width: 100%;
+  /* width: 100%; */
   max-width: 386px;
   /* padding: 24px 20px; */
   display: flex;
@@ -80,10 +114,10 @@ export const SignInForm = styled.form`
   }
   @media (min-width: 1440px) {
     /* align-content: end; */
-    /* padding: 162px 198px 32px 16px; */
+    padding: 162px 0 0 0;
 
     /* flex-wrap: wrap;
-    align-content: end; */
+    /* align-content: end; */
   }
 `;
 
@@ -109,13 +143,14 @@ export const Input = styled.input`
   border: 1px solid ${colors.PROVINCIAL_PINK};
   background: var(#fff);
 
-  color: ${colors.GRAY};
+  color: ${colors.BLUE};
   font-size: 16px;
   line-height: 1.25; /* 125% */
   width: 280px;
   /* margin-left: auto;
   margin-right: auto; */
   /* max-width: 336px; */
+  outline: none;
   &::placeholder {
     color: ${colors.LIGHT_BLUE};
   }
@@ -131,6 +166,7 @@ export const Input = styled.input`
 export const SignInButton = styled.button`
   margin-bottom: 16px;
   padding: 8px 30px;
+  width: 280px;
   border: none;
   border-radius: 10px;
   color: #fff;
@@ -146,6 +182,9 @@ export const SignInButton = styled.button`
       box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
     }
   }
+  @media (min-width: 1440px) {
+    width: 386px;
+  }
 `;
 
 export const Link = styled.a`
@@ -155,19 +194,37 @@ export const Link = styled.a`
 
 export const IconButton = styled.button`
   position: absolute;
-  /* left: calc(100% - 30px);
-   */
+  left: calc(280px - 26px);
+
   /* left: calc(336px - 30px); */
-  right: 15px;
-  top: 14px;
+  top: 13px;
   background-color: white;
   border: none;
   width: 16px;
+  height: 16px;
+  padding: 0;
   @media (min-width: 768px) {
-    left: 303px;
+    left: 308px;
+  }
+  @media (min-width: 1440px) {
+    left: calc(386px - 26px);
   }
 `;
 
 export const InputContainer = styled.div`
   position: relative;
+`;
+
+export const FormContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  @media (min-width: 768px) {
+    justify-content: start;
+  }
+  @media (min-width: 1440px) {
+    justify-content: flex-end;
+    margin-right: 166px;
+  }
 `;
