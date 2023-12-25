@@ -16,4 +16,7 @@ export const Select = styled.select`
   font-weight: 400;
   line-height: 1.25;
   margin-bottom: 24px;
+  @media (min-width: 768px) {
+    width: 544px;
+  }
 `;

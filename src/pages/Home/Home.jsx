@@ -1,8 +1,7 @@
 import { useState } from "react";
-import BaseModalWrap from "../../components/modals/ModalWrap/ModalWrap";
 import { colors } from "../../constants";
-import DailyNorma from "../../components/modals/DailyNorma/DailyNorma";
 import { TodayListModal } from "../../components/modals/todayListModal";
+import { UserModal } from "../../components/modals/UserModal/UserModal";
 
 export const Home = () => {
   const [open, setOpen] = useState(true);
@@ -16,11 +15,7 @@ export const Home = () => {
       >
         Open
       </button>
-      {open && (
-        <BaseModalWrap onClose={() => setOpen(false)}>
-          <DailyNorma />
-        </BaseModalWrap>
-      )}
+      {open && <UserModal setIsOpen={setOpen} />}
     </>
   );
 };
