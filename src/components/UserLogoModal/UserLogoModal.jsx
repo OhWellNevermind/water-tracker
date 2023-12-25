@@ -1,19 +1,26 @@
-import { UserLMWrapper } from "./UserLogoModal.styled";
-import { SettingsIcon, LogOutIcon } from "../icons/SettingsIcon";
+import {
+  UserLMWrapper,
+  UserLMDiv,
+  UserLMBtn,
+  UserLMText,
+} from "./UserLogoModal.styled";
+import { SettingsIcon } from "../icons/SettingsIcon";
+import { LogOutIcon } from "../icons/LogOutIcon";
 import { colors } from "../../constants";
+
 export const UserLogoModal = () => {
   return (
     <UserLMWrapper>
-      <div>
-        <button>
+      <UserLMDiv>
+        <UserLMBtn type="button">
           <SettingsIcon width={16} heidht={16} stroke={colors.BLUE} />
-          <p>Setting</p>
-        </button>
-        <button>
+          <UserLMText>Setting</UserLMText>
+        </UserLMBtn>
+        <UserLMBtn type="button">
           <LogOutIcon width={16} heidht={16} stroke={colors.BLUE} />
-          <p>Log out</p>
-        </button>
-      </div>
+          <UserLMText>Log out</UserLMText>
+        </UserLMBtn>
+      </UserLMDiv>
     </UserLMWrapper>
   );
 };

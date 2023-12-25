@@ -38,7 +38,7 @@ export const HeaderBtn = styled.button`
   background-color: transparent;
   color: #407bff;
   font-size: 16px;
-  /* text-decoration: none; */
+
   font-weight: 400;
   line-height: 1.25;
   border: none;
@@ -62,4 +62,20 @@ export const HeaderLink = styled(Link)`
   display: flex;
   align-items: center;
   gap: 4px;
+`;
+export const UserName = styled.p``;
+export const UserLogo = styled.p``;
+
+// export const UserLogo = () => {
+//   const userLogo = useSelector((state) => state.user.user.avatar);
+//   const userName = useSelector((state) => state.user.user.name);
+
+//   return <UserImg src={userLogo} alt={userName} />;
+// };
+
+export const UserImg = styled.img`
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 50%;
 `;
