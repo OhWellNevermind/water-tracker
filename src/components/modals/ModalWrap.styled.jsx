@@ -21,19 +21,23 @@ const popOut = keyframes`
       background-color: rgb(0, 0, 0, 0.4);
       opacity: 0;
     }
-`
+`;
 const animModeOverlay = (p) => {
-    switch (p.$closing) {
-      case false:
-        return css`animation: ${popUp} 350ms ease 1 normal forwards`;
-      case true:
-        return css`animation: ${popOut} 350ms 350ms ease 1 normal forwards`;
-      default:
-        return null;
-    }
-  };
+  switch (p.$closing) {
+    case false:
+      return css`
+        animation: ${popUp} 350ms ease 1 normal forwards;
+      `;
+    case true:
+      return css`
+        animation: ${popOut} 350ms 350ms ease 1 normal forwards;
+      `;
+    default:
+      return null;
+  }
+};
 
-  const popUpC = keyframes`
+const popUpC = keyframes`
   0% {
       opacity: 0.3;
       transform: scale(0.2);
@@ -44,7 +48,7 @@ const animModeOverlay = (p) => {
     }
   `;
 
-  const popOutC = keyframes`
+const popOutC = keyframes`
   0% {
       opacity: 1;
       transform: scale(1);
@@ -54,18 +58,21 @@ const animModeOverlay = (p) => {
       transform: scale(0);
     }
   `;
-  const animModeContent = (p) => {
+const animModeContent = (p) => {
   switch (p.$closing) {
     case false:
-      return css`animation: ${popUpC} 350ms 350ms ease 1 normal forwards`;
+      return css`
+        animation: ${popUpC} 350ms 350ms ease 1 normal forwards;
+      `;
     case true:
-      return css`animation: ${popOutC} 350ms ease 1 normal forwards`;
+      return css`
+        animation: ${popOutC} 350ms ease 1 normal forwards;
+      `;
     default:
       return null;
   }
 };
 
-  
 export const Backdrop = styled.div`
   width: 100vw;
   height: 100vh;
@@ -84,15 +91,8 @@ export const ContentWrap = styled.div`
 `;
 
 export const Wrap = styled.div`
-  min-width: 100px;
-  min-height: 100px;
   position: absolute;
-  top: 40px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  @media (min-width: 1440px) {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+  transform: translate(-50%, -50%);
 `;

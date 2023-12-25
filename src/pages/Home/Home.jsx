@@ -1,6 +1,6 @@
 import { useState } from "react";
-import BaseModalWrap from "../../components/modals/ModalWrap/ModalWrap";
 import { colors } from "../../constants";
+import { UserModal } from "../../components/modals/UserModal/UserModal";
 
 export const Home = () => {
   const [open, setOpen] = useState(true);
@@ -13,5 +13,8 @@ export const Home = () => {
       >
         Open
       </button>
+      {open && <UserModal setIsOpen={setOpen} />}
     </>
   );
+};
+
