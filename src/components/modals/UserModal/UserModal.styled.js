@@ -27,12 +27,12 @@ export const Title = styled.h2`
   font-weight: 500;
   line-height: 1.23;
   color: ${colors.GRAY};
-  margin-bottom: 24px;
 `;
 
 export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 24px;
 `;
 
 export const CloseIconContainer = styled.div`
