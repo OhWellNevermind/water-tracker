@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { colors } from "../../constants";
 
-export const FormContent = styled.div`
-  /* display: flex;
-  flex-direction: column; */
-`;
+// export const FormContent = styled.div`
+//   /* display: flex;
+//   flex-direction: column; */
+// `;
 
 export const StyledBackground = styled.div`
   width: 100%;
   position: fixed;
-  top: 70px;
+  top: 56px;
   left: 0;
   width: 100%;
   height: 100vh;
@@ -19,12 +19,13 @@ export const StyledBackground = styled.div`
   z-index: -2;
   @media (min-width: 321px) {
     background-size: cover;
-    top: 52px;
+    /* top: 52px; */
   }
   @media (min-width: 768px) {
     background-image: url("/src/assets/images/tablet/BackgroundBubblesHomeTablet-min.png");
-    /* top: 0; */
-    left: 0;
+    top: 90px;
+    height: 100%;
+    /* left: -20px; */
   }
   @media (min-width: 1440px) {
     background-image: url("/src/assets/images/desktop/BackgroundBubblesHomeDesktop-min.png");
@@ -38,10 +39,16 @@ export const Bottle = styled.div`
     bottom/contain no-repeat;
   z-index: -1;
   position: fixed;
-  bottom: 18px;
-  width: 320px;
+  top: calc(100% - 225px);
+  /* left: auto; */
+  left: 50%;
+  transform: translateX(-50%);
+  /* left: 50%; */
+  /* left: calc(10% - 20px); */
+  /* bottom: 18px; */
+  width: 280px;
   /* height: 100vh; */
-  height: 548px;
+  height: 210px;
   @media (min-width: 768px) {
     background: url("/src/assets/images/tablet/BottleHomeTablet-min.png")
       center/contain no-repeat;
@@ -49,19 +56,22 @@ export const Bottle = styled.div`
     left: 112px;
     height: 548px;
     width: 736px;
+    transform: translateX(0);
   }
   @media (min-width: 1440px) {
     background: url("/src/assets/images/desktop/BottleForSigninDesktop-min.png")
       center/contain no-repeat;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
     left: -50px;
-    top: 50px;
+    /* top: 50px; */
+    top: calc(100% - 720px);
     height: 680px;
     width: 916px;
   }
 `;
 
 export const SignUpForm = styled.form`
+  /* position: fixed; */
   width: 280px;
   /* max-width: 386px; */
   /* display: flex;
@@ -78,9 +88,11 @@ export const SignUpForm = styled.form`
   @media (min-width: 1440px) {
     /* padding: 162px 0 0 0; */
     margin-left: auto;
-    margin-right: 184px;
+    margin-right: 198px;
     /* margin-top: auto;
     margin-bottom: auto; */
+    /* top: 160px;
+    left: calc(100%-570px); */
     width: 384px;
   }
 `;
@@ -94,6 +106,7 @@ export const Title = styled.h1`
 `;
 
 export const Label = styled.label`
+  display: block;
   margin-bottom: 8px;
   color: ${colors.GRAY};
   font-size: 18px;
@@ -187,7 +200,7 @@ export const InputContainer = styled.div`
 export const FormContainer = styled.div`
   /* display: flex;
   justify-content: center; */
-  margin-left: auto;
+  /* margin-left: auto;
   margin-right: auto;
   @media (min-width: 768px) {
     justify-content: start;
@@ -195,5 +208,15 @@ export const FormContainer = styled.div`
   @media (min-width: 1440px) {
     justify-content: flex-end;
     margin-right: 166px;
+  } */
+  height: 100vh;
+  @media (min-width: 320px) {
+    padding: 24px 20px;
+  }
+  @media (min-width: 768px) {
+    padding: 40px 32px;
+  }
+  @media (min-width: 1440px) {
+    padding: 140px 0 40px 0;
   }
 `;
