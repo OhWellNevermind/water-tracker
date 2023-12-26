@@ -197,6 +197,9 @@ export const Link = styled.a`
   width: 70px;
   text-decoration: none;
   color: ${colors.BLUE};
+  &:hover {
+    color: ${colors.ORANGE};
+  }
 `;
 
 export const IconButton = styled.button`

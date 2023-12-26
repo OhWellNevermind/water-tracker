@@ -31,22 +31,10 @@ export const SignIn = () => {
     initialValues: { email: "", password: "" },
     validationSchema: AddSchema,
     onSubmit: (user) => {
-      //   const new = {
-      //     ...contact,
-      //   };
-      //   addNewContact(newContact);
       console.log(user);
-      // console.log(values);
     },
   });
-  //   const [password, setPassword] = useState("");
 
-  //   const togglePasswordVisibility = () => {
-  //     setShowPassword(!showPassword);
-  //   };
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //   };
   return (
     <FormContainer>
       <StyledBackground />
@@ -62,13 +50,12 @@ export const SignIn = () => {
             onBlur={formik.handleBlur}
             value={formik.values.email}
             required
-          ></Input>
+          />
+
           <Label>Enter your password</Label>
           <InputContainer>
             <Input
-              // type="password"
               type={isPasswordVisible ? "text" : "password"}
-              // value={password}
               placeholder="Password"
               name="password"
               onChange={(e) => {
@@ -77,7 +64,7 @@ export const SignIn = () => {
               onBlur={formik.handleBlur}
               value={formik.values.password}
               required
-            ></Input>
+            />
             <IconButton
               onClick={() => {
                 setIsPasswordVisible(!isPasswordVisible);
@@ -105,10 +92,6 @@ export const SignIn = () => {
 
           <SignInButton type="submit">Sign In</SignInButton>
           <Link href="/src/pages/SignUp/SignUp.jsx">Sign Up</Link>
-          {/* <img
-           src="/src/assets/images/mobile/BottleForSigninMobile-min.png"
-           alt="Bottle"
-         /> */}
           <Bottle />
         </FormContent>
       </SignInForm>
