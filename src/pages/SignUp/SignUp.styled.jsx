@@ -2,11 +2,12 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 
 export const FormContent = styled.div`
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
 `;
 
 export const StyledBackground = styled.div`
+  width: 100%;
   position: fixed;
   top: 70px;
   left: 0;
@@ -21,8 +22,8 @@ export const StyledBackground = styled.div`
     top: 52px;
   }
   @media (min-width: 768px) {
-    background-image: url("/src/assets/images/tablet/BackgroundBubblesSignInTabletimin.png");
-    top: 0;
+    background-image: url("/src/assets/images/tablet/BackgroundBubblesHomeTablet-min.png");
+    /* top: 0; */
     left: 0;
   }
   @media (min-width: 1440px) {
@@ -39,11 +40,12 @@ export const Bottle = styled.div`
   position: fixed;
   bottom: 18px;
   width: 320px;
-  height: 100vh;
+  /* height: 100vh; */
+  height: 548px;
   @media (min-width: 768px) {
     background: url("/src/assets/images/tablet/BottleHomeTablet-min.png")
       center/contain no-repeat;
-    top: 116px;
+    top: calc(100% - 564px);
     left: 112px;
     height: 548px;
     width: 736px;
@@ -60,19 +62,26 @@ export const Bottle = styled.div`
 `;
 
 export const SignUpForm = styled.form`
-  max-width: 386px;
-  display: flex;
+  width: 280px;
+  /* max-width: 386px; */
+  /* display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; */
   margin-left: auto;
   margin-right: auto;
   @media (min-width: 768px) {
     margin-left: 0;
-    margin-right: 0;
-    align-content: start;
+    /* margin-right: 0; */
+    /* align-content: star/t; */
+    width: 336px;
   }
   @media (min-width: 1440px) {
-    padding: 162px 0 0 0;
+    /* padding: 162px 0 0 0; */
+    margin-left: auto;
+    margin-right: 184px;
+    /* margin-top: auto;
+    margin-bottom: auto; */
+    width: 384px;
   }
 `;
 
@@ -158,7 +167,7 @@ export const IconButton = styled.button`
   position: absolute;
   left: calc(280px - 26px);
   top: 13px;
-  background-color: white;
+  background-color: transparent;
   border: none;
   width: 16px;
   height: 16px;
@@ -176,8 +185,8 @@ export const InputContainer = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   margin-left: auto;
   margin-right: auto;
   @media (min-width: 768px) {
