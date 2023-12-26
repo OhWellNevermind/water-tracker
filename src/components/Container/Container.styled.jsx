@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.main`
-  /* margin: 0 auto;
-   */
   margin-left: auto;
   margin-right: auto;
   padding: 0;
