@@ -4,10 +4,10 @@ import { UserModal } from "../../components/modals/UserModal/UserModal";
 import { TodayListModal } from "../../components/modals/TodayListModal/todayListModal";
 
 export const Home = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
     <>
-      <TodayListModal />
+      {open && <TodayListModal setOpen={setOpen} />}
       <div style={{ fontWeight: 500, fontSize: 32 }}>Home</div>
       <button
         style={{ width: "50px", height: "30px", backgroundColor: colors.BLUE }}
@@ -15,7 +15,7 @@ export const Home = () => {
       >
         Open
       </button>
-      {open && <UserModal setIsOpen={setOpen} />}
+      {/* {open && <UserModal setIsOpen={setOpen} />} */}
     </>
   );
 };

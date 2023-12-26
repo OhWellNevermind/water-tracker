@@ -1,43 +1,46 @@
 import { colors } from "../../../constants";
 import BaseModalWrap from "../ModalWrap/ModalWrap";
 import {
-  AcounterWater,
   AmountWater,
   BackgroundPortion,
-  BackgroundValueWater,
   Button,
   CloseButton,
   EnterValueWater,
   Input,
-  MinusCount,
   Modal,
-  PlusCount,
   ScoreBoard,
   Title,
   TitleCorrectEnteredData,
   TitleRecordingTime,
   ValueTime,
   ValueWater,
-  ValueWaterCounter,
   WrapButtonSave,
 } from "./TodayListModal.styled";
 import { Container } from "../../Container/Container";
 import { Glass } from "../../icons/Glass";
-import { MinusIcon } from "../../icons/MinusIcon";
-import { PlusIcon } from "../../icons/PlusIcon";
 import { TimeSelector } from "../../TimeSelect/TimeSelect";
 import { CloseIcon } from "../../icons/CloseIcon";
+import { CounterEditWater } from "../CounterEditWater/CounterEditModal";
+import { useState } from "react";
 
 export const TodayListModal = ({
   setOpen,
   valueWater = 250,
   valueTime = "7:00",
 }) => {
+  const [count, setCount] = useState(0);
+  const handleCountChange = (newCount) => {
+    setCount(newCount);
+  };
+  const handleInputChange = (e) => {
+    const newValue = parseInt(e.target.value, 10) || 0;
+    setCount(newValue);
+  };
   return (
     <BaseModalWrap onClose={() => setOpen(false)}>
       <Container>
         <Modal>
-          <CloseButton>
+          <CloseButton onClick={() => setOpen(false)}>
             <CloseIcon width={24} height={24} stroke={colors.BLUE} />
           </CloseButton>
           <Title>Edit the entered amount of water</Title>
@@ -50,23 +53,20 @@ export const TodayListModal = ({
             Correct entered data:
           </TitleCorrectEnteredData>
           <AmountWater>Amount of water:</AmountWater>
-          <AcounterWater>
-            <MinusCount>
-              <MinusIcon width={24} height={24} fill={colors.BLUE} />
-            </MinusCount>
-            <BackgroundValueWater>
-              <ValueWaterCounter>{valueWater} ml</ValueWaterCounter>
-            </BackgroundValueWater>
-            <PlusCount>
-              <PlusIcon width={24} height={24} stroke={colors.BLUE} />
-            </PlusCount>
-          </AcounterWater>
+          <CounterEditWater
+            newCount={count}
+            onCountChange={handleCountChange}
+          />
           <TitleRecordingTime>Recording time:</TitleRecordingTime>
           <TimeSelector />
           <EnterValueWater>Enter the value of the water used:</EnterValueWater>
-          <Input name="value"></Input>
+          <Input
+            name="value"
+            value={count}
+            onChange={handleInputChange}
+          ></Input>
           <WrapButtonSave>
-            <ScoreBoard>{valueWater}ml</ScoreBoard>
+            <ScoreBoard>{count}ml</ScoreBoard>
             <Button type="submit">Save</Button>
           </WrapButtonSave>
         </Modal>
