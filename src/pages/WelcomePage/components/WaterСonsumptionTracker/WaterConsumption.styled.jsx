@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../../constants";
+import { colors } from "../../../../constants";
 
 export const StyledList = styled.ul`
   margin-top: 12px;
@@ -9,7 +9,7 @@ export const StyledList = styled.ul`
     gap: 16px;
   }
   @media (min-width: 1440px) {
-   display:block;
+    display: block;
   }
 `;
 export const Button = styled.button`
@@ -43,7 +43,6 @@ export const BtnText = styled.span`
   font-weight: 500;
   line-height: 20px;
 `;
- 
 
 export const BenefitList = styled.li`
   color: ${colors.GRAY};
@@ -98,10 +97,9 @@ export const H2 = styled.h2`
     line-height: 42px;
     width: 439px;
   }
-
 `;
 export const ParagrafOne = styled.p`
-  margin-top:16px;
+  margin-top: 16px;
   color: ${colors.GRAY};
   font-family: Roboto;
   font-size: 24px;
@@ -113,7 +111,6 @@ export const ParagrafOne = styled.p`
     font-size: 26px;
     line-height: 32px;
     width: 404px;
-
   }
 `;
 export const ParagrafTwo = styled.p`
@@ -123,7 +120,7 @@ export const ParagrafTwo = styled.p`
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  margin-top:24px;
+  margin-top: 24px;
 `;
 export const IconStyle = styled.div`
   width: 32px;

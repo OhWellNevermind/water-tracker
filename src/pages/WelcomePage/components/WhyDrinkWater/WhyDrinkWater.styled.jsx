@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../../constants";
+import { colors } from "../../../../constants";
 export const Content = styled.div`
   padding: 24px 16px;
 
@@ -16,13 +16,12 @@ export const Content = styled.div`
 
   @media (min-width: 768px) {
     width: 494px;
-    margin: 60px 0 0 0 ;
+    margin: 60px 0 0 0;
     padding: 32px 24px;
   }
   @media (min-width: 1440px) {
     width: 494px;
     margin-top: 34px;
-  
   }
 `;
 
@@ -58,26 +57,25 @@ export const List = styled.li`
   font-weight: 400;
   line-height: 20px;
   padding: 0;
-  position:relative;
+  position: relative;
   &:before {
     content: "";
     border-radius: 50%;
     width: 8px;
     height: 8px;
     background-color: ${colors.BLUE};
-    @media (max-width : 767px){
+    @media (max-width: 767px) {
       position: absolute;
-      left: -16px; 
-      top: 50%; 
+      left: -16px;
+      top: 50%;
       transform: translateY(-50%);
-
     }
   }
 `;
 
 export const Lists = styled.ul`
   margin-top: 12px;
-  @media (max-width:767px){
-    padding-left:16px;
+  @media (max-width: 767px) {
+    padding-left: 16px;
   }
 `;

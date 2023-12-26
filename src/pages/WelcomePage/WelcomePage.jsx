@@ -1,13 +1,12 @@
-
-import WhyDrinkWater from "../Home/WhyDrinkWater/WhyDrinkWater";
-import WaterConsumption from "../Home/WaterСonsumptionTracker/WaterConsumption";
+import WhyDrinkWater from "./components/WhyDrinkWater/WhyDrinkWater";
+import WaterConsumption from "./components/WaterСonsumptionTracker/WaterConsumption";
 import { Container } from "./WelcomePage.styled";
 
 const WelcomePage = () => {
   return (
     <Container>
       <WaterConsumption />
-      <WhyDrinkWater/>
+      <WhyDrinkWater />
     </Container>
   );
 };

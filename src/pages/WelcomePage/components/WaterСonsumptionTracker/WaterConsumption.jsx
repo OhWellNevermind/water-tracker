@@ -1,4 +1,3 @@
-
 import {
   Button,
   BtnText,
@@ -10,9 +9,9 @@ import {
   ContainerConsumption,
   IconStyle,
 } from "./WaterConsumption.styled";
-import { CalendarIcon } from "../../../../src/components/icons/CalendarIcon";
-import { StatisticIcon } from "../../../../src/components/icons/StatisticIcon";
-import { PersonalSettingsIcon } from "../../../../src/components/icons/PersonalSettingsIcon";
+import { CalendarIcon } from "../../../../components/icons/CalendarIcon";
+import { StatisticIcon } from "../../../../components/icons/StatisticIcon";
+import { PersonalSettingsIcon } from "../../../../components/icons/PersonalSettingsIcon";
 
 const WaterConsumption = () => {
   const handleClick = () => {
@@ -39,8 +38,7 @@ const WaterConsumption = () => {
         </BenefitList>
         <BenefitList>
           <IconStyle>
-
-            <PersonalSettingsIcon  />
+            <PersonalSettingsIcon />
           </IconStyle>
           Personal rate setting
         </BenefitList>
