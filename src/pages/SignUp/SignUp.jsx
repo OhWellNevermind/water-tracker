@@ -1,4 +1,4 @@
-import { HiddenIcon } from "../../../components/icons/HiddenIcon";
+import { HiddenIcon } from "../../components/icons/HiddenIcon";
 import {
   FormContent,
   SignUpForm,
@@ -10,11 +10,13 @@ import {
   StyledBackground,
   IconButton,
   InputContainer,
+  FormContainer,
+  Bottle,
 } from "./SignUp.styled";
 
 export const SignUp = () => {
   return (
-    <div>
+    <FormContainer>
       <SignUpForm>
         <Title>Sign Up</Title>
         <StyledBackground />
@@ -55,13 +57,9 @@ export const SignUp = () => {
 
           <SignUpButton>Sign Up</SignUpButton>
           <Link href="">Sign In</Link>
-          <img
-            src="/src/assets/images/mobile/BottleForSigninMobile-min.png"
-            alt="Bottle"
-          />
-          {/* </div> */}
         </FormContent>
+        <Bottle />
       </SignUpForm>
-    </div>
+    </FormContainer>
   );
 };
