@@ -5,6 +5,7 @@ import imgBackgroundDesktop from "../../assets/images/desktop/BackgroundBubblesH
 
 export const Container = styled.div`
   position: relative;
+  padding: 0;
 `;
 
 export const WrapperHome = styled.div`
@@ -33,10 +34,41 @@ export const WrapperHome = styled.div`
   }
 
   @media only screen and (min-width: 1440px) {
+    display: flex;
     flex-direction: row;
-    padding-top: 20px;
-    padding-bottom: 40px;
+    padding-left: 39px;
     padding-right: 112px;
+    padding-bottom: 0;
     background-image: url(${imgBackgroundDesktop});
+  }
+`;
+
+export const WrapTodayAndMonth = styled.div`
+  padding: 0;
+  display: flex;
+  width: 280px;
+  height: 836px;
+  display: inline-flex;
+  padding: 24px 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  background: #ecf2ff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+  @media only screen and (min-width: 768px) {
+    width: 704px;
+    height: 688px;
+    padding: 32px 24px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 592px;
+    height: 680px;
+    margin-top: 22px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    background: #ecf2ff;
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+    gap: 32px;
   }
 `;

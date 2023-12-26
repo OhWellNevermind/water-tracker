@@ -1,17 +1,21 @@
 import styled from "styled-components";
 
 export const TodayWaterListContainer = styled.div`
+  padding: 0;
   display: flex;
   flex-direction: column;
-  width: 280px;
-  background: #ecf2ff;
-  padding: 24px 8px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
-  overflow-y: auto;
+  width: 264px;
+
   @media only screen and (min-width: 768px) {
-    width: 704px;
-    padding: 32px 24px;
+    width: 656px;
+  }
+  @media only screen and (min-width: 1440px) {
+    padding: 0;
+    width: 544px;
+    margin-bottom: 24px;
+    border-radius: initial;
+    box-shadow: initial;
+    overflow-y: initial;
   }
 `;
 export const Today = styled.p`
@@ -23,10 +27,11 @@ export const Today = styled.p`
   font-style: normal;
   font-weight: 500;
   line-height: 30px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   @media only screen and (min-width: 768px) {
     font-size: 26px;
     line-height: 32px;
+    margin-top: 8px;
   }
 `;
 
@@ -37,41 +42,53 @@ export const TodayWrap = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   @media only screen and (min-width: 768px) {
-    width: 656px;
+    width: 654px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 544px;
   }
 `;
 
-export const List = styled.div`
+export const List = styled.ul`
   display: flex;
+  flex-direction: column;
   width: 254px;
-  height: 26px;
+  height: 200px;
   padding: 0;
   margin: 0;
-  border-bottom: 1px solid #d7e3ff;
+
   @media only screen and (min-width: 768px) {
     width: 646px;
-    height: 36px;
+    height: 188px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 544px;
   }
 `;
-export const SublistAll = styled.ul`
+export const SublistAll = styled.li`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
   align-items: center;
   margin: 0;
   padding: 0;
-  //margin-bottom: 12px;
-  @media only screen and (min-width: 768px) {
-    width: 646px;
-    justify-content: start;
-  }
-`;
-export const Sublist = styled.li`
-  display: flex;
   margin-bottom: 12px;
   margin-top: 12px;
+  border-bottom: 1px solid #d7e3ff;
   @media only screen and (min-width: 768px) {
-    //justify-content: center;
+    width: 646px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 544px;
+  }
+`;
+export const Sublist = styled.div`
+  display: flex;
+  @media only screen and (min-width: 768px) {
     align-items: center;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 544px;
   }
 `;
 export const NumberMl = styled.span`
@@ -108,7 +125,7 @@ export const Time = styled.span`
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  //margin-right: 38px;
+  width: 56px;
   @media only screen and (min-width: 768px) {
     width: 82px;
   }
@@ -116,36 +133,31 @@ export const Time = styled.span`
 
 export const PencilAndBasket = styled.div`
   display: flex;
-  margin-left: 38px;
   @media only screen and (min-width: 768px) {
-    margin-left: 390px;
-    //justify-content: center;
   }
 `;
 export const Pencil = styled.span`
   display: flex;
-  //margin-left: 38px;
   align-items: center;
 `;
 export const Basket = styled.span`
   display: flex;
   margin-left: 18px;
   align-items: center;
-  /*  @media only screen and (min-width: 768px) {
-    margin-left: 390px;
-  } */
 `;
 
 export const Button = styled.button`
+  width: 90px;
+  height: 20px;
   display: flex;
   gap: 8px;
   background: #ecf2ff;
   border: none;
   margin: 0;
   padding: 0;
-  margin-top: 12px;
   @media only screen and (min-width: 768px) {
-    width: 346px;
+    width: 106px;
+    height: 24px;
     svg {
       width: 24px;
       height: 24px;
@@ -162,6 +174,7 @@ export const AddWaterButton = styled.span`
   border: none;
   width: 73px;
   height: 20px;
+  white-space: nowrap;
   @media only screen and (min-width: 768px) {
     width: 82px;
     height: 24px;

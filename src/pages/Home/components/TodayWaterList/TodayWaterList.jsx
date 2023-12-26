@@ -34,20 +34,55 @@ export const TodayWaterList = () => {
               <MLSpan>
                 <NumberMl>{200} ml</NumberMl>
               </MLSpan>
-            </Sublist>
-            <Sublist>
               <Time>{"14-00"}</Time>
             </Sublist>
+            <PencilAndBasket>
+              <Pencil>
+                <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />
+              </Pencil>
+              <Basket>
+                <Trash width={16} height={16} stroke={"#EF5050"} />
+              </Basket>
+            </PencilAndBasket>
+          </SublistAll>
+          <SublistAll>
             <Sublist>
-              <PencilAndBasket>
-                <Pencil>
-                  <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />
-                </Pencil>
-                <Basket>
-                  <Trash width={16} height={16} stroke={"#EF5050"} />
-                </Basket>
-              </PencilAndBasket>
+              <GlassSpan>
+                <Glass width={26} height={26} fill={"#407BFF"} />
+              </GlassSpan>
+              <MLSpan>
+                <NumberMl>{200} ml</NumberMl>
+              </MLSpan>
+              <Time>{"14-00"}</Time>
             </Sublist>
+            <PencilAndBasket>
+              <Pencil>
+                <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />
+              </Pencil>
+              <Basket>
+                <Trash width={16} height={16} stroke={"#EF5050"} />
+              </Basket>
+            </PencilAndBasket>
+          </SublistAll>
+
+          <SublistAll>
+            <Sublist>
+              <GlassSpan>
+                <Glass width={26} height={26} fill={"#407BFF"} />
+              </GlassSpan>
+              <MLSpan>
+                <NumberMl>{200} ml</NumberMl>
+              </MLSpan>
+              <Time>{"14-00"}</Time>
+            </Sublist>
+            <PencilAndBasket>
+              <Pencil>
+                <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />
+              </Pencil>
+              <Basket>
+                <Trash width={16} height={16} stroke={"#EF5050"} />
+              </Basket>
+            </PencilAndBasket>
           </SublistAll>
         </List>
 

@@ -8,7 +8,6 @@ import {
   EditButton,
   PictureBox,
 } from "./DailyNorma.styled";
-//import DailyNormaModal from "./DailyNormaModal";
 
 import bottleMob from "../../../../assets/images/mobile/BottleHomeMobile-min.png";
 import bottleMob2x from "../../../../assets/images/mobile/BottleHomeMobile@2x-min.png";

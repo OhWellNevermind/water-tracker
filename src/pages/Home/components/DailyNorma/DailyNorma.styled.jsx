@@ -7,21 +7,25 @@ export const DailyNormaContainer = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding-bottom: 0;
+  }
+  @media only screen and (min-width: 1440px) {
+    padding-bottom: 0;
+    width: 738px;
   }
 `;
 
 export const DailyNormaBox = styled.div`
   @media only screen and (min-width: 768px) {
-    /*  display: flex;
-    justify-content: start;
-    align-items: end;
     width: 164px;
-    height: 74px; */
+  }
+  @media only screen and (min-width: 1440px) {
+    margin-left: 74px;
   }
 `;
 export const MyDailyNormaWrapper = styled.div`
+  white-space: nowrap;
   width: 164px;
-  height: 74px;
   display: flex;
   padding: 8px 20px;
   flex-direction: column;
@@ -32,7 +36,10 @@ export const MyDailyNormaWrapper = styled.div`
   background-color: #fff;
   box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
   @media only screen and (min-width: 768px) {
-    height: 76px;
+  }
+  @media only screen and (min-width: 14400px) {
+    margin-top: 30px;
+    margin-left: 74px;
   }
 `;
 
@@ -85,5 +92,11 @@ export const PictureBox = styled.div`
     width: 518px;
     height: 386px;
     margin-left: 125px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 738px;
+    height: 548px;
+    margin-left: 0;
+    margin-bottom: 24px;
   }
 `;
