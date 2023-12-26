@@ -32,6 +32,11 @@ export const HeaderWrapper = styled.div`
   display: flex;
   cursor: pointer;
   align-items: center;
+
+  /* &:hover > ,
+  &:focus-within >  {
+    color: #ff9d43;
+  } */
 `;
 export const HeaderBtn = styled.button`
   width: 50px;
@@ -78,4 +83,10 @@ export const UserImg = styled.img`
   height: 28px;
   object-fit: cover;
   border-radius: 50%;
+`;
+export const Span = styled.span`
+  &:hover >,
+  &:focus-within > {
+    color: #ff9d43;
+  }
 `;

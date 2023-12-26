@@ -3,14 +3,19 @@ import styled from "styled-components";
 export const UserLMWrapper = styled.div`
   height: 100vh;
   width: 320px;
-  left: 50%;
   position: absolute;
+  left: 58%;
+  bottom: -22%;
 
   @media (min-width: 768px) {
     width: 768px;
+    left: 54%;
+    bottom: -28%;
   }
   @media (min-width: 1440px) {
     width: 1440px;
+    left: 52%;
+    bottom: -22%;
   }
 `;
 export const UserLMDiv = styled.div`
@@ -25,7 +30,7 @@ export const UserLMDiv = styled.div`
   border-radius: 10px;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.2);
 
-  position: fixed;
+  position: absolute;
   top: 48px;
   right: 55%;
 
@@ -47,6 +52,11 @@ export const UserLMBtn = styled.button`
   background-color: transparent;
   cursor: pointer;
   align-items: center;
+
+  /* &:hover > ,
+  &:focus-within >  {
+    color: #ff9d43;
+  } */
 `;
 export const UserLMText = styled.p`
   color: #407bff;

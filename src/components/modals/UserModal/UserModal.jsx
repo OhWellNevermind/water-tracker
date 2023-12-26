@@ -50,7 +50,7 @@ const formSchema = Yup.object({
   gender: Yup.string().oneOf(["male", "female"]),
 });
 
-export const UserModal = ({ setIsOpen }) => {
+export const UserModal = ({ setIsOpen, isUserModOpened }) => {
   const [isOldPasswordVisible, setIsOldPasswordVisible] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false);
@@ -68,7 +68,7 @@ export const UserModal = ({ setIsOpen }) => {
     },
     validationSchema: formSchema,
   });
-  return (
+  return isUserModOpened ? (
     <BaseModalWrap onClose={() => setIsOpen(false)}>
       <ModalContainer>
         <Title>Settings</Title>
@@ -229,5 +229,5 @@ export const UserModal = ({ setIsOpen }) => {
         </Container>
       </ModalContainer>
     </BaseModalWrap>
-  );
+  ) : null;
 };

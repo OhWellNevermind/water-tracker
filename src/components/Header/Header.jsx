@@ -2,6 +2,7 @@ import { LogoIcon } from "../icons/LogoIcon";
 import { UserIcon } from "../icons/UserIcon";
 import { ChevronDownIcon } from "../icons/ChevronDownIcon";
 import { UserLogoModal } from "../UserLogoModal/UserLogoModal";
+import { useState } from "react";
 
 import {
   HeaderSection,
@@ -11,12 +12,19 @@ import {
   HeaderLink,
   UserName,
   UserLogo,
+  Span,
 } from "./Header.styled";
 import { colors } from "../../constants";
 
-export const Header = ({ active, setActive }) => {
-  const defaultName = "V";
+export const Header = () => {
+  const [isModalopened, setIsModalOpened] = useState(false);
 
+  function toggleModal() {
+    setIsModalOpened((value) => !value);
+    console.log(isModalopened);
+  }
+
+  const defaultName = "V";
   return (
     <div>
       <HeaderSection>
@@ -27,8 +35,8 @@ export const Header = ({ active, setActive }) => {
           </LogoText>
         </HeaderLink>
 
-        <HeaderWrapper onClick={() => setActive(true)}>
-          <UserLogoModal />
+        <HeaderWrapper onClick={() => toggleModal()}>
+          <UserLogoModal isModalopened={isModalopened} />
           <UserName>{defaultName}</UserName>
           <UserLogo />
           <ChevronDownIcon width={16} height={16} stroke={colors.BLUE} />
@@ -36,7 +44,9 @@ export const Header = ({ active, setActive }) => {
 
         <HeaderLink to="/signin">
           <HeaderWrapper>
-            <HeaderBtn type="button">Sign in</HeaderBtn>
+            <HeaderBtn type="button">
+              <Span>Sign in</Span>
+            </HeaderBtn>
             <div>
               <UserIcon width={40} heidht={48} stroke={colors.GRAY} />
             </div>
