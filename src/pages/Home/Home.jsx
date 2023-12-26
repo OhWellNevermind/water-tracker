@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { colors } from "../../constants";
-import { TodayListModal } from "../../components/modals/todayListModal";
 import { UserModal } from "../../components/modals/UserModal/UserModal";
+import { TodayListModal } from "../../components/modals/TodayListModal/todayListModal";
 
 export const Home = () => {
   const [open, setOpen] = useState(true);

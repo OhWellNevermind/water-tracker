@@ -1,7 +1,7 @@
-import { Select } from "./TimeSelector.styled";
+import { StyledSelect } from "./TimeSelector.styled";
+import { customStyles } from "./СustomSelect.styled";
 
-export const TimeSelector = () => {
-  // Створення списку часу з кроком 5хв
+export const TimeSelector = ({ valueTime = "7:00" }) => {
   const generateTimeOptions = () => {
     const options = [];
 
@@ -11,16 +11,18 @@ export const TimeSelector = () => {
         const formattedMinutes = String(minutes).padStart(2, "0");
         const timeString = `${formattedHours}:${formattedMinutes}`;
 
-        options.push(
-          <option key={timeString} value={timeString}>
-            {timeString}
-          </option>
-        );
+        options.push({ value: timeString, label: timeString });
       }
     }
 
     return options;
   };
-
-  return <Select>{generateTimeOptions()}</Select>;
+  const defaultValue = { value: valueTime, label: valueTime };
+  return (
+    <StyledSelect
+      styles={customStyles}
+      options={generateTimeOptions()}
+      defaultValue={defaultValue}
+    />
+  );
 };

@@ -4,7 +4,7 @@ import { colors } from "../../../constants";
 export const Modal = styled.div`
   position: relative;
   padding: 24px 12px;
-  /* width: 280px; */
+  width: 280px;
   border-radius: 10px;
   background: ${colors.WHITE};
   @media (min-width: 768px) {
@@ -102,6 +102,7 @@ export const MinusCount = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 
 export const BackgroundValueWater = styled.div`
@@ -130,6 +131,7 @@ export const PlusCount = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 
 export const TitleRecordingTime = styled.p`
@@ -163,6 +165,7 @@ export const Input = styled.input`
   border-radius: 6px;
   border: 1px solid ${colors.PROVINCIAL_PINK};
   margin-bottom: 24px;
+  padding: 12px 10px;
   @media (min-width: 768px) {
     width: 544px;
   }
@@ -197,6 +200,7 @@ export const Button = styled.button`
   font-weight: 500;
   line-height: 1.25;
   padding: 8px 30px;
+  cursor: pointer;
   @media (min-width: 768px) {
     width: 160px;
     height: 44px;
@@ -208,6 +212,7 @@ export const CloseButton = styled.div`
   height: 24px;
   right: 12px;
   top: 24px;
+  cursor: pointer;
   @media (min-width: 768px) {
     right: 24px;
     top: 36px;
