@@ -164,17 +164,20 @@ export const Input = styled.input`
 `;
 
 export const SignInButton = styled.button`
+  width: 280px;
+  height: 36px;
   margin-bottom: 16px;
   padding: 8px 30px;
   width: 280px;
   border: none;
   border-radius: 10px;
   color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.33;
   background-color: ${colors.BLUE};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-  &:active {
-    box-shadow: none;
-  }
+
   @media (min-width: 768px) {
     width: 336px;
     height: 44px;
@@ -184,10 +187,14 @@ export const SignInButton = styled.button`
   }
   @media (min-width: 1440px) {
     width: 386px;
+    &:active {
+      box-shadow: none;
+    }
   }
 `;
 
 export const Link = styled.a`
+  width: 70px;
   text-decoration: none;
   color: ${colors.BLUE};
 `;
