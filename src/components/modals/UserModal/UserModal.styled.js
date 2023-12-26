@@ -13,6 +13,13 @@ export const ModalContainer = styled.div`
     width: 656px;
     padding: 32px 24px;
   }
+
+  @media (min-width: 1439px) {
+    width: 960px;
+    padding: 32px 24px;
+    height: fit-content;
+    overflow: hidden;
+  }
 `;
 
 export const Title = styled.h2`
@@ -21,6 +28,15 @@ export const Title = styled.h2`
   line-height: 1.23;
   color: ${colors.GRAY};
   margin-bottom: 24px;
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CloseIconContainer = styled.div`
+  cursor: pointer;
 `;
 
 export const Container = styled.div`
@@ -48,11 +64,11 @@ export const Text = styled.label`
   white-space: nowrap;
 `;
 
-export const Image = styled.div`
+export const Image = styled.img`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: black;
+  object-fit: cover;
 `;
 
 export const ImageContainer = styled.div`
@@ -96,6 +112,10 @@ export const GenderContainer = styled.div`
   align-items: center;
   gap: 24px;
   margin-bottom: 24px;
+
+  @media screen and (min-width: 1439px) {
+    margin-bottom: 58px;
+  }
 `;
 
 export const GenderInputLabel = styled.label`
@@ -131,6 +151,7 @@ export const RadioButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   ${HiddentInput}:checked + &::after {
     content: "";
@@ -138,10 +159,10 @@ export const RadioButton = styled.div`
     border-radius: 50%;
     width: 7px;
     height: 7px;
-    /* position: absolute;
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%);
     background-color: ${colors.BLUE};
   }
 `;
@@ -151,8 +172,15 @@ export const Form = styled.form`
   flex-direction: column;
 `;
 
+export const InputsContainer = styled.div`
+  @media screen and (min-width: 1439px) {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+`;
+
 export const SubmitButton = styled.button`
-  width: 100%;
   margin-top: 12px;
   padding: 8px 0;
   text-align: center;
@@ -166,17 +194,20 @@ export const SubmitButton = styled.button`
   background-color: ${colors.BLUE};
   color: ${colors.WHITE};
   cursor: pointer;
+  width: 256px;
   &:hover {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
   }
   &:active {
     box-shadow: 0px 0px 0px 0px rgba(64, 123, 255, 0.34);
   }
-  @media (min-width: 321px) {
-    width: 256px;
-  }
   @media (min-width: 767px) {
     width: 100px;
+    align-self: flex-end;
+  }
+  @media (min-width: 1439px) {
+    padding: 10px 0;
+    width: 160px;
     align-self: flex-end;
   }
 `;
@@ -200,10 +231,22 @@ export const TextInput = styled.input`
   &::placeholder {
     color: ${colors.PROVINCIAL_PINK};
   }
-
+  outline: none;
   @media (min-width: 767px) {
     width: 372px;
   }
+  &.error {
+    border-color: ${colors.RED};
+    color: ${colors.RED};
+  }
+`;
+
+export const ErrorMessage = styled.p`
+  color: ${colors.RED};
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28; /* 128.571% */
 `;
 
 export const IconInputContainer = styled.div`
@@ -219,6 +262,7 @@ export const InputIcon = styled.button`
   position: absolute;
   top: 13px;
   right: 10px;
+  cursor: pointer;
 `;
 
 export const InputWithIcon = styled.input`
@@ -227,6 +271,11 @@ export const InputWithIcon = styled.input`
   border-radius: 6px;
   padding: 12px 0 12px 10px;
   color: ${colors.BLUE};
+  outline: none;
+  &.error {
+    border-color: ${colors.RED};
+    color: ${colors.RED};
+  }
   &::placeholder {
     color: ${colors.PROVINCIAL_PINK};
   }
