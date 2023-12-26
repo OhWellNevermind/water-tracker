@@ -3,23 +3,19 @@ import { colors } from "../../../constants";
 
 export const StyledList = styled.ul`
   margin-top: 12px;
-  padding: 0;
 
   @media (min-width: 768px) {
     display: flex;
     gap: 16px;
   }
   @media (min-width: 1440px) {
-    display: block;
-    
+   display:block;
   }
 `;
 export const Button = styled.button`
-  display: flex;
+  margin-top: 24px;
   padding: 8px 30px;
   width: 280px;
-  justify-content: center;
-  align-items: center;
   border-radius: 10px;
   border: none;
   background-color: ${colors.BLUE};
@@ -32,12 +28,10 @@ export const Button = styled.button`
   }
   @media (min-width: 768px) {
     width: 336px;
-    margin-top: 24px;
-    margin-right: 368px;
+    padding: 10px 30px;
   }
   @media (min-width: 1440px) {
     width: 384px;
-    margin-right: 0;
   }
 `;
 export const BtnText = styled.span`
@@ -52,7 +46,6 @@ export const BtnText = styled.span`
  
 
 export const BenefitList = styled.li`
-  width: 216px;
   color: ${colors.GRAY};
   font-family: Roboto;
   font-size: 16px;
@@ -61,30 +54,27 @@ export const BenefitList = styled.li`
   line-height: 20px;
   display: flex;
   align-items: center;
+  gap: 8px;
   @media (max-width: 767px) {
     &:not(:first-child) {
       margin-top: 16px;
-      margin-right: 64px;
     }
   }
-  @media (min-width: 768px) {
+  @media (max-width: 1439px) {
     width: 224px;
   }
   @media (min-width: 1440px) {
-    width: 248px;
-    margin-top: 16px;
-    margin-right: 191px;
+    &:not(:first-child) {
+      margin-top: 16px;
+    }
   }
-  gap: 8px;
 `;
 
 export const ContainerConsumption = styled.div`
   width: 280px;
   margin-left: auto;
   margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
   @media (min-width: 768px) {
     width: 704px;
   }
@@ -92,12 +82,11 @@ export const ContainerConsumption = styled.div`
     margin-left: 0;
     margin-right: 0;
     width: 439px;
-    display: block;
+    margin-right: 81px;
   }
 `;
 export const H2 = styled.h2`
   width: 246px;
-  margin: 0 34px 0 0;
   color: ${colors.GRAY};
   font-family: Roboto;
   font-size: 28px;
@@ -107,15 +96,12 @@ export const H2 = styled.h2`
   @media (min-width: 768px) {
     font-size: 36px;
     line-height: 42px;
-    margin-right: 265px;
     width: 439px;
   }
-  @media (min-width: 1440px) {
-    margin-right: 0;
-  }
+
 `;
 export const ParagrafOne = styled.p`
-  margin: 16px 83px 24px 0;
+  margin-top:16px;
   color: ${colors.GRAY};
   font-family: Roboto;
   font-size: 24px;
@@ -124,16 +110,10 @@ export const ParagrafOne = styled.p`
   line-height: 30px;
   width: 197px;
   @media (min-width: 768px) {
-    margin-right: 300px;
     font-size: 26px;
     line-height: 32px;
     width: 404px;
 
-  }
-  @media (min-width: 1440px) {
-    margin-right: 0;
-  
-    
   }
 `;
 export const ParagrafTwo = styled.p`
@@ -143,14 +123,7 @@ export const ParagrafTwo = styled.p`
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  margin: 0;
-  margin-right: 148px;
-  @media (min-width: 768px) {
-    margin-right: 572px;
-  }
-  @media (min-width: 1440px) {
-    margin-right: 0;
-  }
+  margin-top:24px;
 `;
 export const IconStyle = styled.div`
   width: 32px;

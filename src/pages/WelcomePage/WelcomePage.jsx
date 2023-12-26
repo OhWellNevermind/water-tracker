@@ -6,7 +6,6 @@ import { Container } from "./WelcomePage.styled";
 const WelcomePage = () => {
   return (
     <Container>
-
       <WaterConsumption />
       <WhyDrinkWater/>
     </Container>

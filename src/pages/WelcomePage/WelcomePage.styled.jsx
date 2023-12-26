@@ -6,43 +6,41 @@ import BackgroundImageMobile2x from "../../../src/assets/images/mobile/Backgroun
 import BackgroundImageTablet2x from "../../../src/assets/images/tablet/BackgroundMainPageTablet@2x-min.png";
 import BackgroundImageDesktop2x from "../../../src/assets/images/desktop/BackgroundMainPageDesktop@2x-min.png";
 export const Container = styled.div`
-  height: auto;
-  max-width: 100%;
-  width: 100vw;
   height: 100vh;
+  background: url(${BackgroundImageMobile});
   background-size: cover;
   background-repeat: no-repeat;
-
-  @media (min-width: 320px) {
-    background: url(${BackgroundImageMobile});
-  
-    @media only screen and (-webkit-min-device-pixel-ratio: 2),
-      only screen and (min-resolution: 192dpi) {
-      background: url(${BackgroundImageMobile2x});
-     
-    }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi) {
+    background: url(${BackgroundImageMobile2x});
+    background-size: cover;
+    background-repeat: no-repeat;
   }
+
   @media (min-width: 768px) {
     background: url(${BackgroundImageTablet});
-
-
+    background-size: cover;
+    background-repeat: no-repeat;
     @media only screen and (-webkit-min-device-pixel-ratio: 2),
       only screen and (min-resolution: 300dpi),
       (min-resolution: 2dppx) {
       background: url(${BackgroundImageTablet2x});
-      
+      background-size: cover;
+      background-repeat: no-repeat;
     }
   }
   @media (min-width: 1440px) {
-    margin-top: 31px;
+    margin-top: 40px;
     display: flex;
     background: url(${BackgroundImageDesktop});
     justify-content: center;
-
+    background-size: cover;
+    background-repeat: no-repeat;
     @media only screen and (-webkit-min-device-pixel-ratio: 2),
       only screen and (min-resolution: 192dpi) {
       background: url(${BackgroundImageDesktop2x});
- 
+      background-size: cover;
+      background-repeat: no-repeat;
     }
   }
 `;
