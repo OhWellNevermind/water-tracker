@@ -3,12 +3,11 @@ import { colors } from "../../constants";
 
 export const StyledBackground = styled.div`
   position: fixed;
-  top: 56px;
+  width: 100%;
+  top: 108px;
   left: 0;
 
-  width: 100%;
   height: 100vh;
-
   background-image: url("/src/assets/images/mobile/BackgroundElementSignin-min.png");
   background-repeat: no-repeat;
   background-size: auto;
@@ -20,7 +19,6 @@ export const StyledBackground = styled.div`
     background-image: url("/src/assets/images/tablet/BackgroundBubblesHomeTablet-min.png");
     top: 90px;
     height: 100%;
-    /* left: -20px; */
   }
   @media (min-width: 1440px) {
     background-image: url("/src/assets/images/desktop/BackgroundBubblesHomeDesktop-min.png");
@@ -58,7 +56,7 @@ export const Bottle = styled.div`
   }
 `;
 
-export const SignUpForm = styled.form`
+export const SignInForm = styled.form`
   width: 280px;
   margin-left: auto;
   margin-right: auto;
@@ -93,7 +91,6 @@ export const Input = styled.input`
   margin-bottom: 16px;
   padding: 12px 10px;
   border-radius: 6px;
-
   border: 1px solid ${colors.PROVINCIAL_PINK};
   background: var(#fff);
 
@@ -114,7 +111,7 @@ export const Input = styled.input`
   }
 `;
 
-export const SignUpButton = styled.button`
+export const SignInButton = styled.button`
   width: 280px;
   height: 36px;
   margin-bottom: 16px;
@@ -123,17 +120,20 @@ export const SignUpButton = styled.button`
   border: none;
   border-radius: 10px;
   color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.25;
+
   background-color: ${colors.BLUE};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25; /* 125% */
 
   &:active {
     box-shadow: none;
   }
   @media (min-width: 768px) {
     font-size: 18px;
+    font-weight: 500;
     line-height: 1.33;
     width: 336px;
     height: 44px;
@@ -176,7 +176,7 @@ export const InputContainer = styled.div`
   position: relative;
 `;
 
-export const AuthMain = styled.main`
+export const FormContainer = styled.main`
   height: 100vh;
   @media (min-width: 320px) {
     padding: 24px 20px;
@@ -185,7 +185,6 @@ export const AuthMain = styled.main`
     padding: 40px 32px;
   }
   @media (min-width: 1440px) {
-    padding: 140px 0 40px 0;
+    padding: 160px 0 40px 0;
   }
-
 `;
