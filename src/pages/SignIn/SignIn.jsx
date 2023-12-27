@@ -1,5 +1,4 @@
 import {
-  FormContent,
   SignInForm,
   Label,
   Input,
@@ -38,62 +37,56 @@ export const SignIn = () => {
   return (
     <FormContainer>
       <StyledBackground />
+      <Bottle />
       <SignInForm onSubmit={formik.handleSubmit}>
         <Title>Sign In</Title>
-        <FormContent>
-          <Label>Enter your email</Label>
+        <Label>Enter your email</Label>
+        <Input
+          type="email"
+          placeholder="E-mail"
+          name="email"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.email}
+          required
+        />
+
+        <Label>Enter your password</Label>
+        <InputContainer>
           <Input
-            type="email"
-            placeholder="E-mail"
-            name="email"
-            onChange={formik.handleChange}
+            type={isPasswordVisible ? "text" : "password"}
+            placeholder="Password"
+            name="password"
+            onChange={(e) => {
+              formik.handleChange(e);
+            }}
             onBlur={formik.handleBlur}
-            value={formik.values.email}
+            value={formik.values.password}
             required
           />
+          <IconButton
+            onClick={() => {
+              setIsPasswordVisible(!isPasswordVisible);
+            }}
+          >
+            {isPasswordVisible ? (
+              <>
+                <VisibleIcon
+                  width={16}
+                  height={16}
+                  stroke={"blue"}
+                ></VisibleIcon>
+              </>
+            ) : (
+              <>
+                <HiddenIcon width={16} height={16} stroke={"blue"}></HiddenIcon>
+              </>
+            )}
+          </IconButton>
+        </InputContainer>
 
-          <Label>Enter your password</Label>
-          <InputContainer>
-            <Input
-              type={isPasswordVisible ? "text" : "password"}
-              placeholder="Password"
-              name="password"
-              onChange={(e) => {
-                formik.handleChange(e);
-              }}
-              onBlur={formik.handleBlur}
-              value={formik.values.password}
-              required
-            />
-            <IconButton
-              onClick={() => {
-                setIsPasswordVisible(!isPasswordVisible);
-              }}
-            >
-              {isPasswordVisible ? (
-                <>
-                  <VisibleIcon
-                    width={16}
-                    height={16}
-                    stroke={"blue"}
-                  ></VisibleIcon>
-                </>
-              ) : (
-                <>
-                  <HiddenIcon
-                    width={16}
-                    height={16}
-                    stroke={"blue"}
-                  ></HiddenIcon>
-                </>
-              )}
-            </IconButton>
-          </InputContainer>
-
-          <SignInButton type="submit">Sign In</SignInButton>
-          <Link href="/src/pages/SignUp/SignUp.jsx">Sign Up</Link>
-          <Bottle />
-        </FormContent>
+        <SignInButton type="submit">Sign In</SignInButton>
+        <Link href="/src/pages/SignUp/SignUp.jsx">Sign Up</Link>
       </SignInForm>
     </FormContainer>
   );
