@@ -178,7 +178,6 @@ export const InputContainer = styled.div`
 `;
 
 export const AuthMain = styled.main`
-  height: 100vh;
   @media (min-width: 320px) {
     padding: 24px 20px;
   }
