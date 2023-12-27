@@ -45,14 +45,8 @@ export const WrapperHome = styled.div`
 
 export const WrapTodayAndMonth = styled.div`
   padding: 0;
-  display: flex;
   width: 280px;
-  height: 836px;
-  display: inline-flex;
   padding: 24px 8px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
   background: #ecf2ff;
   border-radius: 10px;
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const TodayWaterListContainer = styled.div`
+  margin-bottom: 24px;
   padding: 0;
   display: flex;
   flex-direction: column;
