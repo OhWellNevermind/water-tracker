@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import WelcomePage  from './pages/WelcomePage/WelcomePage'
+import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import { GlobalStyles } from "./components/GlobalStyles";
 import { SharedLayout } from "./components/SharedLayout";
 
