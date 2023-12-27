@@ -1,49 +1,57 @@
-import { FormContainer } from "../SignIn/SignIn.styled";
+import { HiddenIcon } from "../../components/icons/HiddenIcon";
 import {
-  // FormContent,
   SignUpForm,
   Label,
   Input,
-  Button,
+  SignUpButton,
   Link,
   Title,
   StyledBackground,
+  IconButton,
+  InputContainer,
+  AuthMain,
+  Bottle,
 } from "./SignUp.styled";
 
 export const SignUp = () => {
   return (
-    <FormContainer>
+    <AuthMain>
       <StyledBackground />
+      <Bottle />
       <SignUpForm>
         <Title>Sign Up</Title>
-        {/* <FormContent> */}
         <Label>Enter your email</Label>
         <Input type="email" placeholder="E-mail" name="email" required></Input>
 
         <Label>Enter your password</Label>
-        <Input
-          type="password"
-          placeholder="Password"
-          name="psw"
-          required
-        ></Input>
+        <InputContainer>
+          <Input
+            type="password"
+            placeholder="Password"
+            name="psw"
+            required
+          ></Input>
+          <IconButton>
+            <HiddenIcon width={16} height={16} stroke={"blue"}></HiddenIcon>
+          </IconButton>
+        </InputContainer>
 
-        <Label>Repeat Password</Label>
-        <Input
-          type="password"
-          placeholder="Repeat Password"
-          name="psw-repeat"
-          required
-        ></Input>
-        <Button>Sign Up</Button>
+        <Label>Repeat password</Label>
+        <InputContainer>
+          <Input
+            type="password"
+            placeholder="Repeat password"
+            name="psw-repeat"
+            required
+          ></Input>
+          <IconButton>
+            <HiddenIcon width={16} height={16} stroke={"blue"}></HiddenIcon>
+          </IconButton>
+        </InputContainer>
+
+        <SignUpButton>Sign Up</SignUpButton>
         <Link href="">Sign In</Link>
-        {/* <img
-            src="/src/assets/images/mobile/BottleForSigninMobile-min.png"
-            alt="Bottle"
-          /> */}
-        {/* </div> */}
-        {/* </FormContent> */}
       </SignUpForm>
-    </FormContainer>
+    </AuthMain>
   );
 };
