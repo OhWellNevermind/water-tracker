@@ -166,6 +166,9 @@ export const Input = styled.input`
   border: 1px solid ${colors.PROVINCIAL_PINK};
   margin-bottom: 24px;
   padding: 12px 10px;
+  &:focus {
+    outline: none;
+  }
   @media (min-width: 768px) {
     width: 544px;
   }

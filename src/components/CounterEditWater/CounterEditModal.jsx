@@ -12,26 +12,20 @@ import { colors } from "../../../constants";
 
 export const CounterEditWater = ({ newCount, onCountChange }) => {
   const [count, setCount] = useState(0);
-
-  const round = Math.round(count / 50) * 50;
-
   useEffect(() => {
     setCount(newCount);
   }, [newCount]);
-
   const increment = () => {
-    const roundCount = round + 50;
-    setCount(roundCount);
-    onCountChange(roundCount);
+    setCount((prevCount) => prevCount + 50);
+    onCountChange(count + 50);
   };
 
   const decrement = () => {
     if (!count) {
       return;
     }
-    const roundCount = round - 50;
-    setCount(roundCount);
-    onCountChange(roundCount);
+    setCount((prevCount) => prevCount - 50);
+    onCountChange(count - 50);
   };
 
   return (
