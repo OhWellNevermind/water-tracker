@@ -50,7 +50,7 @@ export const SignUp = () => {
         </InputContainer>
 
         <SignUpButton>Sign Up</SignUpButton>
-        <Link href="">Sign In</Link>
+        <Link to="/signin">Sign In</Link>
       </SignUpForm>
     </AuthMain>
   );

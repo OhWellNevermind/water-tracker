@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "https://water-track-backend.onrender.com/api";
 
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -29,7 +29,7 @@ export const login = createAsyncThunk(
   "auth/login",
   async (userData, thunkAPI) => {
     try {
-      const res = await axios.post("/users/login", userData);
+      const res = await axios.post("/users/signin", userData);
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
@@ -38,7 +38,7 @@ export const login = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
+export const logout = createAsyncThunk("/users/logout", async (_, thunkAPI) => {
   try {
     await axios.post("/users/logout");
     clearAuthHeader();
@@ -59,7 +59,7 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(token);
-      const res = await axios.get("/users/current");
+      const res = await axios.get("/users/getInfo");
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

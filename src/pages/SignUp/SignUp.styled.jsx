@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../constants";
+import { Link as ReactLink } from "react-router-dom";
 
 export const StyledBackground = styled.div`
   position: fixed;
@@ -146,7 +147,7 @@ export const SignUpButton = styled.button`
   }
 `;
 
-export const Link = styled.a`
+export const Link = styled(ReactLink)`
   width: 50px;
   text-decoration: none;
   color: ${colors.BLUE};
@@ -187,5 +188,4 @@ export const AuthMain = styled.main`
   @media (min-width: 1440px) {
     padding: 140px 0 40px 0;
   }
-
 `;
