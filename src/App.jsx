@@ -1,14 +1,15 @@
 import { Routes, Route } from "react-router-dom";
-// import { Home } from "./pages/Home/Home";
+import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import { GlobalStyles } from "./components/GlobalStyles";
-import { SignUp } from "./pages/Home/SignUp/SignUp";
+import { SharedLayout } from "./components/SharedLayout";
 
 export const App = () => {
   return (
     <>
       <Routes>
-        {/* <Route index element={<Home />} /> */}
-        <Route index element={<SignUp />} />
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<WelcomePage />} />
+        </Route>
       </Routes>
       <GlobalStyles />
     </>
