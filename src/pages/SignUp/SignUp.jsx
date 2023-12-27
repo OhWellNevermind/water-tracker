@@ -9,18 +9,17 @@ import {
   StyledBackground,
   IconButton,
   InputContainer,
-  FormContainer,
+  AuthMain,
   Bottle,
 } from "./SignUp.styled";
 
 export const SignUp = () => {
   return (
-    <FormContainer>
+    <AuthMain>
       <StyledBackground />
       <Bottle />
       <SignUpForm>
         <Title>Sign Up</Title>
-        {/* <FormContent> */}
         <Label>Enter your email</Label>
         <Input type="email" placeholder="E-mail" name="email" required></Input>
 
@@ -52,8 +51,7 @@ export const SignUp = () => {
 
         <SignUpButton>Sign Up</SignUpButton>
         <Link href="">Sign In</Link>
-        {/* </FormContent> */}
       </SignUpForm>
-    </FormContainer>
+    </AuthMain>
   );
 };

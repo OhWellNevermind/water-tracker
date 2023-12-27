@@ -2,19 +2,19 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 
 export const StyledBackground = styled.div`
-  width: 100%;
   position: fixed;
   top: 56px;
   left: 0;
+
   width: 100%;
   height: 100vh;
+
   background-image: url("/src/assets/images/mobile/BackgroundElementSignin-min.png");
   background-repeat: no-repeat;
   background-size: auto;
   z-index: -2;
   @media (min-width: 321px) {
     background-size: cover;
-    /* top: 52px; */
   }
   @media (min-width: 768px) {
     background-image: url("/src/assets/images/tablet/BackgroundBubblesHomeTablet-min.png");
@@ -35,14 +35,9 @@ export const Bottle = styled.div`
   z-index: -1;
   position: fixed;
   top: calc(100% - 225px);
-  /* left: auto; */
   left: 50%;
   transform: translateX(-50%);
-  /* left: 50%; */
-  /* left: calc(10% - 20px); */
-  /* bottom: 18px; */
   width: 280px;
-  /* height: 100vh; */
   height: 210px;
   @media (min-width: 768px) {
     background: url("/src/assets/images/tablet/BottleHomeTablet-min.png")
@@ -56,9 +51,7 @@ export const Bottle = styled.div`
   @media (min-width: 1440px) {
     background: url("/src/assets/images/desktop/BottleForSigninDesktop-min.png")
       center/contain no-repeat;
-    /* margin-bottom: 40px; */
     left: -50px;
-    /* top: 50px; */
     top: calc(100% - 720px);
     height: 680px;
     width: 916px;
@@ -66,28 +59,16 @@ export const Bottle = styled.div`
 `;
 
 export const SignUpForm = styled.form`
-  /* position: fixed; */
   width: 280px;
-  /* max-width: 386px; */
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
   margin-left: auto;
   margin-right: auto;
   @media (min-width: 768px) {
     margin-left: 0;
-    /* margin-right: 0; */
-    /* align-content: star/t; */
     width: 336px;
   }
   @media (min-width: 1440px) {
-    /* padding: 162px 0 0 0; */
     margin-left: auto;
     margin-right: 198px;
-    /* margin-top: auto;
-    margin-bottom: auto; */
-    /* top: 160px;
-    left: calc(100%-570px); */
     width: 384px;
   }
 `;
@@ -137,13 +118,13 @@ export const SignUpButton = styled.button`
   height: 36px;
   margin-bottom: 16px;
   padding: 8px 30px;
-  width: 280px;
+
   border: none;
   border-radius: 10px;
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 1.33;
+  line-height: 1.25;
   background-color: ${colors.BLUE};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
@@ -151,6 +132,8 @@ export const SignUpButton = styled.button`
     box-shadow: none;
   }
   @media (min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.33;
     width: 336px;
     height: 44px;
     &:hover {
@@ -192,18 +175,7 @@ export const InputContainer = styled.div`
   position: relative;
 `;
 
-export const FormContainer = styled.div`
-  /* display: flex;
-  justify-content: center; */
-  /* margin-left: auto;
-  margin-right: auto;
-  @media (min-width: 768px) {
-    justify-content: start;
-  }
-  @media (min-width: 1440px) {
-    justify-content: flex-end;
-    margin-right: 166px;
-  } */
+export const AuthMain = styled.main`
   height: 100vh;
   @media (min-width: 320px) {
     padding: 24px 20px;
