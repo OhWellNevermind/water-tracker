@@ -1,9 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const usersInitState = {};
+const usersInitState = {
+  user: {
+    username: "",
+    email: "",
+    gender: "",
+    dailyNorma: "",
+    avatarUrl: "",
+    token: "",
+  },
+  isRefreshing: false,
+  isLoggedIn: false,
+};
 
 const usersSlice = createSlice({
-  name: "user",
+  name: "auth",
   initialState: usersInitState,
   // extraReducers: (builder) => builder.addCase(),
 });
