@@ -86,7 +86,7 @@ export const SignIn = () => {
         </InputContainer>
 
         <SignInButton type="submit">Sign In</SignInButton>
-        <Link href="/src/pages/SignUp/SignUp.jsx">Sign Up</Link>
+        <Link to="/signup">Sign Up</Link>
       </SignInForm>
     </FormContainer>
   );
