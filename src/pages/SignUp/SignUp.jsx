@@ -1,6 +1,5 @@
 import { HiddenIcon } from "../../components/icons/HiddenIcon";
 import {
-  // FormContent,
   SignUpForm,
   Label,
   Input,

@@ -1,11 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../constants";
 
-// export const FormContent = styled.div`
-//   /* display: flex;
-//   flex-direction: column; */
-// `;
-
 export const StyledBackground = styled.div`
   width: 100%;
   position: fixed;
