@@ -1,20 +1,22 @@
-import { useState } from "react";
-import { colors } from "../../constants";
-import { UserModal } from "../../components/modals/UserModal/UserModal";
+import { DailyNorma } from "./components/DailyNorma/DailyNorma";
+import { MonthStatsTable } from "./components/MonthStatsTable/MonthStatsTable";
+import { TodayWaterList } from "./components/TodayWaterList/TodayWaterList";
+import { WaterRatioPanel } from "./components/WaterRatioPanel/WaterRatioPanel";
+import { Container, WrapperHome, WrapTodayAndMonth } from "./Home.styled";
 
 export const Home = () => {
-  const [open, setOpen] = useState(true);
   return (
-    <>
-      <div style={{ fontWeight: 500, fontSize: 32 }}>Home</div>
-      <button
-        style={{ width: "50px", height: "30px", backgroundColor: colors.BLUE }}
-        onClick={() => setOpen(true)}
-      >
-        Open
-      </button>
-      {open && <UserModal setIsOpen={setOpen} />}
-    </>
+    <Container>
+      <WrapperHome>
+        <div>
+          <DailyNorma />
+          <WaterRatioPanel />
+        </div>
+        <WrapTodayAndMonth>
+          <TodayWaterList />
+          <MonthStatsTable />
+        </WrapTodayAndMonth>
+      </WrapperHome>
+    </Container>
   );
 };
-
