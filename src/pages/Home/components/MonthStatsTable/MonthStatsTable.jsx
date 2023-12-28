@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDownIcon } from "../../../../components/icons/ChevronDownIcon";
 import { colors } from "../../../../constants";
 import { MonthStatsTableList } from "../MonthStatsTableList/MonthStatsTableList";
