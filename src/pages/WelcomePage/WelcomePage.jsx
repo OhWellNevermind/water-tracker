@@ -1,6 +1,6 @@
 import WhyDrinkWater from "./components/WhyDrinkWater/WhyDrinkWater";
 import WaterConsumption from "./components/WaterСonsumptionTracker/WaterConsumption";
-import { BG, Container } from "./WelcomePage.styled";
+import { Background, Container } from "./WelcomePage.styled";
 import { useEffect } from "react";
 const WelcomePage = () => {
   useEffect(() => {
@@ -15,7 +15,7 @@ const WelcomePage = () => {
     <Container>
       <WaterConsumption />
       <WhyDrinkWater />
-      <BG />
+      <Background />
     </Container>
   );
 };

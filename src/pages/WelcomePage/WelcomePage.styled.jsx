@@ -4,7 +4,7 @@ import BackgroundImageDesktop from "../../../src/assets/images/desktop/Backgroun
 import BackgroundImageTablet2x from "../../../src/assets/images/tablet/BackgroundMainPageTablet@2x-min.png";
 import BackgroundImageDesktop2x from "../../../src/assets/images/desktop/BackgroundMainPageDesktop@2x-min.png";
 
-export const BG = styled.div`
+export const Background = styled.div`
   position: absolute;
   bottom: 0;
   z-index: -1;
