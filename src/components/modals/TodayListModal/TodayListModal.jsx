@@ -21,6 +21,7 @@ import { TimeSelector } from "../../TimeSelect/TimeSelect";
 import { CloseIcon } from "../../icons/CloseIcon";
 import { CounterEditWater } from "../CounterEditWater/CounterEditModal";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export const TodayListModal = ({
   setOpen,
@@ -47,6 +48,11 @@ export const TodayListModal = ({
   };
 
   const handlerSave = () => {
+    if (!selectedOption) {
+      const notify = () => toast("Select the recording time");
+      notify();
+      return;
+    }
     const data = {
       time: selectedOption.label,
       portion: count,
