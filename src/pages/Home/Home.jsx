@@ -3,8 +3,16 @@ import { colors } from "../../constants";
 
 import { Header } from "../../components/Header/Header";
 import { UserModal } from "../../components/modals/UserModal/UserModal";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { refreshUser } from "../../redux/user/operations";
 
 export const Home = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   const [open, setOpen] = useState(true);
   return (
     <>

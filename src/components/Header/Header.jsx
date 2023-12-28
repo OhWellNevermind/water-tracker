@@ -32,11 +32,11 @@ export const Header = () => {
           <LogoIcon width={40} height={48} />
           <LogoText>Tracker of water</LogoText>
         </LogoContainer>
-        {!isLoggedIn ? (
+        {isLoggedIn ? (
           <HeaderWrapper onClick={() => toogleModal()}>
             <UserLogoModal isModalOpened={isPopUpOpen} />
             <UserName>{user.name}</UserName>
-            <UserLogo />
+            <UserLogo src={user.avatarUrl} />
             <ChevronDownIcon width={16} height={16} stroke={colors.BLUE} />
           </HeaderWrapper>
         ) : (
