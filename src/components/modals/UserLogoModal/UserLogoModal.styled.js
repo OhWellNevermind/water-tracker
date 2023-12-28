@@ -1,23 +1,12 @@
 import styled from "styled-components";
 // import { colors } from "../../constants";
 export const UserLMWrapper = styled.div`
-  height: 100vh;
-  width: 320px;
+  height: fit-content;
   position: absolute;
-  left: 58%;
-  bottom: -22%;
-
-  @media (min-width: 768px) {
-    width: 768px;
-    left: 54%;
-    bottom: -28%;
-  }
-  @media (min-width: 1440px) {
-    width: 1440px;
-    left: 52%;
-    bottom: -22%;
-  }
+  left: -100px;
+  top: 20px;
 `;
+
 export const UserLMDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -29,19 +18,6 @@ export const UserLMDiv = styled.div`
   background: #fff;
   border-radius: 10px;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.2);
-
-  position: absolute;
-  top: 48px;
-  right: 55%;
-
-  @media (min-width: 768px) {
-    top: 56px;
-    right: 54%;
-  }
-
-  @media (min-width: 1440px) {
-    right: 57.5%;
-  }
 `;
 export const UserLMBtn = styled.button`
   display: flex;
@@ -52,11 +28,6 @@ export const UserLMBtn = styled.button`
   background-color: transparent;
   cursor: pointer;
   align-items: center;
-
-  /* &:hover > ,
-  &:focus-within >  {
-    color: #ff9d43;
-  } */
 `;
 export const UserLMText = styled.p`
   color: #407bff;

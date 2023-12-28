@@ -1,58 +1,51 @@
+import { useSelector } from "react-redux";
 import { LogoIcon } from "../icons/LogoIcon";
 import { UserIcon } from "../icons/UserIcon";
-import { ChevronDownIcon } from "../icons/ChevronDownIcon";
-import { UserLogoModal } from "../UserLogoModal/UserLogoModal";
-import { useState } from "react";
-
 import {
-  HeaderSection,
-  LogoText,
+  HeaderContainer,
   HeaderWrapper,
-  HeaderBtn,
-  HeaderLink,
-  UserName,
+  LogoContainer,
+  LogoText,
+  SignInButton,
   UserLogo,
-  Span,
+  UserName,
 } from "./Header.styled";
+import { selectIsLoggedIn, selectUser } from "../../redux/user/selectors";
+import { UserLogoModal } from "../modals/UserLogoModal/UserLogoModal";
+import { useState } from "react";
+import { ChevronDownIcon } from "../icons/ChevronDownIcon";
 import { colors } from "../../constants";
 
 export const Header = () => {
-  const [isModalopened, setIsModalOpened] = useState(false);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const user = useSelector(selectUser);
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
 
-  function toggleModal() {
-    setIsModalOpened((value) => !value);
-    console.log(isModalopened);
-  }
+  const toogleModal = () => {
+    setIsPopUpOpen(!isPopUpOpen);
+  };
 
-  const defaultName = "V";
   return (
-    <div>
-      <HeaderSection>
-        <HeaderLink to="/">
-          <LogoIcon width={40} heidht={48} />
-          <LogoText>
-            tracker<br></br>of water
-          </LogoText>
-        </HeaderLink>
-
-        <HeaderWrapper onClick={() => toggleModal()}>
-          <UserLogoModal isModalopened={isModalopened} />
-          <UserName>{defaultName}</UserName>
-          <UserLogo />
-          <ChevronDownIcon width={16} height={16} stroke={colors.BLUE} />
-        </HeaderWrapper>
-
-        <HeaderLink to="/signin">
-          <HeaderWrapper>
-            <HeaderBtn type="button">
-              <Span>Sign in</Span>
-            </HeaderBtn>
-            <div>
-              <UserIcon width={40} heidht={48} stroke={colors.GRAY} />
-            </div>
+    <header>
+      <HeaderContainer>
+        <LogoContainer to="/">
+          <LogoIcon width={40} height={48} />
+          <LogoText>Tracker of water</LogoText>
+        </LogoContainer>
+        {!isLoggedIn ? (
+          <HeaderWrapper onClick={() => toogleModal()}>
+            <UserLogoModal isModalOpened={isPopUpOpen} />
+            <UserName>{user.name}</UserName>
+            <UserLogo />
+            <ChevronDownIcon width={16} height={16} stroke={colors.BLUE} />
           </HeaderWrapper>
-        </HeaderLink>
-      </HeaderSection>
-    </div>
+        ) : (
+          <SignInButton to="signin">
+            <span>Sign in</span>
+            <UserIcon width={28} height={28} stroke="#2F2F2F" />
+          </SignInButton>
+        )}
+      </HeaderContainer>
+    </header>
   );
 };
