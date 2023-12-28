@@ -1,49 +1,57 @@
 import styled from "styled-components";
 
 export const TodayWaterListContainer = styled.div`
-  margin-bottom: 24px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
   width: 264px;
+  height: 258px;
+  margin-bottom: 24px;
 
   @media only screen and (min-width: 768px) {
     width: 656px;
+    height: 260px;
   }
   @media only screen and (min-width: 1440px) {
-    padding: 0;
     width: 544px;
-    margin-bottom: 24px;
-    border-radius: initial;
-    box-shadow: initial;
-    overflow-y: initial;
+    height: 260px;
   }
 `;
 export const Today = styled.p`
   width: 72px;
-  margin: 0;
+  height: 30px;
   color: #2f2f2f;
   font-family: Roboto;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: 30px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   @media only screen and (min-width: 768px) {
+    height: 32px;
     font-size: 26px;
     line-height: 32px;
-    margin-top: 8px;
   }
 `;
 
 export const TodayWrap = styled.div`
-  width: 254px;
-  height: 100%;
+  width: 264px;
+  height: 212px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 204px;
+    background-color: #d7e3ff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #9ebbff;
+    border-radius: 8px;
+  }
+
   @media only screen and (min-width: 768px) {
-    width: 654px;
+    width: 656px;
   }
   @media only screen and (min-width: 1440px) {
     width: 544px;
@@ -53,46 +61,34 @@ export const TodayWrap = styled.div`
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
-  width: 254px;
-  height: 200px;
-  padding: 0;
-  margin: 0;
+  //  width: 254px;
 
   @media only screen and (min-width: 768px) {
-    width: 646px;
-    height: 188px;
+    /*  width: 646px;
+    height: 188px; */
   }
   @media only screen and (min-width: 1440px) {
-    width: 544px;
+    /*   width: 544px; */
   }
 `;
 export const SublistAll = styled.li`
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  align-items: center;
-  margin: 0;
-  padding: 0;
   margin-bottom: 12px;
   margin-top: 12px;
   border-bottom: 1px solid #d7e3ff;
   @media only screen and (min-width: 768px) {
-    width: 646px;
-  }
-  @media only screen and (min-width: 1440px) {
-    width: 544px;
+    align-items: center;
   }
 `;
 export const Sublist = styled.div`
   display: flex;
-  @media only screen and (min-width: 768px) {
-    align-items: center;
-  }
-  @media only screen and (min-width: 1440px) {
-    width: 544px;
-  }
+  align-items: center;
 `;
 export const NumberMl = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 60px;
   color: #407bff;
   font-family: Roboto;
@@ -105,6 +101,7 @@ export const NumberMl = styled.span`
 export const GlassSpan = styled.span`
   display: flex;
   margin-right: 12px;
+
   @media only screen and (min-width: 768px) {
     svg {
       width: 36px;
@@ -120,6 +117,7 @@ export const MLSpan = styled.span`
   }
 `;
 export const Time = styled.span`
+  display: flex;
   color: #2f2f2f;
   font-family: Roboto;
   font-size: 12px;
@@ -134,9 +132,8 @@ export const Time = styled.span`
 
 export const PencilAndBasket = styled.div`
   display: flex;
-  @media only screen and (min-width: 768px) {
-  }
 `;
+
 export const Pencil = styled.span`
   display: flex;
   align-items: center;
@@ -148,16 +145,19 @@ export const Basket = styled.span`
 `;
 
 export const Button = styled.button`
-  width: 90px;
+  width: 105px;
   height: 20px;
   display: flex;
   gap: 8px;
   background: #ecf2ff;
   border: none;
-  margin: 0;
-  padding: 0;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
   @media only screen and (min-width: 768px) {
-    width: 106px;
+    width: 114px;
     height: 24px;
     svg {
       width: 24px;

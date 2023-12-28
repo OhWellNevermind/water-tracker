@@ -9,7 +9,7 @@ export const MonthList = styled.ul`
 `;
 
 export const MonthItem = styled.li`
-  width: calc((100% - 4 * 26px) / 5);
+  //width: calc((100% - 4 * 26px) / 5);
   text-align: center;
 `;
 

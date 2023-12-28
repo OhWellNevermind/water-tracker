@@ -2,6 +2,7 @@ import { ChevronDownIcon } from "../../../../components/icons/ChevronDownIcon";
 import { colors } from "../../../../constants";
 import { MonthStatsTableList } from "../MonthStatsTableList/MonthStatsTableList";
 import {
+  MonthContainer,
   MonthDate,
   MonthDateBtn,
   MonthDateText,
@@ -11,7 +12,7 @@ import {
 
 export const MonthStatsTable = () => {
   return (
-    <>
+    <MonthContainer>
       <MonthTopLine>
         <MonthTitle>Month</MonthTitle>
         <MonthDate>
@@ -25,6 +26,6 @@ export const MonthStatsTable = () => {
         </MonthDate>
       </MonthTopLine>
       <MonthStatsTableList />
-    </>
+    </MonthContainer>
   );
 };

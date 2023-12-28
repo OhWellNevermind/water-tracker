@@ -1,6 +1,19 @@
 import styled from "styled-components";
 import { colors } from "../../../../constants";
 
+export const MonthContainer = styled.div`
+  width: 264px;
+  height: 506px;
+  @media only screen and (min-width: 768px) {
+    width: 656px;
+    height: 340px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 544px;
+    height: 332px;
+  }
+`;
+
 export const MonthTopLine = styled.div`
   display: flex;
   justify-content: space-between;
@@ -35,5 +48,3 @@ export const MonthDateBtn = styled.button`
 `;
 
 export const MonthDateText = styled.span``;
-
-
