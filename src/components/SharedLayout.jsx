@@ -1,16 +1,16 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router";
-import { Container } from "../pages/WelcomePage/Container";
+import { Header } from "./Header/Header";
+import { Toaster } from "react-hot-toast";
 
 export const SharedLayout = () => {
   return (
-    <div>
-      <div>Header</div>
-      <Container>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Outlet />
-        </Suspense>
-      </Container>
-    </div>
+    <>
+      <Header />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+        <Toaster />
+      </Suspense>
+    </>
   );
 };
