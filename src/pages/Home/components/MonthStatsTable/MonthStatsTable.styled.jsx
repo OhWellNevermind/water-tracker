@@ -26,6 +26,9 @@ export const MonthTitle = styled.h2`
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
+  @media screen and (min-width: 768px) {
+    font-size: 26px;
+  }
 `;
 
 export const MonthDate = styled.div`
