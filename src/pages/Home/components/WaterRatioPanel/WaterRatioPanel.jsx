@@ -17,8 +17,20 @@ import {
   AddWater,
 } from "./WaterRatioPanel.styled";
 import { CirclePlus } from "../../../../components/icons/CirclePlus";
+//import { useState } from "react";
+//import TodayListModal from "./TodayListModal";
 
 export const WaterRatioPanel = () => {
+  //const [isModalOpen, setModalOpen] = useState(false);
+
+  /*   const handleAddWater = () => {
+    setModalOpen(true);
+  }; */
+
+  /*   const handleModalClose = () => {
+    setModalOpen(false);
+  }; */
+
   return (
     <WaterPanelContainer>
       <TitleWaterPanel>
@@ -42,12 +54,13 @@ export const WaterRatioPanel = () => {
           </List>
         </WaterPanel>
       </TitleWaterPanel>
-      <div>
-        <Button>
-          <CirclePlus width={24} height={24} stroke={"#fff"} />
-          <AddWater>Add water</AddWater>
-        </Button>
-      </div>
+      <Button /* onClick={handleAddWater} */>
+        <CirclePlus width={24} height={24} stroke={"#fff"} />
+        <AddWater>Add water</AddWater>
+      </Button>
+      {/*  {isModalOpen && (
+        <TodayListModal onClose={handleModalClose} onSave={handleWaterInput} />
+      )} */}
     </WaterPanelContainer>
   );
 };

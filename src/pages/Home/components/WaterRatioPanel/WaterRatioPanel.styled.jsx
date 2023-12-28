@@ -1,41 +1,52 @@
 import styled from "styled-components";
 export const WaterPanelContainer = styled.div`
-  padding-bottom: 40px;
+  width: 280px;
+  height: 134px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+
   @media only screen and (min-width: 768px) {
+    width: 704px;
+    height: 90px;
+    flex-direction: row;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 12px;
   }
   @media only screen and (min-width: 1440px) {
-    padding: 0;
-    display: flex;
+    width: 592px;
     justify-content: center;
     align-items: center;
-    margin-left: 73px;
     gap: 23px;
+    margin-bottom: 0;
+    margin-right: 32px;
   }
 `;
 export const TitleWaterPanel = styled.div`
-  width: 280px;
+  display: flex;
+  flex-direction: column;
   height: 82px;
-  margin-bottom: 16px;
+
   @media only screen and (min-width: 768px) {
     width: 356px;
     height: 90px;
-    margin-bottom: 0;
   }
   @media only screen and (min-width: 1440px) {
     width: 391px;
-    height: 90px;
-    margin-bottom: 56px;
   }
 `;
 
 export const Title = styled.p`
-  margin: 0;
+  width: 52px;
+  height: 24px;
   margin-bottom: 8px;
   display: flex;
-  align-items: end;
   color: #407bff;
   text-align: center;
   font-family: Roboto;
@@ -44,23 +55,20 @@ export const Title = styled.p`
   font-weight: 400;
   line-height: 24px;
   @media only screen and (min-width: 768px) {
-    margin-top: 16px;
     margin-bottom: 16px;
   }
   @media only screen and (min-width: 1440px) {
-    margin-top: 0;
     margin-bottom: 16px;
-    width: 52px;
-    height: 24px;
   }
 `;
 
 export const ContainerBar = styled.div`
-  padding-top: 3px;
-  padding-bottom: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 4px;
-  width: 256px;
-  height: 14px;
+  border-radius: 10px;
+
   @media only screen and (min-width: 768px) {
     width: 325px;
     height: 14px;
@@ -75,11 +83,11 @@ export const Bar = styled.div`
   height: 8px;
   background-color: #d7e3ff;
   border-radius: 10px;
-  margin-left: 10px;
-  margin-right: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media only screen and (min-width: 768px) {
     width: 325px;
-    height: 8px;
   }
   @media only screen and (min-width: 1440px) {
     width: 360px;
@@ -90,23 +98,25 @@ export const ProgressBar = styled.div`
   left: 0;
   top: 0;
   height: 100%;
-  width: 10%;
+  width: 30%;
   background-color: #9ebbff;
+  border-radius: 10px;
 `;
-export const Dot = styled.div``;
+export const Dot = styled.div`
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: solid 1px;
+  border-radius: 50%;
+  color: #407bff;
+  background-color: #fff;
+`;
 
 export const WaterPanel = styled.div`
-  width: 280px;
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
-  @media only screen and (min-width: 768px) {
-    width: 356px;
-  }
-  @media only screen and (min-width: 1440px) {
-    width: 360px;
-  }
 `;
 
 export const DecorWrap = styled.div`
@@ -197,6 +207,42 @@ export const End = styled.li`
   }
 `;
 
+export const Button = styled.button`
+  width: 280px;
+  height: 36px;
+  display: flex;
+  padding: 6px 76px;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  background: #407bff;
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+  &:hover,
+  &:active {
+    border-radius: 10px;
+    background-color: #407bff;
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  }
+  @media only screen and (min-width: 768px) {
+    width: 336px;
+    height: 44px;
+    padding: 10px 104px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 178px;
+    height: 44px;
+    padding: 10px 30px;
+  }
+`;
 export const AddWater = styled.span`
   width: 94px;
   height: 20px;
@@ -212,39 +258,5 @@ export const AddWater = styled.span`
     height: 24px;
     font-size: 18px;
     line-height: 24px;
-  }
-`;
-export const Button = styled.button`
-  display: inline-flex;
-  padding: 6px 76px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 10px;
-  background: #407bff;
-  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
-
-  &:hover,
-  &:active {
-    border-radius: 10px;
-    background-color: #407bff;
-    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
-  }
-  @media only screen and (min-width: 768px) {
-    width: 336px;
-    height: 44px;
-    margin-top: 41px;
-    padding: 10px 104px;
-  }
-  @media only screen and (min-width: 1440px) {
-    width: 178px;
-    height: 44px;
-    margin-top: 0;
-    padding: 10px 30px;
-    margin-right: 32px;
-    margin-bottom: 77px;
   }
 `;
