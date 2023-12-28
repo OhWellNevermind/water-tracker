@@ -103,6 +103,11 @@ export const Input = styled.input`
   &::placeholder {
     color: ${colors.LIGHT_BLUE};
   }
+  &.input-error {
+    margin-bottom: 4px;
+    border-color: red;
+    color: red;
+  }
   @media (min-width: 768px) {
     width: 336px;
     height: 44px;
@@ -177,7 +182,7 @@ export const InputContainer = styled.div`
   position: relative;
 `;
 
-export const FormContainer = styled.main`
+export const AuthMain = styled.main`
   @media (min-width: 320px) {
     padding: 24px 20px;
   }
@@ -187,4 +192,10 @@ export const FormContainer = styled.main`
   @media (min-width: 1440px) {
     padding: 160px 0 40px 0;
   }
+`;
+
+export const ErrorMessageStyled = styled.div`
+  color: red;
+  font-size: 14px;
+  line-height: 1.28;
 `;
