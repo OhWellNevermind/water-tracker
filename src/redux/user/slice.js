@@ -9,8 +9,8 @@ const usersInitState = {
     gender: "",
     dailyNorma: "",
     avatarUrl: "",
-    token: "",
   },
+  token: "",
   isRefreshing: false,
   isLoggedIn: false,
 };
@@ -23,7 +23,9 @@ const usersSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.user = {
           email: action.payload.user.email,
-          password: action.payload.password,
+          gender: action.payload.user.gender,
+          dailyNorma: action.payload.user.dailyNorma,
+          avatarUrl: action.payload.user.avatarUrl,
         };
         state.isLoggedIn = true;
         state.token = action.payload.token;
@@ -34,13 +36,21 @@ const usersSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.user = {
           email: action.payload.user.email,
-          password: action.payload.password,
+          gender: action.payload.user.gender,
+          dailyNorma: action.payload.user.dailyNorma,
+          avatarUrl: action.payload.user.avatarUrl,
         };
         state.isLoggedIn = true;
         state.token = action.payload.token;
       })
       .addCase(logout.fulfilled, (state) => {
-        state.user = { name: null, email: null };
+        state.user = {
+          name: "",
+          email: "",
+          gender: "",
+          dailyNorma: "",
+          avatarUrl: "",
+        };
         state.token = null;
         state.isLoggedIn = false;
       })
