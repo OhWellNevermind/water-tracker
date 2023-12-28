@@ -35,3 +35,19 @@ export const SignInButton = styled(Link)`
   font-size: 16px;
   line-height: 1.25;
 `;
+
+export const HeaderWrapper = styled.div`
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  position: relative;
+`;
+
+export const HeaderUserIcon = styled.div`
+  width: 28px;
+  height: 28px;
+`;
+
+export const UserLogo = styled.p``;
+
+export const UserName = styled.p``;
