@@ -6,21 +6,38 @@ import { SharedLayout } from "./components/SharedLayout";
 import { SignIn } from "./pages/SignIn/SignIn";
 import { SignUp } from "./pages/SignUp/SignUp";
 import { RestrictedRoute } from "./components/RestrictedRoute";
-import { PrivateRoute } from "./components/PrivateRoute";
-import { Toaster } from "react-hot-toast";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { refreshUser } from "./redux/user/operations";
+import { selectIsLoggedIn } from "./redux/user/selectors";
 
 export const App = () => {
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route path="welcome" element={<WelcomePage />} />
+<<<<<<< Updated upstream
+          {isLoggedIn ? (
+            <Route path="/" element={<Home />} />
+          ) : (
+            <Route path="/" element={<WelcomePage />} />
+          )}
+
+=======
+          <Route path="welcome" element={<Home />} />
           <Route
             path="/"
             element={
               <PrivateRoute redirectTo="/welcome" component={<Home />} />
             }
           />
+>>>>>>> Stashed changes
           <Route
             path="signup"
             element={<RestrictedRoute redirectTo="/" component={<SignUp />} />}

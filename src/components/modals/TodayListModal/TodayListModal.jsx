@@ -53,6 +53,12 @@ export const TodayListModal = ({
       notify();
       return;
     }
+    if (editingValue > 5000) {
+      const notify = () => toast("The maximum value for water is 5000 ml");
+      notify();
+      return;
+    }
+
     const data = {
       time: selectedOption.label,
       portion: count,

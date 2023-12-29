@@ -9,33 +9,37 @@ import {
   Bottle,
   InputContainer,
   IconButton,
-  FormContainer,
+  AuthMain,
+  ErrorMessageStyled,
 } from "./SignIn.styled";
 import { HiddenIcon } from "../../components/icons/HiddenIcon";
 import { useState } from "react";
 import { VisibleIcon } from "../../components/icons/VisibleIcon";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/user/operations";
 
 const AddSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string()
-    .min("Password must contain minimum 8 symbols")
-    .max("Password must contain maximum 64 symbols"),
+    .min(8, "Password must contain minimum 8 symbols")
+    .max(64, "Password must contain maximum 64 symbols"),
 });
 
 export const SignIn = () => {
+  const dispatch = useDispatch();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: AddSchema,
     onSubmit: (user) => {
-      console.log(user);
+      dispatch(login(user));
     },
   });
 
   return (
-    <FormContainer>
+    <AuthMain>
       <StyledBackground />
       <Bottle />
       <SignInForm onSubmit={formik.handleSubmit}>
@@ -48,8 +52,14 @@ export const SignIn = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
+          className={
+            formik.touched.email && formik.errors.email ? "input-error" : ""
+          }
           required
         />
+        {formik.touched.email && (
+          <ErrorMessageStyled>{formik.errors.email}</ErrorMessageStyled>
+        )}
 
         <Label>Enter your password</Label>
         <InputContainer>
@@ -62,6 +72,11 @@ export const SignIn = () => {
             }}
             onBlur={formik.handleBlur}
             value={formik.values.password}
+            className={
+              formik.touched.password && formik.errors.password
+                ? "input-error"
+                : ""
+            }
             required
           />
           <IconButton
@@ -71,11 +86,7 @@ export const SignIn = () => {
           >
             {isPasswordVisible ? (
               <>
-                <VisibleIcon
-                  width={16}
-                  height={16}
-                  stroke={"blue"}
-                ></VisibleIcon>
+                <VisibleIcon width={16} height={16} stroke={"blue"} />
               </>
             ) : (
               <>
@@ -83,11 +94,14 @@ export const SignIn = () => {
               </>
             )}
           </IconButton>
+          {formik.touched.password && (
+            <ErrorMessageStyled>{formik.errors.password}</ErrorMessageStyled>
+          )}
         </InputContainer>
 
         <SignInButton type="submit">Sign In</SignInButton>
         <Link to="/signup">Sign Up</Link>
       </SignInForm>
-    </FormContainer>
+    </AuthMain>
   );
 };

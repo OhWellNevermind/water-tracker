@@ -1,13 +1,27 @@
 import { useState } from "react";
 import { colors } from "../../constants";
+<<<<<<< Updated upstream
+
+import { Header } from "../../components/Header/Header";
 import { UserModal } from "../../components/modals/UserModal/UserModal";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { refreshUser } from "../../redux/user/operations";
+=======
+//import { UserModal } from "../../components/modals/UserModal/UserModal";
 import { TodayListModal } from "../../components/modals/TodayListModal/todayListModal";
+>>>>>>> Stashed changes
 
 export const Home = () => {
-  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  const [open, setOpen] = useState(true);
   return (
     <>
-      {open && <TodayListModal setOpen={setOpen} />}
+      <Header />
       <div style={{ fontWeight: 500, fontSize: 32 }}>Home</div>
       <button
         style={{ width: "50px", height: "30px", backgroundColor: colors.BLUE }}
