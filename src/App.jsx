@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import WelcomePage  from './pages/WelcomePage/WelcomePage'
+import { Home } from "./pages/Home/Home";
 import { GlobalStyles } from "./components/GlobalStyles";
 import { SharedLayout } from "./components/SharedLayout";
 
@@ -8,7 +8,7 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<WelcomePage />} />
+          <Route index element={<Home />} />
         </Route>
       </Routes>
       <GlobalStyles />
