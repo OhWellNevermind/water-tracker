@@ -24,9 +24,9 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 export const TodayListModal = ({
-  setOpen,
   valueWater = 250,
   valueTime = "7:00",
+  onClose,
 }) => {
   const [count, setCount] = useState(0);
   const [editingValue, setEditingValue] = useState("");
@@ -71,9 +71,9 @@ export const TodayListModal = ({
   };
 
   return (
-    <BaseModalWrap onClose={() => setOpen(false)}>
+    <BaseModalWrap onClose={() => onClose()}>
       <Modal>
-        <CloseButton onClick={() => setOpen(false)}>
+        <CloseButton onClick={() => onClose()}>
           <CloseIcon width={24} height={24} stroke={colors.BLUE} />
         </CloseButton>
         <Title>Edit the entered amount of water</Title>

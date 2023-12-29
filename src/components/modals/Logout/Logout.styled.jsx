@@ -1,6 +1,6 @@
- import { colors } from "../../constants";
+import { colors } from "../../../constants";
 import styled from "styled-components";
- 
+
 export const Container = styled.div`
   padding: 32px 24px;
   width: 280px;
@@ -42,7 +42,7 @@ export const ButtonLogout = styled.button`
   }
   @media (min-width: 768px) {
     padding: 10px 30px;
-    width:160px;
+    width: 160px;
   }
 `;
 
@@ -53,7 +53,6 @@ export const H2 = styled.h2`
   font-style: normal;
   font-weight: 500;
   line-height: 32px;
-
 `;
 
 export const Question = styled.p`
@@ -69,19 +68,19 @@ export const Question = styled.p`
 export const Topic = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items:center;
-  `;
+  align-items: center;
+`;
 export const StyleClosePlus = styled.div`
-  width:24px;
-  height:24px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
-  stroke:${colors.BLUE};
-  `;
+  stroke: ${colors.BLUE};
+`;
 
 export const ButtonClosePlus = styled.button`
   border: none;
-  background-color:transparent;
-  `;
+  background-color: transparent;
+`;
 
 export const WrapDelete = styled.div`
   margin-top: 24px;
@@ -89,16 +88,15 @@ export const WrapDelete = styled.div`
     display: flex;
     justify-content: flex-end;
   }
-  
 `;
-  export const Wrap = styled.div`
-    margin-top: 24px;
-    @media (min-width: 768px) {
-      display: flex;
-      justify-content: flex-end;
-    }
-    @media (min-width: 1440px) {
-      display: flex;
-      justify-content: flex-start;
-    }
-  `;
+export const Wrap = styled.div`
+  margin-top: 24px;
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: flex-end;
+  }
+  @media (min-width: 1440px) {
+    display: flex;
+    justify-content: flex-start;
+  }
+`;

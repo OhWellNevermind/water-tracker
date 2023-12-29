@@ -16,7 +16,7 @@ import { useState } from "react";
 import { ChevronDownIcon } from "../icons/ChevronDownIcon";
 import { colors } from "../../constants";
 
-export const Header = () => {
+export const Header = ({ setModalName }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
@@ -34,7 +34,10 @@ export const Header = () => {
         </LogoContainer>
         {isLoggedIn ? (
           <HeaderWrapper onClick={() => toogleModal()}>
-            <UserLogoModal isModalOpened={isPopUpOpen} />
+            <UserLogoModal
+              setModalName={setModalName}
+              isModalOpened={isPopUpOpen}
+            />
             <UserName>{user.name}</UserName>
             <UserLogo src={user.avatarUrl} />
             <ChevronDownIcon width={16} height={16} stroke={colors.BLUE} />

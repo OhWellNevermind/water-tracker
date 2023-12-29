@@ -1,19 +1,38 @@
-import { useState } from "react";
-import { colors } from "../../constants";
-import { Header } from "../../components/Header/Header";
-import { UserModal } from "../../components/modals/UserModal/UserModal";
-import { TodayListModal } from "../../components/modals/TodayListModal/todayListModal";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { refreshUser } from "../../redux/user/operations";
 import { Container } from "../../components/Container/Container";
 
-export const Home = () => {
+export const Home = ({ setModalName }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return <Container>Home</Container>;
-
+  return (
+    <Container>
+      <div>Home</div>
+      <button
+        onClick={() => {
+          setModalName("settings");
+        }}
+      >
+        Open
+      </button>
+      <button
+        onClick={() => {
+          setModalName("logout");
+        }}
+      >
+        Open
+      </button>
+      <button
+        onClick={() => {
+          setModalName("addWater");
+        }}
+      >
+        Open
+      </button>
+    </Container>
+  );
 };
