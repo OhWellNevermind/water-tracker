@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { colors } from "../../constants";
-
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { refreshUser } from "../../redux/user/operations";

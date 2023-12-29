@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import { Home } from "./pages/Home/Home";
 import { GlobalStyles } from "./components/GlobalStyles";
 import { SharedLayout } from "./components/SharedLayout";
