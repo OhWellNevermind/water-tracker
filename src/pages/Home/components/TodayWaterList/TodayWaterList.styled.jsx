@@ -26,6 +26,7 @@ export const Today = styled.p`
   margin-bottom: 4px;
   @media only screen and (min-width: 768px) {
     height: 32px;
+    margin-bottom: 12px;
     font-size: 26px;
     line-height: 32px;
   }
@@ -74,8 +75,9 @@ export const List = styled.ul`
 export const SublistAll = styled.li`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 12px;
-  margin-top: 12px;
+  align-items: center;
+  padding-bottom: 12px;
+  padding-top: 12px;
   border-bottom: 1px solid #d7e3ff;
   @media only screen and (min-width: 768px) {
     align-items: center;
@@ -89,7 +91,6 @@ export const NumberMl = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;
   color: #407bff;
   font-family: Roboto;
   font-size: 18px;
@@ -145,19 +146,19 @@ export const Basket = styled.span`
 `;
 
 export const Button = styled.button`
-  width: 105px;
   height: 20px;
   display: flex;
+  align-items: center;
   gap: 8px;
   background: #ecf2ff;
   border: none;
+  margin-top: 12px;
 
   svg {
     width: 16px;
     height: 16px;
   }
   @media only screen and (min-width: 768px) {
-    width: 114px;
     height: 24px;
     svg {
       width: 24px;

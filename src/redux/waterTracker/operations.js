@@ -6,7 +6,7 @@ export const getTodayTracker = createAsyncThunk(
   "water/today",
   async (_, thunkAPI) => {
     try {
-      const res = await axios.get(`/water-track/today?date=2023-12-23`);
+      const res = await axios.get(`/water-track/today?date=2024-01-06`);
 
       return res.data;
     } catch (error) {
