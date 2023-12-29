@@ -1,4 +1,4 @@
-export const CirclePlus = ({ width, height, stroke }) => {
+export const CloseIcon = ({ width, height, stroke }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
