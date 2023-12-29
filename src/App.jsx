@@ -21,12 +21,22 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
+<<<<<<< Updated upstream
           {isLoggedIn ? (
             <Route path="/" element={<Home />} />
           ) : (
             <Route path="/" element={<WelcomePage />} />
           )}
 
+=======
+          <Route path="welcome" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <PrivateRoute redirectTo="/welcome" component={<Home />} />
+            }
+          />
+>>>>>>> Stashed changes
           <Route
             path="signup"
             element={<RestrictedRoute redirectTo="/" component={<SignUp />} />}
@@ -38,6 +48,7 @@ export const App = () => {
         </Route>
       </Routes>
       <GlobalStyles />
+      <Toaster />
     </>
   );
 };

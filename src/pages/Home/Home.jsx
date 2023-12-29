@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { colors } from "../../constants";
+import { Header } from "../../components/Header/Header";
+import { UserModal } from "../../components/modals/UserModal/UserModal";
+import { TodayListModal } from "../../components/modals/TodayListModal/todayListModal";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { refreshUser } from "../../redux/user/operations";
@@ -12,4 +15,5 @@ export const Home = () => {
   }, [dispatch]);
 
   return <Container>Home</Container>;
+
 };
