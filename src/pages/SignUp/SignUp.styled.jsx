@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../constants";
+import { Link as ReactLink } from "react-router-dom";
 
 export const StyledBackground = styled.div`
   position: fixed;
@@ -105,6 +106,11 @@ export const Input = styled.input`
   &::placeholder {
     color: ${colors.LIGHT_BLUE};
   }
+  &.input-error {
+    margin-bottom: 4px;
+    border-color: red;
+    color: red;
+  }
   @media (min-width: 768px) {
     width: 336px;
     height: 44px;
@@ -146,7 +152,7 @@ export const SignUpButton = styled.button`
   }
 `;
 
-export const Link = styled.a`
+export const Link = styled(ReactLink)`
   width: 50px;
   text-decoration: none;
   color: ${colors.BLUE};
@@ -177,7 +183,6 @@ export const InputContainer = styled.div`
 `;
 
 export const AuthMain = styled.main`
-  height: 100vh;
   @media (min-width: 320px) {
     padding: 24px 20px;
   }
@@ -187,5 +192,10 @@ export const AuthMain = styled.main`
   @media (min-width: 1440px) {
     padding: 140px 0 40px 0;
   }
+`;
 
+export const ErrorMessageStyled = styled.div`
+  color: red;
+  font-size: 14px;
+  line-height: 1.28;
 `;
