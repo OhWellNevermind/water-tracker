@@ -2,9 +2,6 @@ import { createPortal } from "react-dom";
 import { Backdrop, ContentWrap, Wrap } from "../ModalWrap.styled";
 import { useEffect, useState } from "react";
 
-
-
-
 const BaseModalWrap = ({ children, onClose }) => {
   const [closing, setClosing] = useState(false);
   document.body.style.overflow = "hidden";
