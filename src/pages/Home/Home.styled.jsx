@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerHome = styled.div`
-  margin:0 auto;
+  margin: 0 auto;
   @media only screen and (min-width: 768px) {
     width: 706px;
   }
@@ -15,12 +15,17 @@ export const ContainerHome = styled.div`
 `;
 
 export const DailyNormaAndWaterRatioPanel = styled.div`
+  width: 280px;
+  margin: 0 auto;
+  @media only screen and (min-width: 768px) {
+    width: 704px;
+  }
   @media only screen and (min-width: 1440px) {
     width: 624px;
   }
 `;
 export const WrapTodayAndMonth = styled.div`
-  margin:0 auto;
+  margin: 0 auto;
   width: 280px;
   padding: 24px 8px;
   background: #ecf2ff;

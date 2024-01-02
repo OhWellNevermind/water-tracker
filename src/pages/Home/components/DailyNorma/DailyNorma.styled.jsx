@@ -1,16 +1,12 @@
 import styled from "styled-components";
 
 export const DailyNormaContainer = styled.div`
-  margin: 0 auto;
-  width: 280px;
   margin-bottom: 232px;
   @media only screen and (min-width: 768px) {
-    width: 704px;
     margin-bottom: 326px;
   }
   @media only screen and (min-width: 1440px) {
     padding-bottom: 0;
-    width: 624px;
     margin-bottom: 466px;
   }
 `;

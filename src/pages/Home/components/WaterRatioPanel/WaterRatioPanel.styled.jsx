@@ -1,11 +1,8 @@
 import styled from "styled-components";
 export const WaterPanelContainer = styled.div`
-  width: 280px;
-  margin: 0 auto;
   margin-bottom: 40px;
 
   @media only screen and (min-width: 768px) {
-    width: 704px;
     height: 90px;
     display: flex;
     justify-content: center;
