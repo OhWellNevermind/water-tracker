@@ -29,6 +29,15 @@ export const ModalSelector = ({ modalName, closeModal }) => {
           }}
         />
       );
+    case "delete":
+      return (
+        <Logout
+          isDelete={true}
+          onClose={() => {
+            closeModal();
+          }}
+        />
+      );
 
     default:
       return <></>;

@@ -33,6 +33,13 @@ export const Home = ({ setModalName }) => {
       >
         Open
       </button>
+      <button
+        onClick={() => {
+          setModalName("delete");
+        }}
+      >
+        Open
+      </button>
     </Container>
   );
 };

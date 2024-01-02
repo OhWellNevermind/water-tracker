@@ -17,6 +17,7 @@ export const ButtonClose = styled.button`
   padding: 8px 30px;
   border-radius: 10px;
   background-color: ${colors.PROVINCIAL_PINK};
+  color: ${colors.BLUE};
   border: none;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   margin-right: 24px;
@@ -35,6 +36,7 @@ export const ButtonLogout = styled.button`
   padding: 8px 30px;
   border-radius: 10px;
   background-color: ${colors.RED};
+  color: ${colors.WHITE};
   border: none;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   &:hover {
