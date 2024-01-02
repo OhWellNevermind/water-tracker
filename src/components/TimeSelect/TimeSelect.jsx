@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { StyledSelect } from "./TimeSelector.styled";
-import { customStyles } from "./СustomSelect.styled";
+import { customStyles } from "./CustomSelect.styled";
 
 export const TimeSelector = ({ onSelectedOption }) => {
   const getCurrentTime = () => {

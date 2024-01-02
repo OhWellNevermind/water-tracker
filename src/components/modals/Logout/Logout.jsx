@@ -10,13 +10,13 @@ import {
   ButtonClosePlus,
   WrapDelete,
 } from "./Logout.styled";
-import { CirclePlus } from "../../components/icons/CloseIcon";
-import BaseModalWrap from '../../components/modals/ModalWrap/ModalWrap'
+import BaseModalWrap from "../ModalWrap/ModalWrap";
 import { useDispatch } from "react-redux";
-import { logout } from "../../redux/user/operations";
+import { logout } from "../../../redux/user/operations";
+import { CirclePlus } from "../../icons/CirclePlus";
 
 const Logout = ({ onClose, isDelete, isLogout }) => {
- const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const logoutButton = (user) => {
     dispatch(logout(user));
@@ -57,7 +57,6 @@ const Logout = ({ onClose, isDelete, isLogout }) => {
       </Container>
     </BaseModalWrap>
   );
-
 };
 
 export default Logout;

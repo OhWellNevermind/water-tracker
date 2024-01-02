@@ -5,14 +5,18 @@ import { SharedLayout } from "./components/SharedLayout";
 import { SignIn } from "./pages/SignIn/SignIn";
 import { SignUp } from "./pages/SignUp/SignUp";
 import { RestrictedRoute } from "./components/RestrictedRoute";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "./redux/user/operations";
 import { selectIsLoggedIn } from "./redux/user/selectors";
+import WelcomePage from "./pages/WelcomePage/WelcomePage";
+import { ModalSelector } from "./components/modals/ModalSelector";
+import { Toaster } from "react-hot-toast";
 
 export const App = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const [modalName, setModalName] = useState("");
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
@@ -20,23 +24,12 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-<<<<<<< Updated upstream
+        <Route path="/" element={<SharedLayout setModalName={setModalName} />}>
           {isLoggedIn ? (
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home setModalName={setModalName} />} />
           ) : (
             <Route path="/" element={<WelcomePage />} />
           )}
-
-=======
-          <Route path="welcome" element={<Home />} />
-          <Route
-            path="/"
-            element={
-              <PrivateRoute redirectTo="/welcome" component={<Home />} />
-            }
-          />
->>>>>>> Stashed changes
           <Route
             path="signup"
             element={<RestrictedRoute redirectTo="/" component={<SignUp />} />}
@@ -49,6 +42,12 @@ export const App = () => {
       </Routes>
       <GlobalStyles />
       <Toaster />
+      <ModalSelector
+        modalName={modalName}
+        closeModal={() => {
+          setModalName("");
+        }}
+      />
     </>
   );
 };
