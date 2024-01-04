@@ -80,6 +80,7 @@ export const SignIn = () => {
             required
           />
           <IconButton
+            type="button"
             onClick={() => {
               setIsPasswordVisible(!isPasswordVisible);
             }}

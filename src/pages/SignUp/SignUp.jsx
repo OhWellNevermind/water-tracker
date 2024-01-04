@@ -84,6 +84,7 @@ export const SignUp = () => {
             required
           />
           <IconButton
+            type="button"
             onClick={() => {
               setIsPasswordVisible(!isPasswordVisible);
             }}
@@ -120,6 +121,7 @@ export const SignUp = () => {
             required
           />
           <IconButton
+            type="button"
             onClick={() => {
               setIsPasswordVisible(!isPasswordVisible);
             }}
