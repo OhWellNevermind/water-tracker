@@ -29,7 +29,7 @@ export const TodayWaterList = () => {
           <SublistAll>
             <Sublist>
               <GlassSpan>
-                <Glass width={26} height={26} fill={"#407BFF"} />
+                <Glass width={26} height={26} stroke={"#407BFF"} />
               </GlassSpan>
               <MLSpan>
                 <NumberMl>{200} ml</NumberMl>
@@ -49,7 +49,7 @@ export const TodayWaterList = () => {
           <SublistAll>
             <Sublist>
               <GlassSpan>
-                <Glass width={26} height={26} fill={"#407BFF"} />
+                <Glass width={26} height={26} stroke={"#407BFF"} />
               </GlassSpan>
               <MLSpan>
                 <NumberMl>{200} ml</NumberMl>
@@ -68,7 +68,7 @@ export const TodayWaterList = () => {
           <SublistAll>
             <Sublist>
               <GlassSpan>
-                <Glass width={26} height={26} fill={"#407BFF"} />
+                <Glass width={26} height={26} stroke={"#407BFF"} />
               </GlassSpan>
               <MLSpan>
                 <NumberMl>{200} ml</NumberMl>
@@ -87,7 +87,7 @@ export const TodayWaterList = () => {
           <SublistAll>
             <Sublist>
               <GlassSpan>
-                <Glass width={26} height={26} fill={"#407BFF"} />
+                <Glass width={26} height={26} stroke={"#407BFF"} />
               </GlassSpan>
               <MLSpan>
                 <NumberMl>{200} ml</NumberMl>
