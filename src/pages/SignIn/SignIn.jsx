@@ -98,6 +98,7 @@ export const SignIn = () => {
 
         <SignInButton type="submit">Sign In</SignInButton>
         <Link to="/signup">Sign Up</Link>
+        <Link to="/forgot-password">Forgot your password?</Link>
       </SignInForm>
     </AuthMain>
   );
