@@ -21,6 +21,7 @@ const waterTrackerSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getTodayTracker.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.todayTracker = action.payload;
         state.isLoading = false;
       })
@@ -29,10 +30,4 @@ const waterTrackerSlice = createSlice({
       }),
 });
 
-// const {} = userSlice.actions;
 export const waterTrackerReducer = waterTrackerSlice.reducer;
-
-// .addCase(getMonthTracker.rejected, (state, action) => {
-//   state.isLoading = false;
-//   state.error=action.error.message;
-// })

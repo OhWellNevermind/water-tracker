@@ -10,7 +10,8 @@ import {
   MonthTitle,
   MonthTopLine,
 } from "./MonthStatsTable.styled";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { getMonthTracker, getTodayTracker } from "../../../../redux/waterTracker/operations";
 
 export const MonthStatsTable = () => {
   const date = new Date();
@@ -30,10 +31,14 @@ export const MonthStatsTable = () => {
   ];
   const [month, setMonth] = useState(date.getMonth());
   const [year, setYear] = useState(date.getFullYear());
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => {}, [month]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(getMonthTracker())
+    dispatch(getTodayTracker())
+
+  }, []);
 
   const changeMonth = (val) => {
     if (val > 11) {
