@@ -12,12 +12,11 @@ const clearAuthHeader = () => {
 };
 
 export const register = createAsyncThunk(
-  "auth/register",
+  "user/register",
   async (userData, thunkAPI) => {
     try {
       const res = await axios.post("/users/signup", userData);
       setAuthHeader(res.data.token);
-
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -26,10 +25,11 @@ export const register = createAsyncThunk(
 );
 
 export const login = createAsyncThunk(
-  "auth/login",
+  "user/login",
   async (userData, thunkAPI) => {
     try {
       const res = await axios.post("/users/signin", userData);
+
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
@@ -48,10 +48,10 @@ export const logout = createAsyncThunk("/users/logout", async (_, thunkAPI) => {
 });
 
 export const refreshUser = createAsyncThunk(
-  "auth/refresh",
+  "user/refresh",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const token = state.auth.token;
+    const token = state.user.token;
 
     if (token === null) {
       return thunkAPI.rejectWithValue("Unable to fetch user");

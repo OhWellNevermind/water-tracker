@@ -55,7 +55,7 @@ const formSchema = Yup.object({
   gender: Yup.string().oneOf(["male", "female"]),
 });
 
-export const UserModal = ({ setIsOpen }) => {
+export const UserModal = ({ onClose }) => {
   const [isOldPasswordVisible, setIsOldPasswordVisible] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false);
@@ -75,7 +75,6 @@ export const UserModal = ({ setIsOpen }) => {
     return () => URL.revokeObjectURL(objectUrl);
   }, [avatar]);
 
-  console.log(avatar);
   const formik = useFormik({
     initialValues: {
       gender: "male",
@@ -102,11 +101,11 @@ export const UserModal = ({ setIsOpen }) => {
   };
 
   return (
-    <BaseModalWrap onClose={() => setIsOpen(false)}>
+    <BaseModalWrap onClose={() => onClose()}>
       <ModalContainer>
         <TitleContainer>
           <Title>Settings</Title>
-          <CloseIconContainer onClick={() => setIsOpen(false)}>
+          <CloseIconContainer onClick={() => onClose()}>
             <CloseIcon width={24} heigth={24} stroke={colors.BLUE} />
           </CloseIconContainer>
         </TitleContainer>

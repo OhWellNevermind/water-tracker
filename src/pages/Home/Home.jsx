@@ -1,26 +1,27 @@
-import { useState } from "react";
-import { colors } from "../../constants";
-import { UserModal } from "../../components/modals/UserModal/UserModal";
-import AddWater from "../../components/modals/AddWater/AddWater";
-import BaseModalWrap from "../../components/modals/ModalWrap/ModalWrap";
+import { DailyNorma } from "./components/DailyNorma/DailyNorma";
+import { MonthStatsTable } from "./components/MonthStatsTable/MonthStatsTable";
+import { TodayWaterList } from "./components/TodayWaterList/TodayWaterList";
+import { WaterRatioPanel } from "./components/WaterRatioPanel/WaterRatioPanel";
+import {
+  ContainerHome,
+  WrapTodayAndMonth,
+  DailyNormaAndWaterRatioPanel,
+} from "./Home.styled";
 
-export const Home = () => {
-  const [open, setOpen] = useState(true);
+export const Home = ({setModalName}) => {
   return (
     <>
-      <div style={{ fontWeight: 500, fontSize: 32 }}>Home</div>
-      <button
-        style={{ width: "50px", height: "30px", backgroundColor: colors.BLUE }}
-        onClick={() => setOpen(true)}
-      >
-        Open
-      </button>
-      {/* {open && <UserModal setIsOpen={setOpen} />} */}
-      {open && (
-        <BaseModalWrap onClose={() => setOpen(false)}>
-          <AddWater onClose={() => setOpen(false)} />
-        </BaseModalWrap>
-      )}
+      <ContainerHome>
+        <DailyNormaAndWaterRatioPanel>
+          <DailyNorma />
+          <WaterRatioPanel />
+        </DailyNormaAndWaterRatioPanel>
+        <WrapTodayAndMonth>
+          <TodayWaterList />
+          <MonthStatsTable />
+        </WrapTodayAndMonth>
+      </ContainerHome>
     </>
   );
 };
+

@@ -1,6 +1,6 @@
 import { Field, Formik } from "formik";
 import { colors } from "../../../constants";
-import { CirclePlus } from "../../icons/CloseIcon";
+import { CloseIcon } from "../../icons/CloseIcon";
 import {
   AddWaterWrap,
   AmountWrap,
@@ -23,6 +23,7 @@ import { PlusIcon } from "../../icons/PlusIcon";
 import { useState } from "react";
 import CustomSelect from "./CustomSelect";
 import * as Yup from "yup";
+import BaseModalWrap from "../ModalWrap/ModalWrap";
 
 const pickTimeFromCurrDate = () => {
   const time = new Date();
@@ -78,11 +79,11 @@ const AddWater = ({ onClose }) => {
         if (isFloat) {
           const floored = Math.floor(btnAmount / 50) * 50;
           setBtnAmount(floored);
-          props.setFieldValue("volume", floored)
+          props.setFieldValue("volume", floored);
         } else {
           const cur = btnAmount - 50;
           setBtnAmount(cur);
-          props.setFieldValue("volume", cur)
+          props.setFieldValue("volume", cur);
         }
         break;
       }
@@ -90,11 +91,11 @@ const AddWater = ({ onClose }) => {
         if (isFloat) {
           const ceiled = Math.ceil(btnAmount / 50) * 50;
           setBtnAmount(ceiled);
-          props.setFieldValue("volume", ceiled)
+          props.setFieldValue("volume", ceiled);
         } else {
           const cur = btnAmount + 50;
           setBtnAmount(cur);
-          props.setFieldValue("volume", cur)
+          props.setFieldValue("volume", cur);
         }
         break;
       }
@@ -107,86 +108,88 @@ const AddWater = ({ onClose }) => {
     return props.handleChange(e);
   };
   return (
-    <Window>
-      <TitleWrap>
-        <Title>Add water</Title>
-        <button onClick={onClose}>
-          <CirclePlus stroke={colors.BLUE} width={24} height={24} />
-        </button>
-      </TitleWrap>
-      <Formik
-        initialValues={{ time: closestOpt, volume: btnAmount }}
-        onSubmit={(v) => {
-          console.log(v);
-        }}
-        validationSchema={schema}
-      >
-        {(props) => (
-          <StyledForm onSubmit={props.handleSubmit}>
-            <DataWrap>
-              <Subtitle>Choose a value:</Subtitle>
+    <BaseModalWrap onClose={onClose}>
+      <Window>
+        <TitleWrap>
+          <Title>Add water</Title>
+          <button onClick={onClose}>
+            <CloseIcon stroke={colors.BLUE} width={24} height={24} />
+          </button>
+        </TitleWrap>
+        <Formik
+          initialValues={{ time: closestOpt, volume: btnAmount }}
+          onSubmit={(v) => {
+            console.log(v);
+          }}
+          validationSchema={schema}
+        >
+          {(props) => (
+            <StyledForm onSubmit={props.handleSubmit}>
+              <DataWrap>
+                <Subtitle>Choose a value:</Subtitle>
+                <div>
+                  <FormulaText>Amount of water:</FormulaText>
+                  <AddWaterWrap>
+                    <IconWrap
+                      onClick={(e) => {
+                        changeAmount(e, props);
+                      }}
+                      className={btnAmount === 0 && "disabled"}
+                      id="minus"
+                    >
+                      <MinusIcon
+                        fill={btnAmount === 0 ? colors.LIGHT_GRAY : colors.BLUE}
+                        width={24}
+                        height={24}
+                      />
+                    </IconWrap>
+                    <AmountWrap>
+                      <Result>{btnAmount} ml</Result>
+                    </AmountWrap>
+                    <IconWrap
+                      onClick={(e) => {
+                        changeAmount(e, props);
+                      }}
+                      id="plus"
+                    >
+                      <PlusIcon stroke={colors.BLUE} width={24} height={24} />
+                    </IconWrap>
+                  </AddWaterWrap>
+                </div>
+              </DataWrap>
               <div>
-                <FormulaText>Amount of water:</FormulaText>
-                <AddWaterWrap>
-                  <IconWrap
-                    onClick={(e) => {
-                      changeAmount(e, props);
-                    }}
-                    className={btnAmount === 0 && "disabled"}
-                    id="minus"
-                  >
-                    <MinusIcon
-                      fill={btnAmount === 0 ? colors.LIGHT_GRAY : colors.BLUE}
-                      width={24}
-                      height={24}
-                    />
-                  </IconWrap>
-                  <AmountWrap>
-                    <Result>{btnAmount} ml</Result>
-                  </AmountWrap>
-                  <IconWrap
-                    onClick={(e) => {
-                      changeAmount(e, props);
-                    }}
-                    id="plus"
-                  >
-                    <PlusIcon stroke={colors.BLUE} width={24} height={24} />
-                  </IconWrap>
-                </AddWaterWrap>
+                <FormulaText>Recording time:</FormulaText>
+                <Field
+                  name="time"
+                  as={CustomSelect}
+                  onChange={props.handleChange}
+                  onBlur={props.handleBlur}
+                  value={props.values.time}
+                />
               </div>
-            </DataWrap>
-            <div>
-              <FormulaText>Recording time:</FormulaText>
-              <Field
-                name="time"
-                as={CustomSelect}
-                onChange={props.handleChange}
-                onBlur={props.handleBlur}
-                value={props.values.time}
-              />
-            </div>
-            <div>
-              <Subtitle>Enter the value of the water used:</Subtitle>
-              <InputField
-                className={props.errors.volume && "error"}
-                name="volume"
-                type="number"
-                min="0"
-                value={btnAmount === 0 && props.touched ? "" : btnAmount}
-                onChange={(e) => {
-                  onChange(e, props);
-                }}
-              />
-              <ErrMessage component="span" name="volume" />
-            </div>
-            <SubmitWrap>
-              <Result>{btnAmount} ml</Result>
-              <SaveBtn type="submit">Save</SaveBtn>
-            </SubmitWrap>
-          </StyledForm>
-        )}
-      </Formik>
-    </Window>
+              <div>
+                <Subtitle>Enter the value of the water used:</Subtitle>
+                <InputField
+                  className={props.errors.volume && "error"}
+                  name="volume"
+                  type="number"
+                  min="0"
+                  value={btnAmount === 0 && props.touched ? "" : btnAmount}
+                  onChange={(e) => {
+                    onChange(e, props);
+                  }}
+                />
+                <ErrMessage component="span" name="volume" />
+              </div>
+              <SubmitWrap>
+                <Result>{btnAmount} ml</Result>
+                <SaveBtn type="submit">Save</SaveBtn>
+              </SubmitWrap>
+            </StyledForm>
+          )}
+        </Formik>
+      </Window>
+    </BaseModalWrap>
   );
 };
 

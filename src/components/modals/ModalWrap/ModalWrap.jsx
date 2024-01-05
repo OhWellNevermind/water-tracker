@@ -28,7 +28,9 @@ const BaseModalWrap = ({ children, onClose }) => {
   return createPortal(
     <Backdrop id="modalWrap" $closing={closing} onClick={CloseModal}>
       <Wrap>
-        <ContentWrap $closing={closing}>{children}</ContentWrap>
+        <ContentWrap $closing={closing}>
+          {children}
+        </ContentWrap>
       </Wrap>
     </Backdrop>,
     document.querySelector("#popup-root")

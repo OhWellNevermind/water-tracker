@@ -49,8 +49,6 @@ export const FormulaWrap = styled.div`
     flex-direction: row;
     gap: 24px;
   }
-
-
 `;
 
 export const FormulaText = styled.p`
@@ -169,7 +167,6 @@ export const SaveBtn = styled.button`
     width: 160px;
     margin-left: auto;
   }
-
 `;
 
 export const OptWrap = styled.div`
