@@ -42,8 +42,8 @@ const schema = Yup.object().shape({
     .required("This field is required"),
 });
 
-const FormContext = ({updateResult}) => {
-  const {values} = useFormikContext();
+const FormContext = ({ updateResult }) => {
+  const { values } = useFormikContext();
   useEffect(() => {
     switch (values.gender) {
       case "girl": {
@@ -66,14 +66,14 @@ const FormContext = ({updateResult}) => {
         break;
     }
   }, [values]);
-return null
-}
-const DailyNorma = ({onClose}) => {
+  return null;
+};
+const DailyNorma = ({ onClose }) => {
   const [result, setResult] = useState(0);
 
   const updateResult = (res) => {
     setResult(res);
-  }
+  };
   return (
     <Window>
       <TitleWrap>
@@ -184,7 +184,7 @@ const DailyNorma = ({onClose}) => {
               </div>
             </DataWrap>
             <SaveBtn type="submit">Save</SaveBtn>
-            <FormContext updateResult={updateResult}/>
+            <FormContext updateResult={updateResult} />
           </StyledForm>
         )}
       </Formik>

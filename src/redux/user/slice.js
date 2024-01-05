@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login, logout, refreshUser } from "./operations";
+import {
+  register,
+  login,
+  logout,
+  refreshUser,
+  updateAvatar,
+  updateUser,
+} from "./operations";
 import toast from "react-hot-toast";
 
 const usersInitState = {
@@ -8,9 +15,9 @@ const usersInitState = {
     email: "",
     gender: "",
     dailyNorma: "",
-    avatarUrl: "",
-    token: "",
+    avatarURL: "",
   },
+  token: "",
   isRefreshing: false,
   isLoggedIn: false,
 };
@@ -21,10 +28,7 @@ const usersSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(register.fulfilled, (state, action) => {
-        state.user = {
-          email: action.payload.user.email,
-          password: action.payload.password,
-        };
+        state.user = action.payload.user;
         state.isLoggedIn = true;
         state.token = action.payload.token;
       })
@@ -32,15 +36,18 @@ const usersSlice = createSlice({
         toast.error("There is no user with credentials like that.");
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.user = {
-          email: action.payload.user.email,
-          password: action.payload.password,
-        };
+        state.user = action.payload.user;
         state.isLoggedIn = true;
         state.token = action.payload.token;
       })
       .addCase(logout.fulfilled, (state) => {
-        state.user = { name: null, email: null };
+        state.user = {
+          username: "",
+          email: "",
+          gender: "",
+          dailyNorma: "",
+          avatarURL: "",
+        };
         state.token = null;
         state.isLoggedIn = false;
       })
@@ -55,6 +62,13 @@ const usersSlice = createSlice({
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
         state.isLoggedIn = false;
+      })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.user.avatarURL = action.payload;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.user = { ...state.user, ...action.payload };
       }),
 });
 

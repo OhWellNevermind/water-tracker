@@ -34,9 +34,12 @@ import { IconInputContainer } from "./UserModal.styled";
 import { InputIcon } from "./UserModal.styled";
 import { InputWithIcon } from "./UserModal.styled";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../../hooks/useAuth";
+import { useDispatch } from "react-redux";
+import { updateAvatar, updateUser } from "../../../redux/user/operations";
 
 const formSchema = Yup.object({
-  name: Yup.string()
+  username: Yup.string()
     .matches(
       /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
       `Name may contain only letters, apostrophe, dash and spaces.`
@@ -51,16 +54,19 @@ const formSchema = Yup.object({
     .max(64, "Password must contain maximum 64 symbols"),
   repeatPassword: Yup.string()
     .min(8, "Password must contain minimum 8 symbols")
-    .max(64, "Password must contain maximum 64 symbols"),
+    .max(64, "Password must contain maximum 64 symbols")
+    .oneOf([Yup.ref("newPassword"), null], "Passwords must match"),
   gender: Yup.string().oneOf(["male", "female"]),
 });
 
-export const UserModal = ({ setIsOpen }) => {
+export const UserModal = ({ onClose }) => {
   const [isOldPasswordVisible, setIsOldPasswordVisible] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false);
   const [avatar, setAvatar] = useState("");
   const [preview, setPreview] = useState("");
+  const { user } = useAuth();
+  const dispath = useDispatch();
 
   useEffect(() => {
     if (!avatar) {
@@ -75,18 +81,31 @@ export const UserModal = ({ setIsOpen }) => {
     return () => URL.revokeObjectURL(objectUrl);
   }, [avatar]);
 
-  console.log(avatar);
   const formik = useFormik({
     initialValues: {
-      gender: "male",
-      name: "",
-      email: "",
+      gender: user.gender,
+      username: user.username,
+      email: user.email,
       oldPassword: "",
       newPassword: "",
       repeatPassword: "",
     },
     onSubmit: (values) => {
-      console.log(values);
+      const { gender, username, email, oldPassword, newPassword } = values;
+      if (!oldPassword || !newPassword) {
+        dispath(updateUser({ gender, username, email }));
+        return;
+      }
+      dispath(
+        updateUser({
+          gender,
+          username,
+          email,
+          oldPassword,
+          password: newPassword,
+        })
+      );
+      onClose();
     },
     validationSchema: formSchema,
   });
@@ -96,30 +115,31 @@ export const UserModal = ({ setIsOpen }) => {
       setAvatar(undefined);
       return;
     }
-
+    const data = new FormData();
+    data.append("avatar", e.target.files[0]);
+    dispath(updateAvatar(data));
     // I've kept this example simple by using the first image instead of multiple
     setAvatar(e.target.files[0]);
   };
-
+  console.log(formik.errors);
   return (
-    <BaseModalWrap onClose={() => setIsOpen(false)}>
+    <BaseModalWrap onClose={() => onClose()}>
       <ModalContainer>
         <TitleContainer>
           <Title>Settings</Title>
-          <CloseIconContainer onClick={() => setIsOpen(false)}>
+          <CloseIconContainer onClick={() => onClose()}>
             <CloseIcon width={24} heigth={24} stroke={colors.BLUE} />
           </CloseIconContainer>
         </TitleContainer>
         <Container>
           <Subtitle type="main">Your photo</Subtitle>
           <ImageContainer>
-            {preview && <Image src={preview} alt="Your avatar" />}
+            {preview ||
+              (user.avatarURL && (
+                <Image src={user.avatarURL || preview} alt="Your avatar" />
+              ))}
             <UploadImageLabel>
-              <HiddentInput
-                // value={avatar}
-                onChange={onSelectFile}
-                type="file"
-              />
+              <HiddentInput onChange={onSelectFile} type="file" />
               <CustomUploadContainer>
                 <UploadIcon width={16} height={16} stroke={colors.BLUE} />
                 <p>Upload photo</p>
@@ -166,19 +186,20 @@ export const UserModal = ({ setIsOpen }) => {
                   <div>
                     <TextInput
                       className={
-                        Boolean(formik.errors.name) && formik.touched.name
+                        Boolean(formik.errors.username) &&
+                        formik.touched.username
                           ? "error"
                           : ""
                       }
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.name}
+                      value={formik.values.username}
                       type="text"
-                      name="name"
+                      name="username"
                       placeholder="Your name"
                     />
-                    {formik.touched.name && (
-                      <ErrorMessage>{formik.errors.name}</ErrorMessage>
+                    {formik.touched.username && (
+                      <ErrorMessage>{formik.errors.username}</ErrorMessage>
                     )}
                   </div>
                 </TextInputContainer>
@@ -339,7 +360,12 @@ export const UserModal = ({ setIsOpen }) => {
                 </InputContainer>
               </div>
             </InputsContainer>
-            <SubmitButton type="submit">Save</SubmitButton>
+            <SubmitButton
+              disabled={Object.keys(formik.errors).length}
+              type="submit"
+            >
+              Save
+            </SubmitButton>
           </Form>
         </Container>
       </ModalContainer>

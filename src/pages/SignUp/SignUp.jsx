@@ -17,9 +17,9 @@ import {
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux";
 import { register } from "../../redux/user/operations";
-import { selectUser } from "../../redux/user/selectors";
 
 const AddSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -32,35 +32,19 @@ const AddSchema = Yup.object().shape({
 });
 
 export const SignUp = () => {
+  const dispatch = useDispatch();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const dispatch = useDispatch();
-  // const user = useSelector(selectUser);
 
   const formik = useFormik({
     initialValues: { email: "", password: "", confirmPassword: "" },
     validationSchema: AddSchema,
-    // onSubmit: (user) => {
-    //   const newUser = {
-    //     ...user,
-    //   };
-    //   createUser(newUser);
-    // },
-    onSubmit: (values) => {
-      dispatch(register(values));
+
+    onSubmit: (user) => {
+      const { email, password } = user;
+      dispatch(register({ email, password }));
     },
   });
-
-  // const createUser = (newUser) => {
-  //   const isUserExist = users.filter((user) => {
-  //     return newUser.email === user.email;
-  //   }).length;
-
-  //   if (isUserExist) {
-  //     alert(`${newUser.email} is already registered`);
-  //     return;
-  //   }
-  //   dispatch(register({ ...newUser }));
-  // };
 
   return (
     <AuthMain>
@@ -104,6 +88,7 @@ export const SignUp = () => {
             required
           />
           <IconButton
+            type="button"
             onClick={() => {
               setIsPasswordVisible(!isPasswordVisible);
             }}
@@ -140,6 +125,7 @@ export const SignUp = () => {
             required
           />
           <IconButton
+            type="button"
             onClick={() => {
               setIsPasswordVisible(!isPasswordVisible);
             }}
