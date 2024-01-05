@@ -1,45 +1,26 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { refreshUser } from "../../redux/user/operations";
-import { Container } from "../../components/Container/Container";
+import { DailyNorma } from "./components/DailyNorma/DailyNorma";
+import { MonthStatsTable } from "./components/MonthStatsTable/MonthStatsTable";
+import { TodayWaterList } from "./components/TodayWaterList/TodayWaterList";
+import { WaterRatioPanel } from "./components/WaterRatioPanel/WaterRatioPanel";
+import {
+  ContainerHome,
+  WrapTodayAndMonth,
+  DailyNormaAndWaterRatioPanel,
+} from "./Home.styled";
 
-export const Home = ({ setModalName }) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
-
+export const Home = () => {
   return (
-    <Container>
-      <div>Home</div>
-      <button
-        onClick={() => {
-          setModalName("settings");
-        }}
-      >
-        Open
-      </button>
-      <button
-        onClick={() => {
-          setModalName("logout");
-        }}
-      >
-        Open
-      </button>
-      <button
-        onClick={() => {
-          setModalName("addWater");
-        }}
-      >
-        Open
-      </button>
-      <button
-        onClick={() => {
-          setModalName("delete");
-        }}
-      >
-        Open
-      </button>
-    </Container>
+    <>
+      <ContainerHome>
+        <DailyNormaAndWaterRatioPanel>
+          <DailyNorma />
+          <WaterRatioPanel />
+        </DailyNormaAndWaterRatioPanel>
+        <WrapTodayAndMonth>
+          <TodayWaterList />
+          <MonthStatsTable />
+        </WrapTodayAndMonth>
+      </ContainerHome>
+    </>
   );
 };
