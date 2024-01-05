@@ -17,6 +17,7 @@ import {
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useState } from "react";
+
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/user/operations";
 
@@ -33,9 +34,12 @@ const AddSchema = Yup.object().shape({
 export const SignUp = () => {
   const dispatch = useDispatch();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: { email: "", password: "", confirmPassword: "" },
     validationSchema: AddSchema,
+
     onSubmit: (user) => {
       const { email, password } = user;
       dispatch(register({ email, password }));
