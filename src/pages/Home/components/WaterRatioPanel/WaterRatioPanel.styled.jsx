@@ -1,19 +1,9 @@
 import styled from "styled-components";
 export const WaterPanelContainer = styled.div`
-  width: 280px;
-  height: 134px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
   margin-bottom: 40px;
 
   @media only screen and (min-width: 768px) {
-    width: 704px;
     height: 90px;
-    flex-direction: row;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,18 +11,14 @@ export const WaterPanelContainer = styled.div`
   }
   @media only screen and (min-width: 1440px) {
     width: 592px;
-    justify-content: center;
-    align-items: center;
     gap: 23px;
-    margin-bottom: 0;
-    margin-right: 32px;
+    margin: 0;
   }
 `;
 export const TitleWaterPanel = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 82px;
-
+  @media only screen and (max-width: 767px) {
+    margin-bottom: 16px;
+  }
   @media only screen and (min-width: 768px) {
     width: 356px;
     height: 90px;
@@ -44,15 +30,10 @@ export const TitleWaterPanel = styled.div`
 
 export const Title = styled.p`
   width: 52px;
-  height: 24px;
   margin-bottom: 8px;
   display: flex;
   color: #407bff;
-  text-align: center;
-  font-family: Roboto;
   font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 24px;
   @media only screen and (min-width: 768px) {
     margin-bottom: 16px;
@@ -115,33 +96,28 @@ export const Dot = styled.div`
 export const WaterPanel = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
 `;
 
 export const DecorWrap = styled.div`
+  @media only screen and (max-width: 1440px) {
+    margin: 0 auto;
+  }
   width: 256px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0;
-  padding: 0;
-  margin-left: 10px;
-  margin-right: 14px;
   margin-bottom: 4px;
+
   @media only screen and (min-width: 768px) {
     width: 325px;
-    margin-top: 4px;
-    @media only screen and (min-width: 1440px) {
-      width: 360px;
-    }
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 360px;
   }
 `;
 
 export const DecorList = styled.p`
   display: flex;
-  margin: 0;
-  padding: 0;
 
   &::before {
     content: "";
@@ -157,65 +133,45 @@ export const DecorList = styled.p`
 export const List = styled.ul`
   display: flex;
   align-items: center;
-  list-style-type: none;
   justify-content: space-between;
-  margin: 0;
-  padding: 0;
+  @media only screen and (max-width: 767px) {
+    padding-left: 6px;
+  }
   @media only screen and (min-width: 768px) {
     width: 356px;
+    justify-content: center;
+    gap: 123px;
   }
   @media only screen and (min-width: 1440px) {
     width: 360px;
+    gap: 140px;
   }
 `;
 
 export const Start = styled.li`
   color: #407bff;
-  text-align: center;
-  font-family: Roboto;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 16px;
-  width: 22px;
-  height: 16px;
 `;
 export const Middle = styled.li`
+  padding-left: 20px;
   color: #407bff;
-  text-align: center;
-  font-family: Roboto;
-  font-size: 16px;
-  font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  width: 50px;
-  height: 20px;
 `;
 export const End = styled.li`
   color: #407bff;
-  text-align: center;
-  font-family: Roboto;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 16px;
-  width: 30px;
-  height: 16px;
-  @media only screen and (min-width: 768px) {
-    width: 40px;
-    height: 16px;
-  }
 `;
 
 export const Button = styled.button`
   width: 280px;
-  height: 36px;
   display: flex;
   padding: 6px 76px;
   align-items: center;
   gap: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   border-radius: 10px;
   background: #407bff;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
@@ -234,12 +190,10 @@ export const Button = styled.button`
   }
   @media only screen and (min-width: 768px) {
     width: 336px;
-    height: 44px;
     padding: 10px 104px;
   }
   @media only screen and (min-width: 1440px) {
     width: 178px;
-    height: 44px;
     padding: 10px 30px;
   }
 `;
@@ -247,10 +201,6 @@ export const AddWater = styled.span`
   width: 94px;
   height: 20px;
   color: #fff;
-  text-align: center;
-  font-family: Roboto;
-  font-size: 16px;
-  font-style: normal;
   font-weight: 500;
   line-height: 20px;
   @media only screen and (min-width: 1440px) {
