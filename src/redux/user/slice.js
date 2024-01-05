@@ -28,12 +28,7 @@ const usersSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(register.fulfilled, (state, action) => {
-        state.user = {
-          email: action.payload.user.email,
-          gender: action.payload.user.gender,
-          dailyNorma: action.payload.user.dailyNorma,
-          avatarURL: action.payload.user.avatarURL,
-        };
+        state.user = action.payload.user;
         state.isLoggedIn = true;
         state.token = action.payload.token;
       })
@@ -41,18 +36,13 @@ const usersSlice = createSlice({
         toast.error("There is no user with credentials like that.");
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.user = {
-          email: action.payload.user.email,
-          gender: action.payload.user.gender,
-          dailyNorma: action.payload.user.dailyNorma,
-          avatarURL: action.payload.user.avatarURL,
-        };
+        state.user = action.payload.user;
         state.isLoggedIn = true;
         state.token = action.payload.token;
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = {
-          name: "",
+          username: "",
           email: "",
           gender: "",
           dailyNorma: "",

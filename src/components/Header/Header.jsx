@@ -21,7 +21,6 @@ export const Header = ({ setModalName }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const { user } = useAuth();
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
-  console.log(user);
   const toogleModal = () => {
     setIsPopUpOpen(!isPopUpOpen);
   };

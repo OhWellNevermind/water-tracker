@@ -91,7 +91,6 @@ export const UserModal = ({ onClose }) => {
       repeatPassword: "",
     },
     onSubmit: (values) => {
-      console.log(values);
       const { gender, username, email, oldPassword, newPassword } = values;
       if (!oldPassword || !newPassword) {
         dispath(updateUser({ gender, username, email }));
@@ -106,6 +105,7 @@ export const UserModal = ({ onClose }) => {
           password: newPassword,
         })
       );
+      onClose();
     },
     validationSchema: formSchema,
   });
