@@ -46,8 +46,14 @@ export const Container = styled.div`
   padding-bottom: 100px;
   overflow: auto;
 
-  @media (min-width: 1440px) {
+  margin-top: 24px;
+
+  @media (min-width: 768px) {
     margin-top: 40px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-top: 80px;
     display: flex;
     justify-content: center;
   }

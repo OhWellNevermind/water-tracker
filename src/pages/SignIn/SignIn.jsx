@@ -17,6 +17,8 @@ import { useState } from "react";
 import { VisibleIcon } from "../../components/icons/VisibleIcon";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/user/operations";
 
 const AddSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -26,12 +28,13 @@ const AddSchema = Yup.object().shape({
 });
 
 export const SignIn = () => {
+  const dispatch = useDispatch();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: AddSchema,
     onSubmit: (user) => {
-      console.log(user);
+      dispatch(login(user));
     },
   });
 
@@ -77,6 +80,7 @@ export const SignIn = () => {
             required
           />
           <IconButton
+            type="button"
             onClick={() => {
               setIsPasswordVisible(!isPasswordVisible);
             }}
