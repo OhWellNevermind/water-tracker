@@ -10,6 +10,7 @@ import {
   MonthTitle,
   MonthTopLine,
 } from "./MonthStatsTable.styled";
+// import { useDispatch } from "react-redux";
 
 export const MonthStatsTable = () => {
   const date = new Date();
@@ -29,18 +30,18 @@ export const MonthStatsTable = () => {
   ];
   const [month, setMonth] = useState(date.getMonth());
   const [year, setYear] = useState(date.getFullYear());
+  // const dispatch = useDispatch();
+  useEffect(() => {}, [month]);
 
-  useEffect(() => {
-    console.log(monthList[month]);
-  }, [month]);
+  useEffect(() => {}, []);
 
   const changeMonth = (val) => {
     if (val > 11) {
       setMonth(0);
-      setYear(year + 1)
+      setYear(year + 1);
     } else if (val < 0) {
       setMonth(11);
-      setYear(year - 1)
+      setYear(year - 1);
     } else {
       setMonth(val);
     }
@@ -54,10 +55,7 @@ export const MonthStatsTable = () => {
             <ChevronDownIcon width={14} height={14} stroke={colors.BLUE} />
           </MonthDateBtn>
           <MonthDateText>{`${monthList[month]}, ${year}`}</MonthDateText>
-          <MonthDateBtn
-            onClick={() => changeMonth(month + 1)}
-            rotate={"270"}
-          >
+          <MonthDateBtn onClick={() => changeMonth(month + 1)} rotate={"270"}>
             <ChevronDownIcon width={14} height={14} stroke={colors.BLUE} />
           </MonthDateBtn>
         </MonthDate>
