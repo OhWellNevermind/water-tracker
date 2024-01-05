@@ -1,3 +1,4 @@
+import AddWater from "./AddWater/AddWater";
 import Logout from "./Logout/Logout";
 import { TodayListModal } from "./TodayListModal/TodayListModal";
 import { UserModal } from "./UserModal/UserModal";
@@ -23,7 +24,7 @@ export const ModalSelector = ({ modalName, closeModal }) => {
       );
     case "addWater":
       return (
-        <TodayListModal
+        <AddWater
           onClose={() => {
             closeModal();
           }}

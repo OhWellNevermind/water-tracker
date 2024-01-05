@@ -8,7 +8,7 @@ import {
   DailyNormaAndWaterRatioPanel,
 } from "./Home.styled";
 
-export const Home = () => {
+export const Home = ({setModalName}) => {
   return (
     <>
       <ContainerHome>
@@ -24,3 +24,4 @@ export const Home = () => {
     </>
   );
 };
+
