@@ -104,6 +104,7 @@ export const HiddentInput = styled.input`
 
 export const CustomUploadContainer = styled.div`
   display: flex;
+  cursor: pointer;
   gap: 8px;
 `;
 

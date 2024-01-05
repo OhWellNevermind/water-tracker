@@ -48,6 +48,12 @@ export const HeaderUserIcon = styled.div`
   height: 28px;
 `;
 
-export const UserLogo = styled.img``;
+export const UserLogo = styled.img`
+  width: 28px;
+  height: 28px;
+  margin-left: 8px;
+  border-radius: 50%;
+  object-fit: contain;
+`;
 
 export const UserName = styled.p``;

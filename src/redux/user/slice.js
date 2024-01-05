@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login, logout, refreshUser } from "./operations";
+import {
+  register,
+  login,
+  logout,
+  refreshUser,
+  updateAvatar,
+  updateUser,
+} from "./operations";
 import toast from "react-hot-toast";
 
 const usersInitState = {
@@ -8,7 +15,7 @@ const usersInitState = {
     email: "",
     gender: "",
     dailyNorma: "",
-    avatarUrl: "",
+    avatarURL: "",
   },
   token: "",
   isRefreshing: false,
@@ -25,7 +32,7 @@ const usersSlice = createSlice({
           email: action.payload.user.email,
           gender: action.payload.user.gender,
           dailyNorma: action.payload.user.dailyNorma,
-          avatarUrl: action.payload.user.avatarUrl,
+          avatarURL: action.payload.user.avatarURL,
         };
         state.isLoggedIn = true;
         state.token = action.payload.token;
@@ -38,7 +45,7 @@ const usersSlice = createSlice({
           email: action.payload.user.email,
           gender: action.payload.user.gender,
           dailyNorma: action.payload.user.dailyNorma,
-          avatarUrl: action.payload.user.avatarUrl,
+          avatarURL: action.payload.user.avatarURL,
         };
         state.isLoggedIn = true;
         state.token = action.payload.token;
@@ -49,7 +56,7 @@ const usersSlice = createSlice({
           email: "",
           gender: "",
           dailyNorma: "",
-          avatarUrl: "",
+          avatarURL: "",
         };
         state.token = null;
         state.isLoggedIn = false;
@@ -65,6 +72,13 @@ const usersSlice = createSlice({
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
         state.isLoggedIn = false;
+      })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.user.avatarURL = action.payload;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.user = { ...state.user, ...action.payload };
       }),
 });
 

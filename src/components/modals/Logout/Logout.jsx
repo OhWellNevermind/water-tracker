@@ -4,11 +4,10 @@ import {
   ButtonClose,
   ButtonLogout,
   Question,
-  Wrap,
   Topic,
   StyleClosePlus,
   ButtonClosePlus,
-  WrapDelete,
+  ButtonsWrap,
 } from "./Logout.styled";
 import BaseModalWrap from "../ModalWrap/ModalWrap";
 import { useDispatch } from "react-redux";
@@ -18,16 +17,13 @@ import { CirclePlus } from "../../icons/CirclePlus";
 const Logout = ({ onClose, isDelete, isLogout }) => {
   const dispatch = useDispatch();
 
-  const logoutButton = (user) => {
-    dispatch(logout(user));
-  };
-
-  const closeModal = () => {
-    onClose(false);
+  const handleLogout = () => {
+    dispatch(logout());
+    onClose();
   };
 
   return (
-    <BaseModalWrap onClose={closeModal}>
+    <BaseModalWrap onClose={onClose}>
       <Container>
         <Topic>
           {isDelete && <H2>Delete entry</H2>}
@@ -42,18 +38,13 @@ const Logout = ({ onClose, isDelete, isLogout }) => {
           <Question> Are you sure you want to delete the entry?</Question>
         )}
         {isLogout && <Question>Do you really want to leave?</Question>}
-        {isDelete && (
-          <WrapDelete>
-            <ButtonClose onClick={closeModal}>Cancel</ButtonClose>
-            <ButtonLogout onClick={logoutButton}>Delete</ButtonLogout>
-          </WrapDelete>
-        )}
-        {isLogout && (
-          <Wrap>
-            <ButtonClose onClick={closeModal}>Cancel</ButtonClose>
-            <ButtonLogout onClick={logoutButton}>Log out</ButtonLogout>
-          </Wrap>
-        )}
+        <ButtonsWrap>
+          <ButtonClose onClick={onClose}>Cancel</ButtonClose>
+          {isDelete && <ButtonLogout onClick={() => {}}>Delete</ButtonLogout>}
+          {isLogout && (
+            <ButtonLogout onClick={handleLogout}>Log out</ButtonLogout>
+          )}
+        </ButtonsWrap>
       </Container>
     </BaseModalWrap>
   );

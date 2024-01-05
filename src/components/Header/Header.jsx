@@ -10,17 +10,18 @@ import {
   UserLogo,
   UserName,
 } from "./Header.styled";
-import { selectIsLoggedIn, selectUser } from "../../redux/user/selectors";
+import { selectIsLoggedIn } from "../../redux/user/selectors";
 import { UserLogoModal } from "../modals/UserLogoModal/UserLogoModal";
 import { useState } from "react";
 import { ChevronDownIcon } from "../icons/ChevronDownIcon";
 import { colors } from "../../constants";
+import { useAuth } from "../../hooks/useAuth";
 
 export const Header = ({ setModalName }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const user = useSelector(selectUser);
+  const { user } = useAuth();
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
-
+  console.log(user);
   const toogleModal = () => {
     setIsPopUpOpen(!isPopUpOpen);
   };
@@ -38,8 +39,8 @@ export const Header = ({ setModalName }) => {
               setModalName={setModalName}
               isModalOpened={isPopUpOpen}
             />
-            <UserName>{user.name}</UserName>
-            <UserLogo src={user.avatarUrl} />
+            <UserName>{user.username}</UserName>
+            <UserLogo src={user.avatarURL} />
             <ChevronDownIcon width={16} height={16} stroke={colors.BLUE} />
           </HeaderWrapper>
         ) : (

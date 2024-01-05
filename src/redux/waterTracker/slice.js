@@ -21,7 +21,6 @@ const waterTrackerSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getTodayTracker.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.todayTracker = action.payload;
         state.isLoading = false;
       })

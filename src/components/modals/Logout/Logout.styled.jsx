@@ -84,14 +84,7 @@ export const ButtonClosePlus = styled.button`
   background-color: transparent;
 `;
 
-export const WrapDelete = styled.div`
-  margin-top: 24px;
-  @media (min-width: 768px) {
-    display: flex;
-    justify-content: flex-end;
-  }
-`;
-export const Wrap = styled.div`
+export const ButtonsWrap = styled.div`
   margin-top: 24px;
   @media (min-width: 768px) {
     display: flex;
