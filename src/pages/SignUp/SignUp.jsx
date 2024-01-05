@@ -34,7 +34,6 @@ const AddSchema = Yup.object().shape({
 export const SignUp = () => {
   const dispatch = useDispatch();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: { email: "", password: "", confirmPassword: "" },
