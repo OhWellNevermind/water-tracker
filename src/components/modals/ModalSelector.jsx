@@ -30,6 +30,14 @@ export const ModalSelector = ({ modalName, closeModal }) => {
           }}
         />
       );
+    case "todayList":
+      return (
+        <TodayListModal
+          onClose={() => {
+            closeModal();
+          }}
+        />
+      );
     case "delete":
       return (
         <Logout

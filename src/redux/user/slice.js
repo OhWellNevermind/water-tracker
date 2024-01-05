@@ -32,8 +32,8 @@ const usersSlice = createSlice({
         state.isLoggedIn = true;
         state.token = action.payload.token;
       })
-      .addCase(register.rejected, () => {
-        toast.error("There is no user with credentials like that.");
+      .addCase(register.rejected, (_, action) => {
+        toast.error(action.payload);
       })
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;

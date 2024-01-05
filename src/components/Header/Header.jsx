@@ -6,6 +6,8 @@ import {
   HeaderWrapper,
   LogoContainer,
   LogoText,
+  NoImageText,
+  NoImageWrapper,
   SignInButton,
   UserLogo,
   UserName,
@@ -39,7 +41,15 @@ export const Header = ({ setModalName }) => {
               isModalOpened={isPopUpOpen}
             />
             <UserName>{user.username}</UserName>
-            <UserLogo src={user.avatarURL} />
+            {user.avatarURL ? (
+              <UserLogo src={user.avatarURL} />
+            ) : (
+              <NoImageWrapper>
+                <NoImageText>
+                  {user.username ? user.username[0] : user.email[0]}
+                </NoImageText>
+              </NoImageWrapper>
+            )}
             <ChevronDownIcon width={16} height={16} stroke={colors.BLUE} />
           </HeaderWrapper>
         ) : (

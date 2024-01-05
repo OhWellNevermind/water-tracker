@@ -20,7 +20,7 @@ import { CirclePlus } from "../../../../components/icons/CirclePlus";
 //import { useState } from "react";
 //import TodayListModal from "./TodayListModal";
 
-export const WaterRatioPanel = () => {
+export const WaterRatioPanel = ({ setModalName }) => {
   //const [isModalOpen, setModalOpen] = useState(false);
 
   /*   const handleAddWater = () => {
@@ -56,7 +56,7 @@ export const WaterRatioPanel = () => {
       </TitleWaterPanel>
       <Button /* onClick={handleAddWater} */>
         <CirclePlus width={24} height={24} stroke={"#fff"} />
-        <AddWater>Add water</AddWater>
+        <AddWater onClick={() => setModalName("addWater")}>Add water</AddWater>
       </Button>
       {/*  {isModalOpen && (
         <TodayListModal onClose={handleModalClose} onSave={handleWaterInput} />

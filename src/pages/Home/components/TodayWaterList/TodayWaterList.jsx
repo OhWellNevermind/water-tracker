@@ -20,7 +20,7 @@ import { PencilSquare } from "../../../../components/icons/PencilSquare";
 import { Trash } from "../../../../components/icons/Trash";
 import { PlusSmall } from "../../../../components/icons/PlusSmall";
 
-export const TodayWaterList = () => {
+export const TodayWaterList = ({ setModalName }) => {
   return (
     <TodayWaterListContainer>
       <Today>Today</Today>
@@ -104,7 +104,7 @@ export const TodayWaterList = () => {
             </PencilAndBasket>
           </SublistAll>
         </List>
-        <Button type="submit">
+        <Button onClick={() => setModalName("addWater")} type="button">
           <PlusSmall width={16} height={16} stroke={"#407BFF"} />
           <AddWaterButton>Add water</AddWaterButton>
         </Button>

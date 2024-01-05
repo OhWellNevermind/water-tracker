@@ -8,20 +8,19 @@ import {
   DailyNormaAndWaterRatioPanel,
 } from "./Home.styled";
 
-export const Home = ({setModalName}) => {
+export const Home = ({ setModalName }) => {
   return (
     <>
       <ContainerHome>
         <DailyNormaAndWaterRatioPanel>
           <DailyNorma />
-          <WaterRatioPanel />
+          <WaterRatioPanel setModalName={setModalName} />
         </DailyNormaAndWaterRatioPanel>
         <WrapTodayAndMonth>
-          <TodayWaterList />
+          <TodayWaterList setModalName={setModalName} />
           <MonthStatsTable />
         </WrapTodayAndMonth>
       </ContainerHome>
     </>
   );
 };
-
