@@ -19,90 +19,53 @@ import { Glass } from "../../../../components/icons/Glass";
 import { PencilSquare } from "../../../../components/icons/PencilSquare";
 import { Trash } from "../../../../components/icons/Trash";
 import { PlusSmall } from "../../../../components/icons/PlusSmall";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTodayTracker } from "../../../../redux/waterTracker/operations";
+import { selectWaterToday } from "../../../../redux/waterTracker/selectors";
 
 export const TodayWaterList = ({ setModalName }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTodayTracker());
+  }, [dispatch]);
+
+  const { waterTracks } = useSelector(selectWaterToday);
+
   return (
     <TodayWaterListContainer>
       <Today>Today</Today>
       <TodayWrap>
         <List>
-          <SublistAll>
-            <Sublist>
-              <GlassSpan>
-                <Glass width={26} height={26} stroke={"#407BFF"} />
-              </GlassSpan>
-              <MLSpan>
-                <NumberMl>{200} ml</NumberMl>
-              </MLSpan>
-              <Time>{"14-00"}</Time>
-            </Sublist>
-            <PencilAndBasket>
-              <Pencil>
-                <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />
-              </Pencil>
-              <Basket>
-                <Trash width={16} height={16} stroke={"#EF5050"} />
-              </Basket>
-            </PencilAndBasket>
-          </SublistAll>
-
-          <SublistAll>
-            <Sublist>
-              <GlassSpan>
-                <Glass width={26} height={26} stroke={"#407BFF"} />
-              </GlassSpan>
-              <MLSpan>
-                <NumberMl>{200} ml</NumberMl>
-              </MLSpan>
-              <Time>{"14-00"}</Time>
-            </Sublist>
-            <PencilAndBasket>
-              <Pencil>
-                <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />
-              </Pencil>
-              <Basket>
-                <Trash width={16} height={16} stroke={"#EF5050"} />
-              </Basket>
-            </PencilAndBasket>
-          </SublistAll>
-          <SublistAll>
-            <Sublist>
-              <GlassSpan>
-                <Glass width={26} height={26} stroke={"#407BFF"} />
-              </GlassSpan>
-              <MLSpan>
-                <NumberMl>{200} ml</NumberMl>
-              </MLSpan>
-              <Time>{"14-00"}</Time>
-            </Sublist>
-            <PencilAndBasket>
-              <Pencil>
-                <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />
-              </Pencil>
-              <Basket>
-                <Trash width={16} height={16} stroke={"#EF5050"} />
-              </Basket>
-            </PencilAndBasket>
-          </SublistAll>
-          <SublistAll>
-            <Sublist>
-              <GlassSpan>
-                <Glass width={26} height={26} stroke={"#407BFF"} />
-              </GlassSpan>
-              <MLSpan>
-                <NumberMl>{200} ml</NumberMl>
-              </MLSpan>
-              <Time>{"14-00"}</Time>
-            </Sublist>
-            <PencilAndBasket>
-              <Pencil>
-                <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />
-              </Pencil>
-              <Basket>
-                <Trash width={16} height={16} stroke={"#EF5050"} />
-              </Basket>
-            </PencilAndBasket>
-          </SublistAll>
+          {waterTracks?.map((item) => {
+            return (
+              <SublistAll key={item.id}>
+                <Sublist>
+                  <GlassSpan>
+                    <Glass width={26} height={26} stroke={"#407BFF"} />
+                  </GlassSpan>
+                  <MLSpan>
+                    <NumberMl>{item.amountWater} ml</NumberMl>
+                  </MLSpan>
+                  <Time>
+                    {item.date.split("T")[1].split(":").slice(0, 2).join(":")}
+                  </Time>
+                </Sublist>
+                <PencilAndBasket>
+                  <Pencil
+                    onClick={() => setModalName("todayList")}
+                    type="button"
+                  >
+                    <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />
+                  </Pencil>
+                  <Basket onClick={() => setModalName("delete")} type="button">
+                    <Trash width={16} height={16} stroke={"#EF5050"} />
+                  </Basket>
+                </PencilAndBasket>
+              </SublistAll>
+            );
+          })}
         </List>
         <Button onClick={() => setModalName("addWater")} type="button">
           <PlusSmall width={16} height={16} stroke={"#407BFF"} />
