@@ -22,14 +22,13 @@ import { CloseIcon } from "../../icons/CloseIcon";
 import { CounterEditWater } from "../CounterEditWater/CounterEditModal";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { todayEditWater } from "../../../redux/waterTracker/operations";
 
-export const TodayListModal = ({
-  valueWater = 250,
-  valueTime = "7:00",
-  onClose,
-}) => {
-  const [count, setCount] = useState(0);
-  const [editingValue, setEditingValue] = useState("");
+export const TodayListModal = ({ onClose, todayPortionData }) => {
+  const dispatch = useDispatch();
+  const [count, setCount] = useState(todayPortionData.valueWater);
+  const [editingValue, setEditingValue] = useState(todayPortionData.valueWater);
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleCountChange = (newCount) => {
@@ -43,6 +42,11 @@ export const TodayListModal = ({
   };
 
   const handleInputBlur = () => {
+    if (editingValue > 5000) {
+      const notify = () => toast("The maximum value for water is 5000 ml");
+      notify();
+      return;
+    }
     const newValue = parseInt(editingValue, 10) || 0;
     setCount(newValue);
   };
@@ -60,11 +64,11 @@ export const TodayListModal = ({
     }
 
     const data = {
-      time: selectedOption.label,
-      portion: count,
+      amountWater: count,
+      date: 1704441797203,
     };
-    console.log(data);
-    return data;
+
+    dispatch(todayEditWater(data));
   };
   const handleSelectedOption = (selectedOption) => {
     setSelectedOption(selectedOption);
@@ -79,8 +83,8 @@ export const TodayListModal = ({
         <Title>Edit the entered amount of water</Title>
         <BackgroundPortion>
           <Glass width={36} height={36} stroke={colors.BLUE} />
-          <ValueWater>{valueWater} ml</ValueWater>
-          <ValueTime>{valueTime}</ValueTime>
+          <ValueWater>{todayPortionData.valueWater} ml</ValueWater>
+          <ValueTime>{todayPortionData.valueTime}</ValueTime>
         </BackgroundPortion>
         <TitleCorrectEnteredData>Correct entered data:</TitleCorrectEnteredData>
         <AmountWater>Amount of water:</AmountWater>

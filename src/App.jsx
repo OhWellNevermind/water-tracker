@@ -17,6 +17,7 @@ export const App = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [modalName, setModalName] = useState("");
+  const [todayPortionData, setTodayPortionData] = useState(null);
   console.log(modalName);
   useEffect(() => {
     dispatch(refreshUser());
@@ -27,7 +28,15 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout setModalName={setModalName} />}>
           {isLoggedIn ? (
-            <Route path="/" element={<Home setModalName={setModalName} />} />
+            <Route
+              path="/"
+              element={
+                <Home
+                  setModalName={setModalName}
+                  setTodayPortionData={setTodayPortionData}
+                />
+              }
+            />
           ) : (
             <Route path="/" element={<WelcomePage />} />
           )}
@@ -48,6 +57,7 @@ export const App = () => {
         closeModal={() => {
           setModalName("");
         }}
+        todayPortionData={todayPortionData}
       />
     </>
   );

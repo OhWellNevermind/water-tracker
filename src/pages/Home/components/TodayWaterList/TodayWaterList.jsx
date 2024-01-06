@@ -20,7 +20,7 @@ import { PencilSquare } from "../../../../components/icons/PencilSquare";
 import { Trash } from "../../../../components/icons/Trash";
 import { PlusSmall } from "../../../../components/icons/PlusSmall";
 
-export const TodayWaterList = ({ setModalName }) => {
+export const TodayWaterList = ({ setModalName, setTodayPortionData }) => {
   return (
     <TodayWaterListContainer>
       <Today>Today</Today>
@@ -37,7 +37,16 @@ export const TodayWaterList = ({ setModalName }) => {
               <Time>{"14-00"}</Time>
             </Sublist>
             <PencilAndBasket>
-              <Pencil>
+              <Pencil
+                onClick={() => {
+                  setModalName("todayList");
+                  setTodayPortionData({
+                    valueWater: 200,
+                    valueTime: "14:00",
+                    id: "65995398f54c8874c12232fc",
+                  });
+                }}
+              >
                 <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />
               </Pencil>
               <Basket>
@@ -57,7 +66,7 @@ export const TodayWaterList = ({ setModalName }) => {
               <Time>{"14-00"}</Time>
             </Sublist>
             <PencilAndBasket>
-              <Pencil>
+              <Pencil onClick={() => setModalName("todayList")}>
                 <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />
               </Pencil>
               <Basket>

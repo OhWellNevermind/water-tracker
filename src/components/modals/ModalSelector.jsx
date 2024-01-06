@@ -3,7 +3,7 @@ import Logout from "./Logout/Logout";
 import { TodayListModal } from "./TodayListModal/TodayListModal";
 import { UserModal } from "./UserModal/UserModal";
 
-export const ModalSelector = ({ modalName, closeModal }) => {
+export const ModalSelector = ({ modalName, closeModal, todayPortionData }) => {
   switch (modalName) {
     case "settings":
       return (
@@ -36,6 +36,7 @@ export const ModalSelector = ({ modalName, closeModal }) => {
           onClose={() => {
             closeModal();
           }}
+          todayPortionData={todayPortionData}
         />
       );
     case "delete":
