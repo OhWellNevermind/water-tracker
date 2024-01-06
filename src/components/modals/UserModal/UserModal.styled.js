@@ -281,3 +281,20 @@ export const InputWithIcon = styled.input`
     color: ${colors.PROVINCIAL_PINK};
   }
 `;
+
+export const NoImageWrapper = styled.div`
+  width: 80px;
+  height: 80px;
+  margin-left: 8px;
+  margin-right: 4px;
+  border-radius: 50%;
+  background-color: #d7e3ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const NoImageText = styled.p`
+  font-size: 32px;
+  font-weight: 500;
+`;

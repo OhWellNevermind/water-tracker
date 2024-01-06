@@ -10,8 +10,6 @@ import {
   MonthTitle,
   MonthTopLine,
 } from "./MonthStatsTable.styled";
-import { useDispatch } from "react-redux";
-import { getMonthTracker, getTodayTracker } from "../../../../redux/waterTracker/operations";
 
 export const MonthStatsTable = () => {
   const date = new Date();
@@ -29,16 +27,25 @@ export const MonthStatsTable = () => {
     "November",
     "December",
   ];
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth();
+  const currentYear = currentDate.getFullYear();
   const [month, setMonth] = useState(date.getMonth());
   const [year, setYear] = useState(date.getFullYear());
-  const dispatch = useDispatch();
-  useEffect(() => {}, [month]);
+  const [nextDisable, setNextDisable] = useState(true);
+
+  const [monthCount, setMonthCount] = useState(
+    new Date(year, month + 1, 0).getDate()
+  );
 
   useEffect(() => {
-    dispatch(getMonthTracker())
-    dispatch(getTodayTracker())
-
-  }, []);
+    setMonthCount(new Date(year, month + 1, 0).getDate());
+    if (year === currentYear && month === currentMonth) {
+      setNextDisable(true);
+      return;
+    }
+    setNextDisable(false);
+  }, [month, year]);
 
   const changeMonth = (val) => {
     if (val > 11) {
@@ -60,12 +67,21 @@ export const MonthStatsTable = () => {
             <ChevronDownIcon width={14} height={14} stroke={colors.BLUE} />
           </MonthDateBtn>
           <MonthDateText>{`${monthList[month]}, ${year}`}</MonthDateText>
-          <MonthDateBtn onClick={() => changeMonth(month + 1)} rotate={"270"}>
+          <MonthDateBtn
+            onClick={() => changeMonth(month + 1)}
+            rotate={"270"}
+            disabled={nextDisable}
+          >
             <ChevronDownIcon width={14} height={14} stroke={colors.BLUE} />
           </MonthDateBtn>
         </MonthDate>
       </MonthTopLine>
-      <MonthStatsTableList />
+      <MonthStatsTableList
+        year={year}
+        monthNumber={month + 1}
+        monthName={monthList[month]}
+        monthCount={monthCount}
+      />
     </MonthContainer>
   );
 };

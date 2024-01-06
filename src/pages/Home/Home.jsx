@@ -2,13 +2,22 @@ import { DailyNorma } from "./components/DailyNorma/DailyNorma";
 import { MonthStatsTable } from "./components/MonthStatsTable/MonthStatsTable";
 import { TodayWaterList } from "./components/TodayWaterList/TodayWaterList";
 import { WaterRatioPanel } from "./components/WaterRatioPanel/WaterRatioPanel";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { refreshUser } from "../../redux/user/operations";
 import {
   ContainerHome,
   WrapTodayAndMonth,
   DailyNormaAndWaterRatioPanel,
 } from "./Home.styled";
 
-export const Home = ({ setModalName, setTodayPortionData }) => {
+export const Home = ({ setModalName }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  // const [open, setOpen] = useState(true);
   return (
     <>
       <ContainerHome>
@@ -17,10 +26,7 @@ export const Home = ({ setModalName, setTodayPortionData }) => {
           <WaterRatioPanel setModalName={setModalName} />
         </DailyNormaAndWaterRatioPanel>
         <WrapTodayAndMonth>
-          <TodayWaterList
-            setModalName={setModalName}
-            setTodayPortionData={setTodayPortionData}
-          />
+          <TodayWaterList setModalName={setModalName} />
           <MonthStatsTable />
         </WrapTodayAndMonth>
       </ContainerHome>

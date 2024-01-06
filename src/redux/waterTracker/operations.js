@@ -6,7 +6,7 @@ export const getTodayTracker = createAsyncThunk(
   "water/today",
   async (_, thunkAPI) => {
     try {
-      const res = await axios.get(`/water-track/today?date=2023-12-23`);
+      const res = await axios.get(`/water-track/today?date=2024-01-05`);
 
       return res.data;
     } catch (error) {
@@ -17,9 +17,9 @@ export const getTodayTracker = createAsyncThunk(
 
 export const getMonthTracker = createAsyncThunk(
   "water/month",
-  async (_, thunkAPI) => {
+  async (date, thunkAPI) => {
     try {
-      const res = await axios.get(`/water-track/month?date=2023-12`);
+      const res = await axios.get(`/water-track/month?date=${date}`);
 
       return res.data;
     } catch (error) {
