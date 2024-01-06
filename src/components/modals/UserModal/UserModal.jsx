@@ -16,6 +16,8 @@ import {
   ErrorMessage,
   TitleContainer,
   CloseIconContainer,
+  NoImageWrapper,
+  NoImageText,
 } from "./UserModal.styled";
 import { UploadIcon } from "../../icons/UploadIcon";
 import { CloseIcon } from "../../icons/CloseIcon";
@@ -134,10 +136,15 @@ export const UserModal = ({ onClose }) => {
         <Container>
           <Subtitle type="main">Your photo</Subtitle>
           <ImageContainer>
-            {preview ||
-              (user.avatarURL && (
-                <Image src={user.avatarURL || preview} alt="Your avatar" />
-              ))}
+            {user.avatarURL ? (
+              <Image src={user.avatarURL || preview} alt="Your avatar" />
+            ) : (
+              <NoImageWrapper>
+                <NoImageText>
+                  {user.username ? user.username[0] : user.email[0]}
+                </NoImageText>
+              </NoImageWrapper>
+            )}
             <UploadImageLabel>
               <HiddentInput onChange={onSelectFile} type="file" />
               <CustomUploadContainer>
