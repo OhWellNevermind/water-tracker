@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getTodayTracker, getMonthTracker } from "./operations";
 
-const date =new Date();
+const date = new Date();
 const day = date.getDay();
 const month = date.getMonth() + 1;
 const year = date.getFullYear();
@@ -10,6 +10,12 @@ const waterTrackerInitState = {
   today: {
     date: `${year}-${month}-${day}`,
     todayTracker: [],
+  },
+  todayWaterData: {
+    _id: "",
+    amountWater: 0,
+    date: "",
+    owner: "",
   },
   month: {
     // date: `${year}-${month}`,

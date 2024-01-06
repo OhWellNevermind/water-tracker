@@ -10,7 +10,7 @@ import {
 
 //import { DailyNormaModal } from "./DailyNormaModal";
 
-export const DailyNorma = () => {
+export const DailyNorma = ({ setModalName }) => {
   //const [dailyNorm, setDailyNorm] = useState(1.5);
   //const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -24,7 +24,13 @@ export const DailyNorma = () => {
         <Title>My daily norma</Title>
         <MyDailyNormaAndButton>
           <MyDailyNorma>{1.5} L</MyDailyNorma>
-          <EditButton /* onClick={handleEditClick} */>Edit</EditButton>
+          <EditButton
+            onClick={() => {
+              setModalName("dailyNorma");
+            }}
+          >
+            Edit
+          </EditButton>
         </MyDailyNormaAndButton>
       </MyDailyNormaWrapper>
       {/*   {isModalOpen && <DailyNormaModal onClose={() => setIsModalOpen(false)} />} */}

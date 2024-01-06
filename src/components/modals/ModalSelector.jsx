@@ -1,4 +1,5 @@
 import AddWater from "./AddWater/AddWater";
+import DailyNorma from "./DailyNorma/DailyNorma";
 import Logout from "./Logout/Logout";
 import { TodayListModal } from "./TodayListModal/TodayListModal";
 import { UserModal } from "./UserModal/UserModal";
@@ -42,6 +43,14 @@ export const ModalSelector = ({ modalName, closeModal }) => {
       return (
         <Logout
           isDelete={true}
+          onClose={() => {
+            closeModal();
+          }}
+        />
+      );
+    case "dailyNorma":
+      return (
+        <DailyNorma
           onClose={() => {
             closeModal();
           }}
