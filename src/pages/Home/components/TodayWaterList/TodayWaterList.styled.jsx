@@ -135,14 +135,22 @@ export const PencilAndBasket = styled.div`
   display: flex;
 `;
 
-export const Pencil = styled.span`
+export const Pencil = styled.button`
   display: flex;
   align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 `;
-export const Basket = styled.span`
+export const Basket = styled.button`
   display: flex;
   margin-left: 18px;
   align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 `;
 
 export const Button = styled.button`

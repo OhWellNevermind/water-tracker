@@ -53,10 +53,13 @@ export const TodayWaterList = ({ setModalName }) => {
                   </Time>
                 </Sublist>
                 <PencilAndBasket>
-                  <Pencil>
+                  <Pencil
+                    onClick={() => setModalName("todayList")}
+                    type="button"
+                  >
                     <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />
                   </Pencil>
-                  <Basket>
+                  <Basket onClick={() => setModalName("delete")} type="button">
                     <Trash width={16} height={16} stroke={"#EF5050"} />
                   </Basket>
                 </PencilAndBasket>
