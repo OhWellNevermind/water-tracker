@@ -17,6 +17,7 @@ export const App = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [modalName, setModalName] = useState("");
+  console.log(modalName);
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);

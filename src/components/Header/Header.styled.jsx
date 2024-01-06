@@ -48,6 +48,27 @@ export const HeaderUserIcon = styled.div`
   height: 28px;
 `;
 
-export const UserLogo = styled.img``;
+export const UserLogo = styled.img`
+  width: 28px;
+  height: 28px;
+  margin-left: 8px;
+  margin-right: 4px;
+  border-radius: 50%;
+  object-fit: contain;
+`;
 
 export const UserName = styled.p``;
+
+export const NoImageWrapper = styled.div`
+  width: 28px;
+  height: 28px;
+  margin-left: 8px;
+  margin-right: 4px;
+  border-radius: 50%;
+  background-color: #d7e3ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const NoImageText = styled.p``;

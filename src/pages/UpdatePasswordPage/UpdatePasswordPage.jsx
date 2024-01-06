@@ -1,11 +1,10 @@
 import { HiddenIcon } from "../../components/icons/HiddenIcon";
 import { VisibleIcon } from "../../components/icons/VisibleIcon";
 import {
-  SignUpForm,
+  UpdatePasswordForm,
   Label,
   Input,
-  SignUpButton,
-  Link,
+  SubmitButton,
   Title,
   StyledBackground,
   IconButton,
@@ -13,16 +12,14 @@ import {
   AuthMain,
   Bottle,
   ErrorMessageStyled,
-} from "./SignUp.styled";
+} from "./UpdatePasswordPage.styled";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useState } from "react";
-
-import { useDispatch } from "react-redux";
-import { register } from "../../redux/user/operations";
+// import { useDispatch } from "react-redux";
+// import { register } from "../../redux/user/operations";
 
 const AddSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string()
     .min(8, "Password must contain minimum 8 symbols")
     .max(64, "Password must contain maximum 64 symbols"),
@@ -31,17 +28,15 @@ const AddSchema = Yup.object().shape({
     .required("Confirm Password is required"),
 });
 
-export const SignUp = () => {
-  const dispatch = useDispatch();
+export const UpdatePasswordPage = () => {
+  //   const dispatch = useDispatch();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
   const formik = useFormik({
-    initialValues: { email: "", password: "", confirmPassword: "" },
+    initialValues: { password: "", confirmPassword: "" },
     validationSchema: AddSchema,
-
-    onSubmit: (user) => {
-      const { email, password } = user;
-      dispatch(register({ email, password }));
+    onSubmit: () => {
+      //   const { email, password } = user;
+      //   dispatch(register({ email, password }));
     },
   });
 
@@ -49,24 +44,8 @@ export const SignUp = () => {
     <AuthMain>
       <StyledBackground />
       <Bottle />
-      <SignUpForm onSubmit={formik.handleSubmit}>
-        <Title>Sign Up</Title>
-        <Label>Enter your email</Label>
-        <Input
-          type="email"
-          placeholder="E-mail"
-          name="email"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.email}
-          className={
-            formik.touched.email && formik.errors.email ? "input-error" : ""
-          }
-          required
-        />
-        {formik.touched.email && (
-          <ErrorMessageStyled>{formik.errors.email}</ErrorMessageStyled>
-        )}
+      <UpdatePasswordForm onSubmit={formik.handleSubmit}>
+        <Title>Update your password</Title>
 
         <Label>Enter your password</Label>
         <InputContainer>
@@ -148,9 +127,9 @@ export const SignUp = () => {
           )}
         </InputContainer>
 
-        <SignUpButton type="submit">Sign Up</SignUpButton>
-        <Link to="/signin">Sign In</Link>
-      </SignUpForm>
+        <SubmitButton type="submit">Update</SubmitButton>
+        {/* <Link to="/signin">Sign In</Link> */}
+      </UpdatePasswordForm>
     </AuthMain>
   );
 };

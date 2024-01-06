@@ -19,7 +19,7 @@ export const register = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -61,6 +61,32 @@ export const refreshUser = createAsyncThunk(
       setAuthHeader(token);
       const res = await axios.get("/users/getInfo");
       return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateAvatar = createAsyncThunk(
+  "/users/updateAvatar",
+  async (avatar, thunkAPI) => {
+    try {
+      const { data } = await axios.patch("/users/updateAvatar", avatar);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  "/users/updateUser",
+  async (userData, thunkAPI) => {
+    try {
+      const { data } = await axios.patch("/users/changeInfo", userData);
+
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

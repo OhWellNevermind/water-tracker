@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login, logout, refreshUser } from "./operations";
+import {
+  register,
+  login,
+  logout,
+  refreshUser,
+  updateAvatar,
+  updateUser,
+} from "./operations";
 import toast from "react-hot-toast";
 
 const usersInitState = {
@@ -8,7 +15,7 @@ const usersInitState = {
     email: "",
     gender: "",
     dailyNorma: "",
-    avatarUrl: "",
+    avatarURL: "",
   },
   token: "",
   isRefreshing: false,
@@ -21,35 +28,25 @@ const usersSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(register.fulfilled, (state, action) => {
-        state.user = {
-          email: action.payload.user.email,
-          gender: action.payload.user.gender,
-          dailyNorma: action.payload.user.dailyNorma,
-          avatarUrl: action.payload.user.avatarUrl,
-        };
+        state.user = action.payload.user;
         state.isLoggedIn = true;
         state.token = action.payload.token;
       })
-      .addCase(register.rejected, () => {
-        toast.error("There is no user with credentials like that.");
+      .addCase(register.rejected, (_, action) => {
+        toast.error(action.payload);
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.user = {
-          email: action.payload.user.email,
-          gender: action.payload.user.gender,
-          dailyNorma: action.payload.user.dailyNorma,
-          avatarUrl: action.payload.user.avatarUrl,
-        };
+        state.user = action.payload.user;
         state.isLoggedIn = true;
         state.token = action.payload.token;
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = {
-          name: "",
+          username: "",
           email: "",
           gender: "",
           dailyNorma: "",
-          avatarUrl: "",
+          avatarURL: "",
         };
         state.token = null;
         state.isLoggedIn = false;
@@ -65,6 +62,13 @@ const usersSlice = createSlice({
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
         state.isLoggedIn = false;
+      })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.user.avatarURL = action.payload;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.user = { ...state.user, ...action.payload };
       }),
 });
 
