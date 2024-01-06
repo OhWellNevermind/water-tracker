@@ -63,7 +63,6 @@ export const TodayListModal = ({
       time: selectedOption.label,
       portion: count,
     };
-    console.log(data);
     return data;
   };
   const handleSelectedOption = (selectedOption) => {

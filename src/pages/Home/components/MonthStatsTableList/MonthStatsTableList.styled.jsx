@@ -38,7 +38,8 @@ export const MonthDate = styled.div`
   line-height: 1.28;
   background-color: ${colors.WHITE};
   border: 1px solid
-    ${({iscompleted}) => (iscompleted ? colors.ORANGE : "transparent")};
+    ${({ iscompleted }) =>
+      iscompleted === "true" ? colors.ORANGE : "transparent"};
   border-radius: 50%;
   @media screen and (min-width: 768px) {
     width: 32px;

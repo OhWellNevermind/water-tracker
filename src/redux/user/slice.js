@@ -67,7 +67,6 @@ const usersSlice = createSlice({
         state.user.avatarURL = action.payload;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.user = { ...state.user, ...action.payload };
       }),
 });
