@@ -31,7 +31,7 @@ export const TodayWaterList = ({ setModalName }) => {
     dispatch(getTodayTracker());
   }, [dispatch]);
 
-  const { waterTracks } = useSelector(selectWaterTodayTracker);
+  const waterTracks = useSelector(selectWaterTodayTracker);
 
   if (!waterTracks) {
     return null;
