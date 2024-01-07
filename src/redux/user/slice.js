@@ -16,10 +16,15 @@ const usersInitState = {
     gender: "",
     dailyNorma: "",
     avatarURL: "",
+    createdAt: "",
   },
   token: "",
   isRefreshing: false,
   isLoggedIn: false,
+};
+
+const printError = (_, action) => {
+  toast.error(action.payload);
 };
 
 const usersSlice = createSlice({
@@ -32,9 +37,7 @@ const usersSlice = createSlice({
         state.isLoggedIn = true;
         state.token = action.payload.token;
       })
-      .addCase(register.rejected, (_, action) => {
-        toast.error(action.payload);
-      })
+      .addCase(register.rejected, printError)
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.isLoggedIn = true;
@@ -51,9 +54,11 @@ const usersSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
       })
+      .addCase(login.rejected, printError)
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
       })
+      .addCase(logout.rejected, printError)
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
@@ -68,7 +73,9 @@ const usersSlice = createSlice({
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.user = { ...state.user, ...action.payload };
-      }),
+      })
+      .addCase(updateUser.rejected, printError)
+      .addCase(updateAvatar.rejected, printError),
 });
 
 export const usersReducer = usersSlice.reducer;
