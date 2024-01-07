@@ -153,7 +153,7 @@ export const SignUpButton = styled.button`
 `;
 
 export const Link = styled(ReactLink)`
-  width: 50px;
+  display: block;
   text-decoration: none;
   color: ${colors.BLUE};
   &:hover {
