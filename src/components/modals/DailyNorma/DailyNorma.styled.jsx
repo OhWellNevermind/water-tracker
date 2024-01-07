@@ -4,6 +4,8 @@ import { ErrorMessage, Field, Form } from "formik";
 
 export const Window = styled.div`
   width: 280px;
+  max-height: 600px;
+  overflow-y: scroll;
   border-radius: 10px;
   padding: 24px 12px;
   display: flex;
@@ -15,6 +17,7 @@ export const Window = styled.div`
     padding: 32px 24px;
   }
   @media (min-width: 1440px) {
+    max-height: 648px;
     width: 592px;
   }
 `;

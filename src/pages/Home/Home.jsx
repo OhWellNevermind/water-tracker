@@ -22,7 +22,7 @@ export const Home = ({ setModalName }) => {
     <>
       <ContainerHome>
         <DailyNormaAndWaterRatioPanel>
-          <DailyNorma />
+          <DailyNorma setModalName={setModalName} />
           <WaterRatioPanel setModalName={setModalName} />
         </DailyNormaAndWaterRatioPanel>
         <WrapTodayAndMonth>

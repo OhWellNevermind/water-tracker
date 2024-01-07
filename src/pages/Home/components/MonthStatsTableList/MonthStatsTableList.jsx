@@ -63,7 +63,9 @@ export const MonthStatsTableList = ({
           percentageWaterConsumed > 100 ? 100 : percentageWaterConsumed;
         return (
           <MonthItem key={item.date}>
-            <MonthDate iscompleted={precent < 100}>{day}</MonthDate>
+            <MonthDate iscompleted={(precent < 100).toString()}>
+              {day}
+            </MonthDate>
             <MonthPercent>{`${precent}%`}</MonthPercent>
           </MonthItem>
         );

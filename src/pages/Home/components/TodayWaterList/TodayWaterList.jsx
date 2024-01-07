@@ -22,7 +22,7 @@ import { PlusSmall } from "../../../../components/icons/PlusSmall";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodayTracker } from "../../../../redux/waterTracker/operations";
-import { selectWaterToday } from "../../../../redux/waterTracker/selectors";
+import { selectWaterTodayTracker } from "../../../../redux/waterTracker/selectors";
 
 export const TodayWaterList = ({ setModalName }) => {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ export const TodayWaterList = ({ setModalName }) => {
     dispatch(getTodayTracker());
   }, [dispatch]);
 
-  const { waterTracks } = useSelector(selectWaterToday);
+  const { waterTracks } = useSelector(selectWaterTodayTracker);
 
   return (
     <TodayWaterListContainer>
