@@ -12,6 +12,8 @@ import { selectIsLoggedIn } from "./redux/user/selectors";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import { ModalSelector } from "./components/modals/ModalSelector";
 import { Toaster } from "react-hot-toast";
+import { UpdatePasswordPage } from "./pages/UpdatePasswordPage/UpdatePasswordPage";
+import { ForgotPasswordForm } from "./pages/ForgotPasswordPage/ForgotPasswordForm";
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -37,6 +39,24 @@ export const App = () => {
           <Route
             path="signin"
             element={<RestrictedRoute redirectTo="/" component={<SignIn />} />}
+          />
+          <Route
+            path="forgot-password"
+            element={
+              <RestrictedRoute
+                redirectTo="/"
+                component={<ForgotPasswordForm />}
+              />
+            }
+          />
+          <Route
+            path="update-password/:varificationCode"
+            element={
+              <RestrictedRoute
+                redirectTo="/"
+                component={<UpdatePasswordPage />}
+              />
+            }
           />
         </Route>
       </Routes>
