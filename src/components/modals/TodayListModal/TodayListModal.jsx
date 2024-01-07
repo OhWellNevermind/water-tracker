@@ -22,13 +22,18 @@ import { CloseIcon } from "../../icons/CloseIcon";
 import { CounterEditWater } from "../CounterEditWater/CounterEditModal";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { todayEditWater } from "../../../redux/waterTracker/operations";
+import { selectTodayWaterData } from "../../../redux/waterTracker/selectors";
+import { setTodayWaterData } from "../../../redux/waterTracker/slice";
 
-export const TodayListModal = ({ onClose, todayPortionData }) => {
+export const TodayListModal = ({ onClose }) => {
   const dispatch = useDispatch();
-  const [count, setCount] = useState(todayPortionData.valueWater);
-  const [editingValue, setEditingValue] = useState(todayPortionData.valueWater);
+  const waterSessionData = useSelector(selectTodayWaterData);
+  const [count, setCount] = useState(waterSessionData.amountWater);
+  const [editingValue, setEditingValue] = useState(
+    waterSessionData.amountWater
+  );
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleCountChange = (newCount) => {
@@ -62,10 +67,24 @@ export const TodayListModal = ({ onClose, todayPortionData }) => {
       notify();
       return;
     }
+    if (count === waterSessionData.amountWater) {
+      const notify = () => toast("Please change the portion value");
+      notify();
+      return;
+    }
+
+    const currentDate = new Date(waterSessionData.date);
+    const selectedTime = selectedOption.value;
+    const [hours, minutes] = selectedTime.split(":").map(Number);
+
+    const timeMiliseconds = currentDate.setHours(hours, minutes, 0, 0);
+    currentDate.setHours(currentDate.getHours() + 2);
+    //const time = currentDate.toISOString().slice(0, 19);
 
     const data = {
+      _id: waterSessionData._id,
       amountWater: count,
-      date: 1704441797203,
+      date: timeMiliseconds,
     };
 
     dispatch(todayEditWater(data));
@@ -77,20 +96,41 @@ export const TodayListModal = ({ onClose, todayPortionData }) => {
   return (
     <BaseModalWrap onClose={() => onClose()}>
       <Modal>
-        <CloseButton onClick={() => onClose()}>
+        <CloseButton
+          onClick={() => {
+            onClose();
+            dispatch(
+              setTodayWaterData({
+                _id: "",
+                amountWater: 0,
+                date: "",
+                owner: "",
+              })
+            );
+          }}
+        >
           <CloseIcon width={24} height={24} stroke={colors.BLUE} />
         </CloseButton>
         <Title>Edit the entered amount of water</Title>
         <BackgroundPortion>
           <Glass width={36} height={36} stroke={colors.BLUE} />
-          <ValueWater>{todayPortionData.valueWater} ml</ValueWater>
-          <ValueTime>{todayPortionData.valueTime}</ValueTime>
+          <ValueWater>{waterSessionData.amountWater} ml</ValueWater>
+          <ValueTime>
+            {waterSessionData.date
+              .split("T")[1]
+              .split(":")
+              .slice(0, 2)
+              .join(":")}
+          </ValueTime>
         </BackgroundPortion>
         <TitleCorrectEnteredData>Correct entered data:</TitleCorrectEnteredData>
         <AmountWater>Amount of water:</AmountWater>
         <CounterEditWater newCount={count} onCountChange={handleCountChange} />
         <TitleRecordingTime>Recording time:</TitleRecordingTime>
-        <TimeSelector onSelectedOption={handleSelectedOption} />
+        <TimeSelector
+          onSelectedOption={handleSelectedOption}
+          onSessionTime={waterSessionData.date}
+        />
         <EnterValueWater>Enter the value of the water used:</EnterValueWater>
         <Input
           name="value"

@@ -47,7 +47,6 @@ export const App = () => {
         closeModal={() => {
           setModalName("");
         }}
-        todayPortionData={todayPortionData}
       />
     </>
   );
