@@ -33,12 +33,25 @@ export const TodayWaterList = ({ setModalName }) => {
 
   const { waterTracks } = useSelector(selectWaterTodayTracker);
 
+  if (!waterTracks) {
+    return null;
+  }
+
+  const compareDates = (a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+
+    return dateA - dateB;
+  };
+
+  const sortedWaterTracks = [...waterTracks].sort(compareDates).reverse();
+
   return (
     <TodayWaterListContainer>
       <Today>Today</Today>
       <TodayWrap>
         <List>
-          {waterTracks?.map((item) => {
+          {sortedWaterTracks?.map((item) => {
             return (
               <SublistAll key={item.id}>
                 <Sublist>
