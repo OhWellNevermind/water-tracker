@@ -43,8 +43,8 @@ const WaterConsumption = () => {
           Personal rate setting
         </BenefitList>
       </StyledList>
-      <Button type="button">
-        <BtnText onClick={handleClick}>Try tracker</BtnText>
+      <Button onClick={handleClick} type="button">
+        <BtnText>Try tracker</BtnText>
       </Button>
     </ContainerConsumption>
   );

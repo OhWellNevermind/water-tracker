@@ -136,7 +136,7 @@ export const UserModal = ({ onClose }) => {
           <Subtitle type="main">Your photo</Subtitle>
           <ImageContainer>
             {user.avatarURL ? (
-              <Image src={user.avatarURL || preview} alt="Your avatar" />
+              <Image src={preview || user.avatarURL} alt="Your avatar" />
             ) : (
               <NoImageWrapper>
                 <NoImageText>

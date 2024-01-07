@@ -154,6 +154,7 @@ export const Basket = styled.button`
 `;
 
 export const Button = styled.button`
+  cursor: pointer;
   height: 20px;
   display: flex;
   align-items: center;
@@ -175,6 +176,7 @@ export const Button = styled.button`
   }
 `;
 export const AddWaterButton = styled.span`
+  cursor: pointer;
   color: #407bff;
   font-family: Roboto;
   font-size: 16px;

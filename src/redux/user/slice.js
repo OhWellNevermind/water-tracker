@@ -69,10 +69,12 @@ const usersSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(updateAvatar.fulfilled, (state, action) => {
-        state.user.avatarURL = action.payload;
+        state.user.avatarURL = action.payload.avatarURL;
+        toast.success("Avatar successfully changed!");
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.user = { ...state.user, ...action.payload };
+        toast.success("Your info successfully changed!");
       })
       .addCase(updateUser.rejected, printError)
       .addCase(updateAvatar.rejected, printError),

@@ -43,6 +43,7 @@ export const MyDailyNorma = styled.div`
 `;
 
 export const EditButton = styled.button`
+  cursor: pointer;
   color: #8baeff;
   font-size: 16px;
   line-height: 20px;

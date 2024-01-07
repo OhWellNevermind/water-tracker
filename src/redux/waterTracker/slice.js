@@ -85,7 +85,7 @@ const waterTrackerSlice = createSlice({
           }
           return item;
         });
-        toast.success("successfully saved");
+        toast.success("Successfully saved");
       })
       .addCase(todayEditWater.rejected, (_, action) => {
         toast.error(action.payload);
