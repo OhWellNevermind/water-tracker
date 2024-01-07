@@ -21,9 +21,12 @@ import {
 import { MinusIcon } from "../../icons/MinusIcon";
 import { PlusIcon } from "../../icons/PlusIcon";
 import { useState } from "react";
-import CustomSelect from "./CustomSelect";
 import * as Yup from "yup";
 import BaseModalWrap from "../ModalWrap/ModalWrap";
+import { StyledSelect } from "../../TimeSelect/TimeSelector.styled";
+import { customStyles } from "../../TimeSelect/CustomSelect.styled";
+import { useDispatch } from "react-redux";
+import { addWater } from "../../../redux/waterTracker/operations";
 
 const pickTimeFromCurrDate = () => {
   const time = new Date();
@@ -42,19 +45,14 @@ const schema = Yup.object().shape({
 });
 const AddWater = ({ onClose }) => {
   const [btnAmount, setBtnAmount] = useState(0);
+  const dispatch = useDispatch();
   const selects = () => {
     let time = pickTimeFromCurrDate();
     const currTime = new Date();
     let closestOpt = null || time;
-
+    let initValue;
     const arr = [];
     for (let i = 0; i < 288; i++) {
-      if (
-        currTime.getTime() - time <= 300000 &&
-        currTime.getTime() - time > 0
-      ) {
-        closestOpt = time;
-      }
       let dateOpt = new Date(time);
       const hours =
         dateOpt.getHours() < 10
@@ -64,12 +62,31 @@ const AddWater = ({ onClose }) => {
         dateOpt.getMinutes() < 10
           ? `0${dateOpt.getMinutes()}`
           : `${dateOpt.getMinutes()}`;
-      arr.push({ timestamp: time, time: `${hours}:${minutes}` });
+      if (
+        currTime.getTime() - time <= 300000 &&
+        currTime.getTime() - time > 0
+      ) {
+        closestOpt = time;
+        initValue = `${hours}:${minutes}`;
+      }
+      arr.push({ value: time, label: `${hours}:${minutes}` });
       time += 300000;
     }
-    return { arr, closestOpt };
+    return { arr, closestOpt, initValue };
   };
-  const { closestOpt } = selects();
+  const { closestOpt, arr, initValue } = selects();
+
+  const shownValue = (value) => {
+    const valueToDate = new Date(value)
+    console.log(value);
+    const hours =
+      valueToDate.getHours() < 10 ? `0${valueToDate.getHours()}` : `${valueToDate.getHours()}`;
+    const minutes =
+      valueToDate.getMinutes() < 10
+        ? `0${valueToDate.getMinutes()}`
+        : `${valueToDate.getMinutes()}`;
+    return `${hours}:${minutes}`;
+  };
   const changeAmount = (e, props) => {
     const operation = e.currentTarget.id;
     const isFloat = btnAmount % 50 !== 0;
@@ -79,7 +96,7 @@ const AddWater = ({ onClose }) => {
         if (isFloat) {
           const floored = Math.floor(btnAmount / 50) * 50;
           setBtnAmount(floored);
-          props.setFieldValue("volume", floored);
+          props.props.setFieldValue("time", data.value)("volume", floored);
         } else {
           const cur = btnAmount - 50;
           setBtnAmount(cur);
@@ -118,8 +135,8 @@ const AddWater = ({ onClose }) => {
         </TitleWrap>
         <Formik
           initialValues={{ time: closestOpt, volume: btnAmount }}
-          onSubmit={(v) => {
-            console.log(v);
+          onSubmit={(values) => {
+            dispatch(addWater(values))
           }}
           validationSchema={schema}
         >
@@ -134,7 +151,7 @@ const AddWater = ({ onClose }) => {
                       onClick={(e) => {
                         changeAmount(e, props);
                       }}
-                      className={btnAmount === 0 && "disabled"}
+                      // className={btnAmount === 0 && "disabled"}
                       id="minus"
                     >
                       <MinusIcon
@@ -161,10 +178,15 @@ const AddWater = ({ onClose }) => {
                 <FormulaText>Recording time:</FormulaText>
                 <Field
                   name="time"
-                  as={CustomSelect}
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
+                  as={StyledSelect}
+                  onChange={(data) => props.setFieldValue("time", data.value)}
                   value={props.values.time}
+                  placeholder={shownValue(props.values.time)}
+                  styles={{...customStyles, placeholder: (styles) => ({
+                    ...styles,
+                    color: colors.BLUE
+                  })}}
+                  options={arr}
                 />
               </div>
               <div>
