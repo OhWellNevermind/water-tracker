@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getTodayTracker, getMonthTracker } from "./operations";
+import { getTodayTracker, getMonthTracker, addWater } from "./operations";
 
 const date = new Date();
 const day = date.getDay();
@@ -49,6 +49,15 @@ const waterTrackerSlice = createSlice({
       })
       .addCase(getTodayTracker.pending, (state) => {
         state.isLoading = true;
+      })
+      .addCase(addWater.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addWater.fulfilled, (state, action) => {
+        state.today.todayTracker.push({
+          amountWater: action.payload.amountWater,
+          date: action.payload.date,
+        });
       }),
 });
 

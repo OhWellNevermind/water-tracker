@@ -27,3 +27,18 @@ export const getMonthTracker = createAsyncThunk(
     }
   }
 );
+
+export const addWater = createAsyncThunk(
+  "water/add",
+  async (data, thunkAPI) => {
+    try {
+      const res = await axios.post(`/water-track`, {
+        amountWater: data.volume,
+        date: data.time,
+      });
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
