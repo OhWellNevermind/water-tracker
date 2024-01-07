@@ -41,7 +41,6 @@ const waterTrackerSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getTodayTracker.fulfilled, (state, action) => {
-        console.log(action);
         state.today.percentageWaterConsumed =
           action.payload.percentageWaterConsumed;
         state.today.todayTracker = action.payload.waterTracks;
@@ -55,6 +54,7 @@ const waterTrackerSlice = createSlice({
       })
       .addCase(addWater.fulfilled, (state, action) => {
         state.today.todayTracker.push({
+          id: action.payload._id,
           amountWater: action.payload.amountWater,
           date: action.payload.date,
         });

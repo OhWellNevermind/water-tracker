@@ -123,7 +123,6 @@ export const UserModal = ({ onClose }) => {
     // I've kept this example simple by using the first image instead of multiple
     setAvatar(e.target.files[0]);
   };
-  console.log(formik.errors);
   return (
     <BaseModalWrap onClose={() => onClose()}>
       <ModalContainer>

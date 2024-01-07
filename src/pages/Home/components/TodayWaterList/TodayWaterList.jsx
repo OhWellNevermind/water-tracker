@@ -23,12 +23,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodayTracker } from "../../../../redux/waterTracker/operations";
 import { selectWaterTodayTracker } from "../../../../redux/waterTracker/selectors";
+import dayjs from "dayjs";
 
 export const TodayWaterList = ({ setModalName }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getTodayTracker());
+    const date = dayjs().format("YYYY-MM-DD");
+    dispatch(getTodayTracker(date));
   }, [dispatch]);
 
   const waterTracks = useSelector(selectWaterTodayTracker);
