@@ -9,6 +9,7 @@ const year = date.getFullYear();
 const waterTrackerInitState = {
   today: {
     date: `${year}-${month}-${day}`,
+    percentageWaterConsumed: "0%",
     todayTracker: [],
   },
   todayWaterData: {
@@ -40,7 +41,10 @@ const waterTrackerSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getTodayTracker.fulfilled, (state, action) => {
-        state.today.todayTracker = action.payload;
+        console.log(action);
+        state.today.percentageWaterConsumed =
+          action.payload.percentageWaterConsumed;
+        state.today.todayTracker = action.payload.waterTracks;
         state.isLoading = false;
       })
       .addCase(getTodayTracker.pending, (state) => {
