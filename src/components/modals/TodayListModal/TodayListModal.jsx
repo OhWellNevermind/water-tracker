@@ -35,7 +35,7 @@ export const TodayListModal = ({ onClose }) => {
     waterSessionData.amountWater
   );
   const [selectedOption, setSelectedOption] = useState("");
-
+  const [defaultOption, setDefaultOption] = useState("");
   const handleCountChange = (newCount) => {
     setEditingValue(newCount);
     setCount(newCount);
@@ -57,24 +57,24 @@ export const TodayListModal = ({ onClose }) => {
   };
 
   const handlerSave = () => {
-    if (!selectedOption) {
-      const notify = () => toast("Select the recording time");
+    if (!selectedOption && count === waterSessionData.amountWater) {
+      const notify = () =>
+        toast(
+          "Select the recording time or change the value of the amount of water "
+        );
       notify();
       return;
     }
+
     if (editingValue > 5000) {
       const notify = () => toast("The maximum value for water is 5000 ml");
       notify();
       return;
     }
-    if (count === waterSessionData.amountWater) {
-      const notify = () => toast("Please change the portion value");
-      notify();
-      return;
-    }
 
     const currentDate = new Date(waterSessionData.date);
-    const selectedTime = selectedOption.value;
+    const selectedTime = selectedOption ? selectedOption.value : defaultOption;
+
     const [hours, minutes] = selectedTime.split(":").map(Number);
 
     const timeMiliseconds = currentDate.setHours(hours, minutes, 0, 0);
@@ -92,7 +92,9 @@ export const TodayListModal = ({ onClose }) => {
   const handleSelectedOption = (selectedOption) => {
     setSelectedOption(selectedOption);
   };
-
+  const handleDefaultValue = (data) => {
+    setDefaultOption(data);
+  };
   return (
     <BaseModalWrap onClose={() => onClose()}>
       <Modal>
@@ -129,6 +131,7 @@ export const TodayListModal = ({ onClose }) => {
         <TitleRecordingTime>Recording time:</TitleRecordingTime>
         <TimeSelector
           onSelectedOption={handleSelectedOption}
+          onDefaultValue={handleDefaultValue}
           onSessionTime={waterSessionData.date}
         />
         <EnterValueWater>Enter the value of the water used:</EnterValueWater>

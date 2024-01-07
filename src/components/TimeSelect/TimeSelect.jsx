@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyledSelect } from "./TimeSelector.styled";
 import { customStyles } from "./CustomSelect.styled";
 
-export const TimeSelector = ({ onSelectedOption, onSessionTime }) => {
+export const TimeSelector = ({
+  onSelectedOption,
+  onSessionTime,
+  onDefaultValue,
+}) => {
   const getCurrentTime = () => {
     const now = new Date(onSessionTime);
     const hours = now.getHours().toString().padStart(2, "0");
@@ -12,7 +16,11 @@ export const TimeSelector = ({ onSelectedOption, onSessionTime }) => {
 
   const defaultValue = { value: getCurrentTime(), label: getCurrentTime() };
 
-  const [selectedOption, setselectedOption] = useState(defaultValue);
+  const [selectedOption, setSelectedOption] = useState(defaultValue);
+  useEffect(() => {
+    onDefaultValue(getCurrentTime());
+  }, [getCurrentTime, onDefaultValue]);
+
   const generateTimeOptions = () => {
     const options = [];
 
@@ -30,7 +38,7 @@ export const TimeSelector = ({ onSelectedOption, onSessionTime }) => {
   };
 
   const handleChange = (selectedOption) => {
-    setselectedOption(selectedOption);
+    setSelectedOption(selectedOption);
     onSelectedOption(selectedOption);
   };
 

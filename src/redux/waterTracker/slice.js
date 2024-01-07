@@ -87,9 +87,6 @@ const waterTrackerSlice = createSlice({
         });
         toast.success("successfully saved");
       })
-      .addCase(todayEditWater.pending, (state) => {
-        state.isLoading = true;
-      })
       .addCase(todayEditWater.rejected, (_, action) => {
         toast.error(action.payload);
       }),
