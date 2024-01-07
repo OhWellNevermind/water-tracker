@@ -82,7 +82,7 @@ export const TodayListModal = ({ onClose }) => {
     //const time = currentDate.toISOString().slice(0, 19);
 
     const data = {
-      _id: waterSessionData._id,
+      _id: waterSessionData.id,
       amountWater: count,
       date: timeMiliseconds,
     };

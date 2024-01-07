@@ -46,6 +46,7 @@ export const addWater = createAsyncThunk(
 export const todayEditWater = createAsyncThunk(
   "water/edit",
   async (data, thunkAPI) => {
+    console.log(data);
     const { _id, amountWater, date } = data;
     const newData = { amountWater, date };
     try {

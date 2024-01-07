@@ -2,9 +2,9 @@ import { useState } from "react";
 import { StyledSelect } from "./TimeSelector.styled";
 import { customStyles } from "./CustomSelect.styled";
 
-export const TimeSelector = ({ onSelectedOption }) => {
+export const TimeSelector = ({ onSelectedOption, onSessionTime }) => {
   const getCurrentTime = () => {
-    const now = new Date();
+    const now = new Date(onSessionTime);
     const hours = now.getHours().toString().padStart(2, "0");
     const minutes = now.getMinutes().toString().padStart(2, "0");
     return `${hours}:${minutes}`;

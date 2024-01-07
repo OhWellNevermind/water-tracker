@@ -37,6 +37,11 @@ const waterTrackerInitState = {
 const waterTrackerSlice = createSlice({
   name: "waterTracker",
   initialState: waterTrackerInitState,
+  reducers: {
+    setTodayWaterData: (state, action) => {
+      state.todayWaterData = action.payload;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(getMonthTracker.fulfilled, (state, action) => {
@@ -66,9 +71,9 @@ const waterTrackerSlice = createSlice({
         });
       })
       .addCase(todayEditWater.fulfilled, (state, action) => {
-        const { waterTracks } = state.today.todayTracker;
+        const { todayTracker } = state.today;
         const { id, amountWater, date } = action.payload;
-        state.today.todayTracker.waterTracks = waterTracks.map((item) => {
+        state.today.todayTracker = todayTracker.map((item) => {
           if (item.id === id) {
             const el = {
               ...item,
@@ -80,7 +85,7 @@ const waterTrackerSlice = createSlice({
           }
           return item;
         });
-        toast.success("");
+        toast.success("successfully saved");
       })
       .addCase(todayEditWater.pending, (state) => {
         state.isLoading = true;
