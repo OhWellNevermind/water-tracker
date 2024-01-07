@@ -9,6 +9,8 @@ import {
   ContainerHome,
   WrapTodayAndMonth,
   DailyNormaAndWaterRatioPanel,
+  StyledBackground,
+  Bottle,
 } from "./Home.styled";
 
 export const Home = ({ setModalName }) => {
@@ -21,6 +23,8 @@ export const Home = ({ setModalName }) => {
   return (
     <>
       <ContainerHome>
+        <StyledBackground />
+        <Bottle />
         <DailyNormaAndWaterRatioPanel>
           <DailyNorma setModalName={setModalName} />
           <WaterRatioPanel setModalName={setModalName} />
