@@ -74,13 +74,14 @@ const AddWater = ({ onClose }) => {
     }
     return { arr, closestOpt, initValue };
   };
-  const { closestOpt, arr, initValue } = selects();
+  const { closestOpt, arr } = selects();
 
   const shownValue = (value) => {
-    const valueToDate = new Date(value)
-    console.log(value);
+    const valueToDate = new Date(value);
     const hours =
-      valueToDate.getHours() < 10 ? `0${valueToDate.getHours()}` : `${valueToDate.getHours()}`;
+      valueToDate.getHours() < 10
+        ? `0${valueToDate.getHours()}`
+        : `${valueToDate.getHours()}`;
     const minutes =
       valueToDate.getMinutes() < 10
         ? `0${valueToDate.getMinutes()}`
@@ -96,7 +97,7 @@ const AddWater = ({ onClose }) => {
         if (isFloat) {
           const floored = Math.floor(btnAmount / 50) * 50;
           setBtnAmount(floored);
-          props.props.setFieldValue("time", data.value)("volume", floored);
+          props.props.setFieldValue("volume", floored);
         } else {
           const cur = btnAmount - 50;
           setBtnAmount(cur);
@@ -136,7 +137,7 @@ const AddWater = ({ onClose }) => {
         <Formik
           initialValues={{ time: closestOpt, volume: btnAmount }}
           onSubmit={(values) => {
-            dispatch(addWater(values))
+            dispatch(addWater(values));
           }}
           validationSchema={schema}
         >
@@ -182,10 +183,13 @@ const AddWater = ({ onClose }) => {
                   onChange={(data) => props.setFieldValue("time", data.value)}
                   value={props.values.time}
                   placeholder={shownValue(props.values.time)}
-                  styles={{...customStyles, placeholder: (styles) => ({
-                    ...styles,
-                    color: colors.BLUE
-                  })}}
+                  styles={{
+                    ...customStyles,
+                    placeholder: (styles) => ({
+                      ...styles,
+                      color: colors.BLUE,
+                    }),
+                  }}
                   options={arr}
                 />
               </div>
