@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { colors } from "../../../constants";
 
 export const ModalContainer = styled.div`
-  height: 90vh;
+  max-height: 90vh;
   overflow-y: scroll;
   width: 100%;
   padding: 32px 12px;
