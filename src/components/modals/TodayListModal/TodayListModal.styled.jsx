@@ -43,7 +43,7 @@ export const BackgroundPortion = styled.div`
 `;
 
 export const ValueWater = styled.p`
-  width: 60px;
+  //width: 60px;
   height: 24px;
   color: ${colors.BLUE};
   font-size: 18px;

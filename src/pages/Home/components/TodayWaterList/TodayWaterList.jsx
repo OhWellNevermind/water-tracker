@@ -24,6 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTodayTracker } from "../../../../redux/waterTracker/operations";
 import { selectWaterTodayTracker } from "../../../../redux/waterTracker/selectors";
 import dayjs from "dayjs";
+import { setTodayWaterData } from "../../../../redux/waterTracker/slice";
 
 export const TodayWaterList = ({ setModalName }) => {
   const dispatch = useDispatch();
@@ -69,7 +70,16 @@ export const TodayWaterList = ({ setModalName }) => {
                 </Sublist>
                 <PencilAndBasket>
                   <Pencil
-                    onClick={() => setModalName("todayList")}
+                    onClick={() => {
+                      dispatch(
+                        setTodayWaterData({
+                          amountWater: item.amountWater,
+                          date: item.date,
+                          id: item.id,
+                        })
+                      );
+                      setModalName("todayList");
+                    }}
                     type="button"
                   >
                     <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />

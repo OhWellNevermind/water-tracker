@@ -11,3 +11,6 @@ export const selectWaterMonthTracker = (state) =>
 export const selectWaterLoading = (state) => state.waterTracker.isLoading;
 
 export const selectWaterError = (state) => state.waterTracker.error;
+
+export const selectTodayWaterData = (state) =>
+  state.waterTracker.todayWaterData;

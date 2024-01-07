@@ -42,3 +42,22 @@ export const addWater = createAsyncThunk(
     }
   }
 );
+
+export const todayEditWater = createAsyncThunk(
+  "water/edit",
+  async (data, thunkAPI) => {
+    const { _id, amountWater, date } = data;
+    const newData = { amountWater, date };
+    try {
+      const res = await axios.put(`/water-track/${_id}`, newData);
+      const objPayload = {
+        id: res.data._id,
+        amountWater: res.data.amountWater,
+        date: res.data.date,
+      };
+      return objPayload;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getTodayTracker, getMonthTracker, addWater } from "./operations";
+import {
+  getTodayTracker,
+  getMonthTracker,
+  addWater,
+  todayEditWater,
+} from "./operations";
+import toast from "react-hot-toast";
 
 const date = new Date();
 const day = date.getDay();
@@ -31,6 +37,11 @@ const waterTrackerInitState = {
 const waterTrackerSlice = createSlice({
   name: "waterTracker",
   initialState: waterTrackerInitState,
+  reducers: {
+    setTodayWaterData: (state, action) => {
+      state.todayWaterData = action.payload;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(getMonthTracker.fulfilled, (state, action) => {
@@ -58,7 +69,27 @@ const waterTrackerSlice = createSlice({
           amountWater: action.payload.amountWater,
           date: action.payload.date,
         });
+      })
+      .addCase(todayEditWater.fulfilled, (state, action) => {
+        const { todayTracker } = state.today;
+        const { id, amountWater, date } = action.payload;
+        state.today.todayTracker = todayTracker.map((item) => {
+          if (item.id === id) {
+            const el = {
+              ...item,
+              amountWater,
+              date,
+            };
+
+            return el;
+          }
+          return item;
+        });
+        toast.success("successfully saved");
+      })
+      .addCase(todayEditWater.rejected, (_, action) => {
+        toast.error(action.payload);
       }),
 });
-
+export const { setTodayWaterData } = waterTrackerSlice.actions;
 export const waterTrackerReducer = waterTrackerSlice.reducer;
