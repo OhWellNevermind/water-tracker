@@ -44,6 +44,7 @@ export const Title = styled.p`
 `;
 
 export const ContainerBar = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,12 +80,15 @@ export const ProgressBar = styled.div`
   left: 0;
   top: 0;
   height: 100%;
-  width: 30%;
+  width: ${({ percentage }) => `${percentage}%`};
   background-color: #9ebbff;
   border-radius: 10px;
 `;
 export const Dot = styled.div`
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: ${({ percentage }) => `${percentage - 3}%`};
   width: 14px;
   height: 14px;
   border: solid 1px;

@@ -1,4 +1,5 @@
 //import { useState } from "react";
+import { useSelector } from "react-redux";
 import {
   DailyNormaContainer,
   MyDailyNormaWrapper,
@@ -7,23 +8,17 @@ import {
   MyDailyNorma,
   EditButton,
 } from "./DailyNorma.styled";
-
-//import { DailyNormaModal } from "./DailyNormaModal";
+import { selectDailyNorma } from "../../../../redux/user/selectors";
 
 export const DailyNorma = ({ setModalName }) => {
-  //const [dailyNorm, setDailyNorm] = useState(1.5);
-  //const [isModalOpen, setIsModalOpen] = useState(false);
-
-  /*   const handleEditClick = () => {
-    setIsModalOpen(true);
-  }; */
+  const dailyNorma = useSelector(selectDailyNorma);
 
   return (
     <DailyNormaContainer>
       <MyDailyNormaWrapper>
         <Title>My daily norma</Title>
         <MyDailyNormaAndButton>
-          <MyDailyNorma>{1.5} L</MyDailyNorma>
+          <MyDailyNorma>{dailyNorma} L</MyDailyNorma>
           <EditButton
             onClick={() => {
               setModalName("dailyNorma");

@@ -14,3 +14,6 @@ export const selectWaterError = (state) => state.waterTracker.error;
 
 export const selectTodayWaterData = (state) =>
   state.waterTracker.todayWaterData;
+
+export const selectWaterPercentage = (state) =>
+  state.waterTracker.today.percentageWaterConsumed;

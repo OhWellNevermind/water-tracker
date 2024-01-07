@@ -17,19 +17,11 @@ import {
   AddWater,
 } from "./WaterRatioPanel.styled";
 import { CirclePlus } from "../../../../components/icons/CirclePlus";
-//import { useState } from "react";
-//import TodayListModal from "./TodayListModal";
+import { useSelector } from "react-redux";
+import { selectWaterPercentage } from "../../../../redux/waterTracker/selectors";
 
 export const WaterRatioPanel = ({ setModalName }) => {
-  //const [isModalOpen, setModalOpen] = useState(false);
-
-  /*   const handleAddWater = () => {
-    setModalOpen(true);
-  }; */
-
-  /*   const handleModalClose = () => {
-    setModalOpen(false);
-  }; */
+  const percentage = parseInt(useSelector(selectWaterPercentage));
 
   return (
     <WaterPanelContainer>
@@ -37,9 +29,9 @@ export const WaterRatioPanel = ({ setModalName }) => {
         <Title>Today</Title>
         <ContainerBar>
           <Bar>
-            <ProgressBar></ProgressBar>
+            <ProgressBar percentage={percentage > 100 ? 100 : percentage} />
+            <Dot percentage={percentage > 100 ? 100 : percentage} />
           </Bar>
-          <Dot></Dot>
         </ContainerBar>
         <WaterPanel>
           <DecorWrap>
@@ -54,9 +46,9 @@ export const WaterRatioPanel = ({ setModalName }) => {
           </List>
         </WaterPanel>
       </TitleWaterPanel>
-      <Button /* onClick={handleAddWater} */>
+      <Button onClick={() => setModalName("addWater")}>
         <CirclePlus width={24} height={24} stroke={"#fff"} />
-        <AddWater onClick={() => setModalName("addWater")}>Add water</AddWater>
+        <AddWater>Add water</AddWater>
       </Button>
       {/*  {isModalOpen && (
         <TodayListModal onClose={handleModalClose} onSave={handleWaterInput} />

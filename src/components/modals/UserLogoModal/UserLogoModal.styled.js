@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const UserLMWrapper = styled.div`
   height: fit-content;
   position: absolute;
-  left: -100px;
-  top: 20px;
+  top: 30px;
+  right: 5px;
 `;
 
 export const UserLMDiv = styled.div`

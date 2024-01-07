@@ -15,7 +15,7 @@ import { PersonalSettingsIcon } from "../../../../components/icons/PersonalSetti
 
 const WaterConsumption = () => {
   const handleClick = () => {
-    return (window.location.href = "/register");
+    return (window.location.href = "/signup");
   };
 
   return (
