@@ -5,7 +5,7 @@ import {
   MonthList,
   MonthPercent,
 } from "./MonthStatsTableList.styled";
-import { getMonthTracker } from "../../../../redux/waterTracker/operations";
+import { getMonthTracker, updateMonthTrackerDate } from "../../../../redux/waterTracker/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { selectWaterMonthTracker } from "../../../../redux/waterTracker/selectors";
 import { DaysGeneralStats } from "../../../../components/modals/DaysGeneralStats/DaysGeneralStats";
@@ -79,6 +79,7 @@ export const MonthStatsTableList = ({
     const month =
       monthNumber.toString().length === 2 ? monthNumber : `0${monthNumber}`;
     dispatch(getMonthTracker(`${year}-${month}`));
+    dispatch(updateMonthTrackerDate(`${year}-${month}`))
   }, [year, monthNumber]); // запит для отмання трекеру води
 
   useEffect(() => {

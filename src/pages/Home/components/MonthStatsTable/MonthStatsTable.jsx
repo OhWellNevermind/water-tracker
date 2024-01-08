@@ -33,7 +33,6 @@ export const MonthStatsTable = () => {
   const [month, setMonth] = useState(date.getMonth());
   const [year, setYear] = useState(date.getFullYear());
   const [nextDisable, setNextDisable] = useState(true);
-
   const [monthCount, setMonthCount] = useState(
     new Date(year, month + 1, 0).getDate()
   );
@@ -45,6 +44,7 @@ export const MonthStatsTable = () => {
       return;
     }
     setNextDisable(false);
+
   }, [month, year]);
 
   const changeMonth = (val) => {

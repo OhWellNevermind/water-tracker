@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from "axios";
 
@@ -27,6 +27,10 @@ export const getMonthTracker = createAsyncThunk(
     }
   }
 );
+
+export const updateMonthTrackerDate = createAction("water/monthDate");
+
+
 
 export const addWater = createAsyncThunk(
   "water/add",
