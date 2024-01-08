@@ -92,3 +92,17 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+export const updateDailyNorma = createAsyncThunk(
+  "/users/updateDailyNorma",
+  async (data, thunkAPI) => {
+    try {
+      const resp = await axios.patch("/users/changeDailyNorma", {
+        dailyNorma: data,
+      });
+      console.log(resp.data);
+      return resp.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
