@@ -6,6 +6,7 @@ import {
   refreshUser,
   updateAvatar,
   updateUser,
+  updateDailyNorma,
 } from "./operations";
 import toast from "react-hot-toast";
 
@@ -73,6 +74,9 @@ const usersSlice = createSlice({
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.user = { ...state.user, ...action.payload };
+      })
+      .addCase(updateDailyNorma.fulfilled, (state, action) => {
+        state.user.dailyNorma = action.payload.user.dailyNorma;
       })
       .addCase(updateUser.rejected, printError)
       .addCase(updateAvatar.rejected, printError),

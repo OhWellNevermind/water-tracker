@@ -4,7 +4,7 @@ import { ErrorMessage, Field, Form } from "formik";
 
 export const Window = styled.div`
   width: 280px;
-  max-height: 600px;
+  max-height: 90vh;
   overflow-y: scroll;
   border-radius: 10px;
   padding: 24px 12px;

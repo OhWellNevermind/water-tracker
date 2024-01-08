@@ -6,6 +6,7 @@ import {
   todayEditWater,
 } from "./operations";
 import toast from "react-hot-toast";
+import { updateDailyNorma } from "../user/operations";
 
 const date = new Date();
 const day = date.getDay();
@@ -89,6 +90,10 @@ const waterTrackerSlice = createSlice({
       })
       .addCase(todayEditWater.rejected, (_, action) => {
         toast.error(action.payload);
+      })
+      .addCase(updateDailyNorma.fulfilled, (state, action) => {
+        state.today.percentageWaterConsumed =
+          action.payload.today.percentageWaterConsumed;
       }),
 });
 export const { setTodayWaterData } = waterTrackerSlice.actions;

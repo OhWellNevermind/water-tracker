@@ -27,6 +27,7 @@ import { StyledSelect } from "../../TimeSelect/TimeSelector.styled";
 import { customStyles } from "../../TimeSelect/CustomSelect.styled";
 import { useDispatch } from "react-redux";
 import { addWater } from "../../../redux/waterTracker/operations";
+import toast from "react-hot-toast";
 
 const pickTimeFromCurrDate = () => {
   const time = new Date();
@@ -41,6 +42,7 @@ const schema = Yup.object().shape({
   time: Yup.string().required("This field is required"),
   volume: Yup.number()
     .min(1, "Volume can't be 0")
+    .max(5000, "The maximum value for water is 5000 ml")
     .required("This field is required"),
 });
 const AddWater = ({ onClose }) => {
@@ -137,7 +139,10 @@ const AddWater = ({ onClose }) => {
         <Formik
           initialValues={{ time: closestOpt, volume: btnAmount }}
           onSubmit={(values) => {
+            console.log(values);
             dispatch(addWater(values));
+            const notify = () => toast("Successfully added!");
+            notify();
           }}
           validationSchema={schema}
         >
