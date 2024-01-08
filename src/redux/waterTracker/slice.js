@@ -4,6 +4,7 @@ import {
   getMonthTracker,
   addWater,
   todayEditWater,
+  deleteEntry,
 } from "./operations";
 import toast from "react-hot-toast";
 import { updateDailyNorma } from "../user/operations";
@@ -91,6 +92,18 @@ const waterTrackerSlice = createSlice({
       .addCase(todayEditWater.rejected, (_, action) => {
         toast.error(action.payload);
       })
+      .addCase(deleteEntry.fulfilled, (state, action) => {
+        const { todayTracker } = state.today;
+        const index = todayTracker.findIndex(
+          (item) => item.id === action.payload
+        );
+        todayTracker.splice(index, 1);
+        state.isLoading = false;
+        toast.success("Successfully delete");
+      })
+      .addCase(deleteEntry.rejected, (_, action) => {
+        toast.error(action.payload);
+        }),
       .addCase(updateDailyNorma.fulfilled, (state, action) => {
         state.today.percentageWaterConsumed =
           action.payload.today.percentageWaterConsumed;

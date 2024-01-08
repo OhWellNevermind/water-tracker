@@ -61,3 +61,15 @@ export const todayEditWater = createAsyncThunk(
     }
   }
 );
+
+export const deleteEntry = createAsyncThunk(
+  "entry/delete",
+  async (id, thunkAPI) => {
+    try {
+      await axios.delete(`/water-track/${id}`);
+      return id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

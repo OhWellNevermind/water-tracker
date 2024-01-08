@@ -84,7 +84,19 @@ export const TodayWaterList = ({ setModalName }) => {
                   >
                     <PencilSquare width={16} height={16} stroke={"#9EBBFF"} />
                   </Pencil>
-                  <Basket onClick={() => setModalName("delete")} type="button">
+                  <Basket
+                    onClick={() => {
+                      dispatch(
+                        setTodayWaterData({
+                          amountWater: item.amountWater,
+                          date: item.date,
+                          id: item.id,
+                        })
+                      );
+                      setModalName("delete");
+                    }}
+                    type="button"
+                  >
                     <Trash width={16} height={16} stroke={"#EF5050"} />
                   </Basket>
                 </PencilAndBasket>
