@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import BackgroundImageTablet from "../../../src/assets/images/tablet/BackgroundMainPageTablet-min.png";
-import BackgroundImageDesktop from "../../../src/assets/images/desktop/BackgroundMainPageDesktop-min.png";
-import BackgroundImageTablet2x from "../../../src/assets/images/tablet/BackgroundMainPageTablet@2x-min.png";
-import BackgroundImageDesktop2x from "../../../src/assets/images/desktop/BackgroundMainPageDesktop@2x-min.png";
+import BackgroundImageTablet from "/src/images/tablet/BackgroundMainPageTablet-min.png";
+import BackgroundImageDesktop from "/src/images/desktop/BackgroundMainPageDesktop-min.png";
+import BackgroundImageTablet2x from "/src/images/tablet/BackgroundMainPageTablet@2x-min.png";
+import BackgroundImageDesktop2x from "/src/images/desktop/BackgroundMainPageDesktop@2x-min.png";
 
 export const Background = styled.div`
   position: absolute;

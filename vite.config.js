@@ -7,4 +7,5 @@ export default defineConfig({
     extensions: [".jsx", ".json", ".css", ".js"],
   },
   plugins: [react()],
+  base: "/water-tracker/",
 });

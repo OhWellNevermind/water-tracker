@@ -2,6 +2,13 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 import { Link as ReactLink } from "react-router-dom";
 
+import BackgroundElementSignin from "/src/images/mobile/BackgroundElementSignin-min.png";
+import BackgroundBubblesHomeTablet from "/src/images/tablet/BackgroundBubblesHomeTablet-min.png";
+import BackgroundBubblesHomeDesktop from "/src/images/desktop/BackgroundBubblesHomeDesktop-min.png";
+import BottleForSigninMobile from "/src/images/mobile/BottleForSigninMobile-min.png";
+import BottleHomeTablet from "/src/images/tablet/BottleHomeTablet-min.png";
+import BottleForSigninDesktop from "/src/images/desktop/BottleForSigninDesktop-min.png";
+
 export const StyledBackground = styled.div`
   position: fixed;
   width: 100%;
@@ -9,7 +16,7 @@ export const StyledBackground = styled.div`
   left: 0;
 
   height: 100vh;
-  background-image: url("/src/assets/images/mobile/BackgroundElementSignin-min.png");
+  background-image: url(${BackgroundElementSignin});
   background-repeat: no-repeat;
   background-size: auto;
   z-index: -2;
@@ -17,20 +24,19 @@ export const StyledBackground = styled.div`
     background-size: cover;
   }
   @media (min-width: 768px) {
-    background-image: url("/src/assets/images/tablet/BackgroundBubblesHomeTablet-min.png");
+    background-image: url(${BackgroundBubblesHomeTablet});
     top: 90px;
     height: 100%;
   }
   @media (min-width: 1440px) {
-    background-image: url("/src/assets/images/desktop/BackgroundBubblesHomeDesktop-min.png");
+    background-image: url(${BackgroundBubblesHomeDesktop});
     background-size: contain;
     top: 70px;
   }
 `;
 
 export const Bottle = styled.div`
-  background: url("/src/assets/images/mobile/BottleForSigninMobile-min.png")
-    bottom/contain no-repeat;
+  background: url(${BottleForSigninMobile}) bottom/contain no-repeat;
   z-index: -1;
   position: fixed;
   top: calc(100% - 225px);
@@ -39,8 +45,7 @@ export const Bottle = styled.div`
   width: 280px;
   height: 210px;
   @media (min-width: 768px) {
-    background: url("/src/assets/images/tablet/BottleHomeTablet-min.png")
-      center/contain no-repeat;
+    background: url(${BottleHomeTablet}) center/contain no-repeat;
     top: calc(100% - 564px);
     left: 112px;
     height: 548px;
@@ -48,8 +53,7 @@ export const Bottle = styled.div`
     transform: translateX(0);
   }
   @media (min-width: 1440px) {
-    background: url("/src/assets/images/desktop/BottleForSigninDesktop-min.png")
-      center/contain no-repeat;
+    background: url(${BottleForSigninDesktop}) center/contain no-repeat;
     left: -50px;
     top: calc(100% - 720px);
     height: 680px;
