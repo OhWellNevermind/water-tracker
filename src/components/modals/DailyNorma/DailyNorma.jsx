@@ -27,19 +27,23 @@ import { Formik, useFormikContext } from "formik";
 import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import BaseModalWrap from "../ModalWrap/ModalWrap";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../../redux/user/selectors";
+import toast from "react-hot-toast";
+import { updateDailyNorma } from "../../../redux/user/operations";
 
 const schema = Yup.object().shape({
   weight: Yup.string()
-    .min(2, "Please enter valid value")
+    .min(1, "Please enter valid value")
     .max(10, "Too big value")
     .required("This field is required"),
   time: Yup.string()
     .min(1, "Please enter valid value")
     .max(10, "Too big value")
     .required("This field is required"),
-  volume: Yup.string()
-    .min(1, "Please enter valid value")
-    .max(10, "Too big value")
+  volume: Yup.number()
+    .min(0, "Please enter valid value")
+    .max(5000, "The maximum value for water is 5000 ml")
     .required("This field is required"),
 });
 
@@ -71,9 +75,11 @@ const FormContext = ({ updateResult }) => {
 };
 const DailyNorma = ({ onClose }) => {
   const [result, setResult] = useState(0);
+  const gender = useSelector(selectUser).gender;
+  const dispatch = useDispatch();
 
   const updateResult = (res) => {
-    setResult(res);
+    setResult(Number(res));
   };
   return (
     <BaseModalWrap onClose={onClose}>
@@ -106,13 +112,26 @@ const DailyNorma = ({ onClose }) => {
         </div>
         <Formik
           initialValues={{
-            gender: "girl",
+            gender: gender === "female" ? "girl" : "man",
             weight: "0",
             time: "0",
-            volume: "0",
+            volume: 0,
           }}
           onSubmit={(values) => {
-            console.log(values.volume);
+            console.log(values.volume, result);
+            if (values.volume === 0 && result === 0) {
+              const notify = () =>
+                toast(
+                  "Please calculate your daily norma or type in desired amount of water in the last field"
+                );
+              notify();
+              return;
+            }
+            values.volume === 0
+              ? dispatch(updateDailyNorma(result))
+              : dispatch(updateDailyNorma(values.volume));
+            const notify = () => toast("Successfully updated!");
+            notify();
           }}
           validationSchema={schema}
         >
@@ -186,6 +205,7 @@ const DailyNorma = ({ onClose }) => {
                     type="number"
                     name="volume"
                     min="0"
+                    step="0.01"
                   />
                   <ErrMessage component="span" name="volume" />
                 </div>
