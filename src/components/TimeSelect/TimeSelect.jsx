@@ -41,24 +41,11 @@ export const TimeSelector = ({
     setSelectedOption(selectedOption);
     onSelectedOption(selectedOption);
   };
-  const getNewOptions = () => {
-    const options = generateTimeOptions();
-
-    const indexValue = options.findIndex(
-      (e) => e.value === selectedOption.value
-    );
-
-    const firstPart = options.slice(indexValue);
-    const secondPart = options.slice(0, indexValue);
-    const reorderedArray = firstPart.concat(secondPart);
-    console.log(reorderedArray);
-    return reorderedArray;
-  };
 
   return (
     <StyledSelect
       styles={customStyles}
-      options={getNewOptions()}
+      options={generateTimeOptions()}
       value={selectedOption}
       onChange={handleChange}
     />
