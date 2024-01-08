@@ -103,7 +103,7 @@ const waterTrackerSlice = createSlice({
       })
       .addCase(deleteEntry.rejected, (_, action) => {
         toast.error(action.payload);
-        }),
+      })
       .addCase(updateDailyNorma.fulfilled, (state, action) => {
         state.today.percentageWaterConsumed =
           action.payload.today.percentageWaterConsumed;
