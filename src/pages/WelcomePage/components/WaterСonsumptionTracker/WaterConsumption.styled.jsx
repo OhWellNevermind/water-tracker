@@ -12,12 +12,14 @@ export const StyledList = styled.ul`
     display: block;
   }
 `;
+
 export const Button = styled.button`
   margin-top: 24px;
   padding: 8px 30px;
   width: 280px;
   border-radius: 10px;
   border: none;
+  cursor: pointer;
   background-color: ${colors.BLUE};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   &:hover {

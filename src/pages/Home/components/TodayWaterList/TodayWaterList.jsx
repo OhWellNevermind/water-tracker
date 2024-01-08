@@ -59,7 +59,7 @@ export const TodayWaterList = ({ setModalName }) => {
               <SublistAll key={item.id}>
                 <Sublist>
                   <GlassSpan>
-                    <Glass width={26} height={26} stroke={"#407BFF"} />
+                    <Glass stroke={"#407BFF"} />
                   </GlassSpan>
                   <MLSpan>
                     <NumberMl>{item.amountWater} ml</NumberMl>
@@ -105,7 +105,7 @@ export const TodayWaterList = ({ setModalName }) => {
           })}
         </List>
         <Button onClick={() => setModalName("addWater")} type="button">
-          <PlusSmall width={16} height={16} stroke={"#407BFF"} />
+          <PlusSmall width={16} height={16} />
           <AddWaterButton>Add water</AddWaterButton>
         </Button>
       </TodayWrap>

@@ -57,7 +57,10 @@ export const UserLogo = styled.img`
   object-fit: contain;
 `;
 
-export const UserName = styled.p``;
+export const UserName = styled.p`
+  font-size: 18px;
+  line-height: 1.33; /* 133.333% */
+`;
 
 export const NoImageWrapper = styled.div`
   width: 28px;

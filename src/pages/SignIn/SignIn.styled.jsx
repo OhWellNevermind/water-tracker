@@ -126,7 +126,7 @@ export const SignInButton = styled.button`
   height: 36px;
   margin-bottom: 16px;
   padding: 8px 30px;
-
+  cursor: pointer;
   border: none;
   border-radius: 10px;
   color: #fff;

@@ -45,7 +45,7 @@ export const MonthStatsTable = () => {
       return;
     }
     setNextDisable(false);
-  }, [month, year]);
+  }, [currentMonth, currentYear, month, year]);
 
   const changeMonth = (val) => {
     if (val > 11) {
