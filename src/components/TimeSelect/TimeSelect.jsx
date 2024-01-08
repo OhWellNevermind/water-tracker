@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { StyledSelect } from "./TimeSelector.styled";
 import { customStyles } from "./CustomSelect.styled";
 
@@ -7,12 +7,12 @@ export const TimeSelector = ({
   onSessionTime,
   onDefaultValue,
 }) => {
-  const getCurrentTime = () => {
+  const getCurrentTime = useCallback(() => {
     const now = new Date(onSessionTime);
     const hours = now.getHours().toString().padStart(2, "0");
     const minutes = now.getMinutes().toString().padStart(2, "0");
     return `${hours}:${minutes}`;
-  };
+  }, [onSessionTime]);
 
   const defaultValue = { value: getCurrentTime(), label: getCurrentTime() };
 
