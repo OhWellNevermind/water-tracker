@@ -21,7 +21,12 @@ import { useDispatch } from "react-redux";
 import { login } from "../../redux/user/operations";
 
 const AddSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+  email: Yup.string()
+    .matches(
+      /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/,
+      "Incorret email"
+    )
+    .required("Required"),
   password: Yup.string()
     .min(8, "Password must contain minimum 8 symbols")
     .max(64, "Password must contain maximum 64 symbols"),

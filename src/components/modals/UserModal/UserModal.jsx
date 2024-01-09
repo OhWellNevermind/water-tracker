@@ -47,7 +47,10 @@ const formSchema = Yup.object({
       `Name may contain only letters, apostrophe, dash and spaces.`
     )
     .max(32, "Maximum symbols is 32"),
-  email: Yup.string().email("Email must be valid"),
+  email: Yup.string().matches(
+    /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/,
+    "Incorret email"
+  ),
   oldPassword: Yup.string()
     .min(8, "Password must contain minimum 8 symbols")
     .max(64, "Password must contain maximum 64 symbols"),

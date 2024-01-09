@@ -16,7 +16,12 @@ import { useDispatch } from "react-redux";
 import { sendForgotEmail } from "../../redux/user/operations";
 
 const AddSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+  email: Yup.string()
+    .matches(
+      /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/,
+      "Incorret email"
+    )
+    .required("Required"),
 });
 
 export const ForgotPasswordForm = () => {
