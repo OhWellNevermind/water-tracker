@@ -80,7 +80,7 @@ export const StyledBackground = styled.div`
 `;
 
 export const Bottle = styled.div`
-  background: url(${BottleHomeMobile}) bottom contain no-repeat;
+  background: url(${BottleHomeMobile}) bottom/contain no-repeat;
   z-index: -1;
   position: fixed;
   top: 162px;
