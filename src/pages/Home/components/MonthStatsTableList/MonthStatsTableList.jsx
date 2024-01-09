@@ -1,14 +1,24 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   MonthDate,
   MonthItem,
   MonthList,
   MonthPercent,
 } from "./MonthStatsTableList.styled";
-import { getMonthTracker, updateMonthTrackerDate } from "../../../../redux/waterTracker/operations";
+import {
+  getMonthTracker,
+  updateMonthTrackerDate,
+} from "../../../../redux/waterTracker/operations";
 import { useDispatch, useSelector } from "react-redux";
-import { selectWaterMonthTracker } from "../../../../redux/waterTracker/selectors";
+import {
+  selectDays,
+  selectWaterMonthTracker,
+  selectWaterPercentage,
+  selectWaterTodayDate,
+  selectWaterTodayTracker,
+} from "../../../../redux/waterTracker/selectors";
 import { DaysGeneralStats } from "../../../../components/modals/DaysGeneralStats/DaysGeneralStats";
+import { selectDailyNorma } from "../../../../redux/user/selectors";
 
 export const MonthStatsTableList = ({
   year,
@@ -16,10 +26,12 @@ export const MonthStatsTableList = ({
   monthName,
   monthCount,
 }) => {
-  const monthTracker = useSelector(selectWaterMonthTracker);
-  const [monthDays, setMonthDays] = useState(
-    getDays(monthCount, monthTracker, monthName)
+  const month =
+    monthNumber.toString().length === 2 ? monthNumber : `0${monthNumber}`;
+  const monthDays = useSelector((state) =>
+    selectDays(state, monthCount, monthName,`${year}-${month}` )
   );
+
   const [selectedDay, setSelectedDay] = useState(null);
   const [positionModal, setPositionModal] = useState(null);
 
@@ -53,39 +65,67 @@ export const MonthStatsTableList = ({
       setSelectedDay(null);
     }
   };
-  function getDays(days, trackers, month) {
-    const monthDays = [];
-    for (let i = 1; i <= days; i += 1) {
-      const daySchema = {
-        quantityWaterTrack: 0,
-        dailyNorma: "1.22L",
-        percentageWaterConsumed: "0%",
-        date: `${i}, ${month}`,
-      };
-      const tracker = trackers.find((day) => {
-        const [date] = day.date.split(",");
-        return Number(date) === i;
-      });
-      if (tracker) {
-        monthDays.push(tracker);
-        continue;
-      }
-      monthDays.push(daySchema);
-    }
-    return monthDays;
-  }
+  // function getDays(days, trackers, month) {
+  //   const monthDays = [];
+  //   for (let i = 1; i <= days; i += 1) {
+  //     const daySchema = {
+  //       quantityWaterTrack: 0,
+  //       dailyNorma: `${dailyNormaUser}L`,
+  //       percentageWaterConsumed: "0%",
+  //       date: `${i}, ${month}`,
+  //     };
+  //     const tracker = trackers.find((day) => {
+  //       const [date] = day.date.split(",");
+  //       return Number(date) === i;
+  //     });
+  //     if (tracker) {
+  //       monthDays.push(tracker);
+  //       continue;
+  //     }
+  //     monthDays.push(daySchema);
+  //   }
+  //   return monthDays;
+  // }
   const dispatch = useDispatch();
+
   useEffect(() => {
-    const month =
-      monthNumber.toString().length === 2 ? monthNumber : `0${monthNumber}`;
     dispatch(getMonthTracker(`${year}-${month}`));
-    dispatch(updateMonthTrackerDate(`${year}-${month}`))
+    dispatch(updateMonthTrackerDate(`${year}-${month}`));
   }, [year, monthNumber]); // запит для отмання трекеру води
 
-  useEffect(() => {
-    setMonthDays(getDays(monthCount, monthTracker, monthName));
-  }, [monthTracker, monthCount, monthName]); // зміни днів у календарі
+  // const updateMonthDays = useMemo(() => {
+  //   const [thisYear, thisMonth, thisDay] = todayDate.split("-");
 
+  //   if (thisYear == year && thisMonth == monthNumber) {
+  //     console.log(thisDay);
+
+  //     return monthDays.map((item) => {
+  //       const [day] = item.date.split(",");
+  //       if (day != thisDay) {
+  //         return item;
+  //       }
+  //       return { ...item, percentageWaterConsumed: todayPercentage };
+  //     });
+  //   }
+  // }, [todayTracker]);
+
+  // useEffect(() => {
+  //   const [thisYear, thisMonth, thisDay] = todayDate.split("-");
+
+  //   if (thisYear == year && thisMonth == monthNumber) {
+  //     console.log(thisDay);
+
+  //     const updateMonthDays = monthDays.map((item) => {
+  //       const [day] = item.date.split(",");
+  //       if (day != thisDay) {
+  //         return item;
+  //       }
+  //       return { ...item, percentageWaterConsumed: todayPercentage };
+  //     });
+  //     setMonthDays(updateMonthDays);
+  //   }
+  //   console.log(todayTracker);
+  // }, [todayTracker]);
   return (
     <MonthList>
       {monthDays.map((item) => {

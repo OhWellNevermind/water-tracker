@@ -19,12 +19,12 @@ export const customStyles = {
     },
     outline: state.isFocused ? "none" : "none",
   }),
-  option: (provided) => ({
+  option: (provided, { isSelected }) => ({
     ...provided,
     fontSize: "16px",
     fontWeight: 400,
     lineHeight: 1.25,
-    color: colors.BLUE,
+    color: isSelected ? colors.WHITE : colors.BLUE,
   }),
   indicatorSeparator: () => ({ display: "none" }),
   dropdownIndicator: () => ({ display: "none" }),

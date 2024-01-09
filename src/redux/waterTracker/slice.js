@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 import { updateDailyNorma } from "../user/operations";
 
 const date = new Date();
-const day = date.getDay();
+const day = date.getDate();
 const validDay = String(day).length < 2 ? `0${day}` : day;
 const month = date.getMonth() + 1;
 const validMonth = String(month).length < 2 ? `0${month}` : month;
@@ -68,15 +68,20 @@ const waterTrackerSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(addWater.fulfilled, (state, action) => {
+        console.log(action);
         state.today.todayTracker.push({
-          id: action.payload._id,
-          amountWater: action.payload.amountWater,
-          date: action.payload.date,
+          id: action.payload.addedWaterPortion._id,
+          amountWater: action.payload.addedWaterPortion.amountWater,
+          date: action.payload.addedWaterPortion.date,
         });
+        state.today.percentageWaterConsumed =
+          action.payload.today.percentageWaterConsumed;
       })
       .addCase(todayEditWater.fulfilled, (state, action) => {
         const { todayTracker } = state.today;
-        const { id, amountWater, date } = action.payload;
+        const { id, amountWater, date, percentageWaterConsumed } =
+          action.payload;
+        state.today.percentageWaterConsumed = percentageWaterConsumed;
         state.today.todayTracker = todayTracker.map((item) => {
           if (item.id === id) {
             const el = {
@@ -97,11 +102,13 @@ const waterTrackerSlice = createSlice({
       .addCase(deleteEntry.fulfilled, (state, action) => {
         const { todayTracker } = state.today;
         const index = todayTracker.findIndex(
-          (item) => item.id === action.payload
+          (item) => item.id === action.payload.id
         );
         todayTracker.splice(index, 1);
         state.isLoading = false;
-        toast.success("Successfully delete");
+        toast.success(action.payload.message);
+        state.today.percentageWaterConsumed =
+          action.payload.today.percentageWaterConsumed;
       })
       .addCase(deleteEntry.rejected, (_, action) => {
         toast.error(action.payload);
@@ -109,6 +116,7 @@ const waterTrackerSlice = createSlice({
       .addCase(updateDailyNorma.fulfilled, (state, action) => {
         state.today.percentageWaterConsumed =
           action.payload.today.percentageWaterConsumed;
+        state.month.monthTracker = action.payload.month;
       })
       .addCase(updateMonthTrackerDate, (state, action) => {
         state.month.date = action.payload;
