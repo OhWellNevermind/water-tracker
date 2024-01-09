@@ -7,8 +7,10 @@ import {
   updateAvatar,
   updateUser,
   updateDailyNorma,
+  sendNewPassword,
 } from "./operations";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const usersInitState = {
   user: {
@@ -81,7 +83,21 @@ const usersSlice = createSlice({
         state.user.dailyNorma = action.payload.user.dailyNorma;
       })
       .addCase(updateUser.rejected, printError)
-      .addCase(updateAvatar.rejected, printError),
+      .addCase(updateAvatar.rejected, printError)
+      .addCase(sendNewPassword.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(sendNewPassword.pending, (state) => {
+        state.isRefreshing = true;
+      })
+      .addCase(sendNewPassword.rejected, (state, action) => {
+        state.isRefreshing = false;
+        state.isLoggedIn = false;
+        printError(state, action);
+      }),
 });
 
 export const usersReducer = usersSlice.reducer;

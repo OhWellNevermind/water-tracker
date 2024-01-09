@@ -5,7 +5,7 @@ import {
   addWater,
   todayEditWater,
   deleteEntry,
-  updateMonthTrackerDate
+  updateMonthTrackerDate,
 } from "./operations";
 import toast from "react-hot-toast";
 import { updateDailyNorma } from "../user/operations";
@@ -109,10 +109,10 @@ const waterTrackerSlice = createSlice({
       .addCase(updateDailyNorma.fulfilled, (state, action) => {
         state.today.percentageWaterConsumed =
           action.payload.today.percentageWaterConsumed;
-      }).addCase(updateMonthTrackerDate, (state, action)=>{
-        console.log('FUCK');
-        state.month.date=action.payload
       })
+      .addCase(updateMonthTrackerDate, (state, action) => {
+        state.month.date = action.payload;
+      }),
 });
 export const { setTodayWaterData } = waterTrackerSlice.actions;
 export const waterTrackerReducer = waterTrackerSlice.reducer;

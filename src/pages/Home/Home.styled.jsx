@@ -8,6 +8,7 @@ import BottleHomeDesktop from "/src/images/desktop/BottleHomeDesktop-min.png";
 
 export const ContainerHome = styled.div`
   margin: 0 auto;
+  padding-bottom: 20px;
   @media only screen and (min-width: 768px) {
     width: 706px;
   }

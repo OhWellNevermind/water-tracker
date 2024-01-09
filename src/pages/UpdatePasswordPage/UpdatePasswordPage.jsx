@@ -16,8 +16,9 @@ import {
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
-// import { register } from "../../redux/user/operations";
+import { useParams } from "react-router-dom";
+import { sendNewPassword } from "../../redux/user/operations";
+import { useDispatch } from "react-redux";
 
 const AddSchema = Yup.object().shape({
   password: Yup.string()
@@ -29,14 +30,16 @@ const AddSchema = Yup.object().shape({
 });
 
 export const UpdatePasswordPage = () => {
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const { verificationCode } = useParams();
+
   const formik = useFormik({
     initialValues: { password: "", confirmPassword: "" },
     validationSchema: AddSchema,
-    onSubmit: () => {
-      //   const { email, password } = user;
-      //   dispatch(register({ email, password }));
+    onSubmit: (user) => {
+      const { password } = user;
+      dispatch(sendNewPassword({ verificationCode, password }));
     },
   });
 
@@ -128,7 +131,6 @@ export const UpdatePasswordPage = () => {
         </InputContainer>
 
         <SubmitButton type="submit">Update</SubmitButton>
-        {/* <Link to="/signin">Sign In</Link> */}
       </UpdatePasswordForm>
     </AuthMain>
   );

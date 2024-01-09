@@ -118,7 +118,6 @@ const DailyNorma = ({ onClose }) => {
             volume: 0,
           }}
           onSubmit={(values) => {
-            console.log(values.volume, result);
             if (values.volume === 0 && result === 0) {
               const notify = () =>
                 toast(

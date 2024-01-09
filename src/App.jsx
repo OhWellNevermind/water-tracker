@@ -50,7 +50,7 @@ export const App = () => {
             }
           />
           <Route
-            path="update-password/:varificationCode"
+            path="update-password/:verificationCode"
             element={
               <RestrictedRoute
                 redirectTo="/"

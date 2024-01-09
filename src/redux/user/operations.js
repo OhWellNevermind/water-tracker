@@ -99,7 +99,6 @@ export const updateDailyNorma = createAsyncThunk(
       const resp = await axios.patch("/users/changeDailyNorma", {
         dailyNorma: data,
       });
-      console.log(resp.data);
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
@@ -114,6 +113,25 @@ export const sendForgotEmail = createAsyncThunk(
       await axios.post("/users/forgotPassword", {
         email,
       });
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const sendNewPassword = createAsyncThunk(
+  "/users/sendNewPassword",
+  async (updatePasswordData, thunkAPI) => {
+    const { password, verificationCode } = updatePasswordData;
+
+    try {
+      const { data } = await axios.post(
+        `/users/updatePassword/${verificationCode}`,
+        {
+          password,
+        }
+      );
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
     }

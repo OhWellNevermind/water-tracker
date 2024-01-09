@@ -76,17 +76,13 @@ export const selects = () => {
         ? `0${dateOpt.getMinutes()}`
         : `${dateOpt.getMinutes()}`;
     arr.push({ timestamp: time, time: `${hours}:${minutes}` });
-    if (
-      currTime.getTime() - time <= 300000 &&
-      currTime.getTime() - time > 0
-    ) {
+    if (currTime.getTime() - time <= 300000 && currTime.getTime() - time > 0) {
       closestOpt = { timestamp: time, time: `${hours}:${minutes}` };
     }
     time += 300000;
   }
   return { arr, closestOpt };
 };
-
 
 const CustomSelect = ({ onChange, OnBlur, value, name }) => {
   const [open, setOpen] = useState(false);
@@ -109,7 +105,7 @@ const CustomSelect = ({ onChange, OnBlur, value, name }) => {
         className={open && "hide"}
         name={name}
         as="select"
-        onChange={(e) => console.log(onChange)}
+        onChange={onChange}
         OnBlur={OnBlur}
         value={value}
         onClick={() => setOpen(true)}
@@ -119,9 +115,7 @@ const CustomSelect = ({ onChange, OnBlur, value, name }) => {
         </option>
       </InputField>
       {open && (
-        <Dropdown
-          onClick={dropHandle}
-        >
+        <Dropdown onClick={dropHandle}>
           {selectOpts.map((el) => {
             return (
               <Options key={el.timestamp} data-value={el.timestamp}>

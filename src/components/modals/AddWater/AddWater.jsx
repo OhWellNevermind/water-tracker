@@ -139,7 +139,6 @@ const AddWater = ({ onClose }) => {
         <Formik
           initialValues={{ time: closestOpt, volume: btnAmount }}
           onSubmit={(values) => {
-            console.log(values);
             dispatch(addWater(values));
             const notify = () => toast("Successfully added!");
             notify();
