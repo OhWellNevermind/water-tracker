@@ -39,6 +39,14 @@ export const selectDays = (state, days, month, date) => {
       return Number(date) === i;
     });
     if (!tracker) {
+      const [itemDay] = daySchema.date.split(",");
+
+      if (Number(itemDay) === Number(day)) {
+        monthDays.push({
+          ...daySchema,
+          percentageWaterConsumed: todayPercentage,
+        });
+      }
       monthDays.push(daySchema);
       continue;
     }

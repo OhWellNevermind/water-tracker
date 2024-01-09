@@ -10,7 +10,6 @@ import {
   sendNewPassword,
 } from "./operations";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 const usersInitState = {
   user: {
