@@ -103,6 +103,11 @@ export const GlassSpan = styled.span`
   display: flex;
   margin-right: 12px;
 
+  svg {
+    width: 26px;
+    height: 26px;
+  }
+
   @media only screen and (min-width: 768px) {
     svg {
       width: 36px;
@@ -137,20 +142,53 @@ export const PencilAndBasket = styled.div`
 
 export const Pencil = styled.button`
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    border-radius: 1px;
+    width: 50%;
+    background-color: #9ebbff;
+    height: 1px;
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
 `;
 export const Basket = styled.button`
   display: flex;
+  position: relative;
   margin-left: 18px;
   align-items: center;
   justify-content: center;
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    border-radius: 1px;
+    width: 50%;
+    background-color: #ef5050;
+    height: 1px;
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
 `;
 
 export const Button = styled.button`
@@ -162,10 +200,23 @@ export const Button = styled.button`
   background: #ecf2ff;
   border: none;
   margin-top: 12px;
-
   svg {
+    transition: stroke 200ms ease-in-out;
     width: 16px;
     height: 16px;
+    stroke: #407bff;
+  }
+
+  span {
+    transition: color 200ms ease-in-out;
+  }
+
+  &:hover svg {
+    stroke: #ff9d43;
+  }
+
+  &:hover span {
+    color: #ff9d43;
   }
   @media only screen and (min-width: 768px) {
     height: 24px;

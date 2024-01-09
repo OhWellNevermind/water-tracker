@@ -12,10 +12,12 @@ import {
 import { CalendarIcon } from "../../../../components/icons/CalendarIcon";
 import { StatisticIcon } from "../../../../components/icons/StatisticIcon";
 import { PersonalSettingsIcon } from "../../../../components/icons/PersonalSettingsIcon";
+import { useNavigate } from "react-router-dom";
 
 const WaterConsumption = () => {
+  const navigate = useNavigate();
   const handleClick = () => {
-    return (window.location.href = "/signup");
+    navigate("/signup");
   };
 
   return (
