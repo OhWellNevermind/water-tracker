@@ -13,7 +13,7 @@ import {
   Bottle,
 } from "./Home.styled";
 
-const Home = ({ setModalName }) => {
+export const Home = ({ setModalName }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshUser());
@@ -37,5 +37,3 @@ const Home = ({ setModalName }) => {
     </>
   );
 };
-
-export default Home;
