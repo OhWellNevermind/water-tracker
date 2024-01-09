@@ -12,17 +12,21 @@ import {
 } from "./ForgotPasswordForm.styled";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { sendForgotEmail } from "../../redux/user/operations";
 
 const AddSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
 });
 
 export const ForgotPasswordForm = () => {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: { email: "" },
     validationSchema: AddSchema,
-    onSubmit: (user) => {
-      console.log(user);
+    onSubmit: (data) => {
+      dispatch(sendForgotEmail(data.email));
     },
   });
 

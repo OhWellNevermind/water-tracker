@@ -106,3 +106,16 @@ export const updateDailyNorma = createAsyncThunk(
     }
   }
 );
+
+export const sendForgotEmail = createAsyncThunk(
+  "/users/sendForgotPasswod",
+  async (email, thunkAPI) => {
+    try {
+      await axios.post("/users/forgotPassword", {
+        email,
+      });
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
