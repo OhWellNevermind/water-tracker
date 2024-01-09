@@ -81,6 +81,7 @@ const usersSlice = createSlice({
       .addCase(updateDailyNorma.fulfilled, (state, action) => {
         console.log(action);
         state.user.dailyNorma = action.payload.user.dailyNorma;
+        toast.success("User successfully updated");
       })
       .addCase(updateUser.rejected, printError)
       .addCase(updateAvatar.rejected, printError)

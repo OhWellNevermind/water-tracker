@@ -87,8 +87,8 @@ export const ProgressBar = styled.div`
 export const Dot = styled.div`
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  left: ${({ percentage }) => `${percentage - 3}%`};
+  transform: translate(-50%, -50%);
+  left: ${({ percentage }) => `${percentage}%`};
   width: 14px;
   height: 14px;
   border: solid 1px;
