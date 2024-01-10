@@ -8,6 +8,7 @@ export const DailyNormaContainer = styled.div`
   @media only screen and (min-width: 1440px) {
     padding-bottom: 0;
     margin-bottom: 466px;
+    margin-left: -70px;
   }
 `;
 
