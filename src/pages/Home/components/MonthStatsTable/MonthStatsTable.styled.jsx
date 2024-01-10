@@ -28,6 +28,7 @@ export const MonthTitle = styled.h2`
   line-height: 1.25;
   @media screen and (min-width: 768px) {
     font-size: 26px;
+    margin-top: 20px;
   }
 `;
 

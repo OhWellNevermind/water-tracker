@@ -1,5 +1,8 @@
 export const selectWaterTodayDate = (state) => state.waterTracker.today.date;
 
+export const selectIsLoadingWaterTrack = (state) =>
+  state.waterTracker.isLoading;
+
 export const selectWaterTodayTracker = (state) =>
   state.waterTracker.today.todayTracker;
 

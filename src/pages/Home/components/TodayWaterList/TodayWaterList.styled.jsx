@@ -4,7 +4,7 @@ export const TodayWaterListContainer = styled.div`
   width: 264px;
   height: 258px;
   margin-bottom: 24px;
-
+  position: relative;
   @media only screen and (min-width: 768px) {
     width: 656px;
     height: 260px;
@@ -39,7 +39,6 @@ export const TodayWrap = styled.div`
   flex-direction: column;
   justify-content: space-between;
   overflow-y: scroll;
-
   &::-webkit-scrollbar {
     width: 4px;
     height: 204px;
@@ -200,6 +199,8 @@ export const Button = styled.button`
   background: #ecf2ff;
   border: none;
   margin-top: 12px;
+  position: absolute;
+  bottom: -20px;
   svg {
     transition: stroke 200ms ease-in-out;
     width: 16px;
@@ -220,6 +221,7 @@ export const Button = styled.button`
   }
   @media only screen and (min-width: 768px) {
     height: 24px;
+    bottom: -30px;
     svg {
       width: 24px;
       height: 24px;

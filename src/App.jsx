@@ -8,16 +8,20 @@ import { RestrictedRoute } from "./components/RestrictedRoute";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "./redux/user/operations";
-import { selectIsLoggedIn } from "./redux/user/selectors";
+import { selectIsLoadingUsers, selectIsLoggedIn } from "./redux/user/selectors";
+import { selectIsLoadingWaterTrack } from "./redux/waterTracker/selectors";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import { ModalSelector } from "./components/modals/ModalSelector";
 import { Toaster } from "react-hot-toast";
 import { UpdatePasswordPage } from "./pages/UpdatePasswordPage/UpdatePasswordPage";
 import { ForgotPasswordForm } from "./pages/ForgotPasswordPage/ForgotPasswordForm";
+import { Audio } from "react-loader-spinner";
 
 export const App = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoadingWaterTrack = useSelector(selectIsLoadingWaterTrack);
+  const isLoadingUsers = useSelector(selectIsLoadingUsers);
   const [modalName, setModalName] = useState("");
   useEffect(() => {
     dispatch(refreshUser());
@@ -25,6 +29,40 @@ export const App = () => {
 
   return (
     <>
+      {(isLoadingWaterTrack || isLoadingUsers) && (
+        <>
+          <div
+            style={{
+              position: "fixed",
+              top: "0",
+              left: "0",
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(0, 0, 0, 0.5)", // Чорне затемнення з прозорістю
+              zIndex: 9998, // Зменште zIndex, щоб затемнення було позаду лоадера
+            }}
+          ></div>
+          <Audio
+            height="80"
+            width="80"
+            radius="9"
+            color="blue"
+            ariaLabel="loading"
+            wrapperStyle={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: 9999,
+              background: "rgba(50, 50, 50, 0.8)",
+              padding: "20px",
+              borderRadius: "10px",
+              textAlign: "center",
+            }}
+            wrapperClass
+          />
+        </>
+      )}
       <Routes>
         <Route path="/" element={<SharedLayout setModalName={setModalName} />}>
           {isLoggedIn ? (
