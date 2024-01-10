@@ -98,6 +98,7 @@ const usersSlice = createSlice({
       .addCase(updateUser.fulfilled, (state, action) => {
         state.user = { ...state.user, ...action.payload };
         toast.success("Your info successfully changed!");
+        state.isLoading = false;
       })
       .addCase(updateDailyNorma.pending, (state) => {
         state.isLoading = true;
