@@ -34,15 +34,9 @@ import { updateDailyNorma } from "../../../redux/user/operations";
 
 const schema = Yup.object().shape({
   weight: Yup.number()
-    .min(1, "Please enter valid value")
-    .max(10, "Too big value")
-    .positive("Please enter a positive value")
-    .required("This field is required"),
-  time: Yup.number()
-    .min(1, "Please enter valid value")
-    .max(10, "Too big value")
-    .positive("Please enter a positive value")
-    .required("This field is required"),
+    .min(0, "Please enter valid value")
+    .max(200, "Too big value"),
+  time: Yup.number().min(0, "Please enter valid value").max(3, "Too big value"),
   volume: Yup.number()
     .min(0, "Please enter valid value")
     .max(5000, "The maximum value for water is 5000 ml")
