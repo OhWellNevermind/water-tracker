@@ -43,7 +43,7 @@ export const Background = styled.div`
 
 export const Container = styled.div`
   height: 100vh;
-  padding-bottom: 100px;
+  padding-bottom: 150px;
   overflow: auto;
 
   margin-top: 24px;
