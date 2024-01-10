@@ -50,7 +50,7 @@ export const UpdatePasswordPage = () => {
       <UpdatePasswordForm onSubmit={formik.handleSubmit}>
         <Title>Update your password</Title>
 
-        <Label>Enter your password</Label>
+        <Label>Enter your new password</Label>
         <InputContainer>
           <Input
             type={isPasswordVisible ? "text" : "password"}
