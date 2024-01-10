@@ -99,6 +99,7 @@ export const UserModal = ({ onClose }) => {
       const { gender, username, email, oldPassword, newPassword } = values;
       if (!oldPassword || !newPassword) {
         dispath(updateUser({ gender, username, email }));
+        onClose();
         return;
       }
       dispath(
