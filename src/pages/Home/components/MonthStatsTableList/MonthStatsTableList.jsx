@@ -10,7 +10,10 @@ import {
   updateMonthTrackerDate,
 } from "../../../../redux/waterTracker/operations";
 import { useDispatch, useSelector } from "react-redux";
-import { selectDays } from "../../../../redux/waterTracker/selectors";
+import {
+  selectDays,
+  selectMonthTracker,
+} from "../../../../redux/waterTracker/selectors";
 import { DaysGeneralStats } from "../../../../components/modals/DaysGeneralStats/DaysGeneralStats";
 
 export const MonthStatsTableList = ({
@@ -24,7 +27,7 @@ export const MonthStatsTableList = ({
   const monthDays = useSelector((state) =>
     selectDays(state, monthCount, monthName, `${year}-${month}`)
   );
-
+  const updateMonthListWithToday = useSelector(selectMonthTracker);
   const [selectedDay, setSelectedDay] = useState(null);
   const [positionModal, setPositionModal] = useState(null);
 
@@ -66,6 +69,9 @@ export const MonthStatsTableList = ({
     dispatch(updateMonthTrackerDate(`${year}-${month}`));
   }, [year, monthNumber]); // запит для отмання трекеру води
 
+  useEffect(() => {
+    dispatch(getMonthTracker(`${year}-${month}`));
+  }, [updateMonthListWithToday]);
   return (
     <MonthList>
       {monthDays.map((item, idx) => {
