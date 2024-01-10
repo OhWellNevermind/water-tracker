@@ -50,6 +50,7 @@ export const TodayListModal = ({ onClose }) => {
     if (editingValue > 5000) {
       const notify = () => toast("The maximum value for water is 5000 ml");
       notify();
+      onClose();
       return;
     }
     const newValue = parseInt(editingValue, 10) || 0;
@@ -63,12 +64,14 @@ export const TodayListModal = ({ onClose }) => {
           "Select the recording time or change the value of the amount of water "
         );
       notify();
+      onClose();
       return;
     }
 
     if (editingValue > 5000) {
       const notify = () => toast("The maximum value for water is 5000 ml");
       notify();
+      onClose();
       return;
     }
 
@@ -88,6 +91,7 @@ export const TodayListModal = ({ onClose }) => {
     };
 
     dispatch(todayEditWater(data));
+    onClose();
   };
   const handleSelectedOption = (selectedOption) => {
     setSelectedOption(selectedOption);
