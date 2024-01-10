@@ -14,6 +14,7 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { sendForgotEmail } from "../../redux/user/operations";
+import toast from "react-hot-toast";
 
 const AddSchema = Yup.object().shape({
   email: Yup.string()
@@ -32,6 +33,8 @@ export const ForgotPasswordForm = () => {
     validationSchema: AddSchema,
     onSubmit: (data) => {
       dispatch(sendForgotEmail(data.email));
+      const notify = () => toast("Successfully send! Check your e-mail");
+      notify();
     },
   });
 

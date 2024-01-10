@@ -33,13 +33,15 @@ import toast from "react-hot-toast";
 import { updateDailyNorma } from "../../../redux/user/operations";
 
 const schema = Yup.object().shape({
-  weight: Yup.string()
+  weight: Yup.number()
     .min(1, "Please enter valid value")
     .max(10, "Too big value")
+    .positive("Please enter a positive value")
     .required("This field is required"),
-  time: Yup.string()
+  time: Yup.number()
     .min(1, "Please enter valid value")
     .max(10, "Too big value")
+    .positive("Please enter a positive value")
     .required("This field is required"),
   volume: Yup.number()
     .min(0, "Please enter valid value")
