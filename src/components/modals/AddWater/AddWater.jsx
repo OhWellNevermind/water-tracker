@@ -142,6 +142,7 @@ const AddWater = ({ onClose }) => {
             dispatch(addWater(values));
             const notify = () => toast("Successfully added!");
             notify();
+            onClose();
           }}
           validationSchema={schema}
         >
