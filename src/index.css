@@ -99,4 +99,25 @@ select {
 
 html {
   font-family: "Roboto", sans-serif;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #d7e3ff;
+    border-radius: 100px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: #9ebbff;
+    border-radius: 100px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6191ff;
+  }
 }
