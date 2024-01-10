@@ -10,9 +10,7 @@ import {
   updateMonthTrackerDate,
 } from "../../../../redux/waterTracker/operations";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectDays,
-} from "../../../../redux/waterTracker/selectors";
+import { selectDays } from "../../../../redux/waterTracker/selectors";
 import { DaysGeneralStats } from "../../../../components/modals/DaysGeneralStats/DaysGeneralStats";
 
 export const MonthStatsTableList = ({
@@ -24,7 +22,7 @@ export const MonthStatsTableList = ({
   const month =
     monthNumber.toString().length === 2 ? monthNumber : `0${monthNumber}`;
   const monthDays = useSelector((state) =>
-    selectDays(state, monthCount, monthName,`${year}-${month}` )
+    selectDays(state, monthCount, monthName, `${year}-${month}`)
   );
 
   const [selectedDay, setSelectedDay] = useState(null);
@@ -70,7 +68,7 @@ export const MonthStatsTableList = ({
 
   return (
     <MonthList>
-      {monthDays.map((item) => {
+      {monthDays.map((item, idx) => {
         const [day] = item.date.split(",");
         const percentageWaterConsumed = Number(
           item.percentageWaterConsumed.split("%")[0]
@@ -78,7 +76,7 @@ export const MonthStatsTableList = ({
         const precent =
           percentageWaterConsumed > 100 ? 100 : percentageWaterConsumed;
         return (
-          <MonthItem key={item.date}>
+          <MonthItem key={idx}>
             <MonthDate
               onClick={(e) => handleDayClick(day, e)}
               iscompleted={(precent < 100).toString()}

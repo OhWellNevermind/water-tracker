@@ -6,4 +6,4 @@ export const selectDailyNorma = (state) => state.user.user.dailyNorma;
 
 export const selectIsRefreshing = (state) => state.user.isRefreshing;
 
-
+export const selectIsLoadingUsers = (state) => state.user.isLoading;

@@ -68,7 +68,6 @@ const waterTrackerSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(addWater.fulfilled, (state, action) => {
-        console.log(action);
         state.today.todayTracker.push({
           id: action.payload.addedWaterPortion._id,
           amountWater: action.payload.addedWaterPortion.amountWater,
@@ -76,6 +75,10 @@ const waterTrackerSlice = createSlice({
         });
         state.today.percentageWaterConsumed =
           action.payload.today.percentageWaterConsumed;
+        state.isLoading = false;
+      })
+      .addCase(todayEditWater.pending, (state) => {
+        state.isLoading = true;
       })
       .addCase(todayEditWater.fulfilled, (state, action) => {
         const { todayTracker } = state.today;
@@ -95,9 +98,14 @@ const waterTrackerSlice = createSlice({
           return item;
         });
         toast.success("Successfully saved");
+        state.isLoading = false;
       })
-      .addCase(todayEditWater.rejected, (_, action) => {
+      .addCase(todayEditWater.rejected, (state, action) => {
         toast.error(action.payload);
+        state.isLoading = false;
+      })
+      .addCase(deleteEntry.pending, (state) => {
+        state.isLoading = true;
       })
       .addCase(deleteEntry.fulfilled, (state, action) => {
         const { todayTracker } = state.today;
@@ -110,13 +118,18 @@ const waterTrackerSlice = createSlice({
         state.today.percentageWaterConsumed =
           action.payload.today.percentageWaterConsumed;
       })
-      .addCase(deleteEntry.rejected, (_, action) => {
+      .addCase(deleteEntry.rejected, (state, action) => {
         toast.error(action.payload);
+        state.isLoading = false;
+      })
+      .addCase(updateDailyNorma.pending, (state) => {
+        state.isLoading = true;
       })
       .addCase(updateDailyNorma.fulfilled, (state, action) => {
         state.today.percentageWaterConsumed =
           action.payload.today.percentageWaterConsumed;
         state.month.monthTracker = action.payload.month;
+        state.isLoading = false;
       })
       .addCase(updateMonthTrackerDate, (state, action) => {
         state.month.date = action.payload;
