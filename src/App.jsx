@@ -8,7 +8,11 @@ import { RestrictedRoute } from "./components/RestrictedRoute";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "./redux/user/operations";
-import { selectIsLoadingUsers, selectIsLoggedIn } from "./redux/user/selectors";
+import {
+  selectIsLoadingUsers,
+  selectIsLoggedIn,
+  selectIsRefreshing,
+} from "./redux/user/selectors";
 import { selectIsLoadingWaterTrack } from "./redux/waterTracker/selectors";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import { ModalSelector } from "./components/modals/ModalSelector";
@@ -22,6 +26,7 @@ export const App = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isLoadingWaterTrack = useSelector(selectIsLoadingWaterTrack);
   const isLoadingUsers = useSelector(selectIsLoadingUsers);
+  const isRefreshing = useSelector(selectIsRefreshing);
   const [modalName, setModalName] = useState("");
   useEffect(() => {
     dispatch(refreshUser());
@@ -29,6 +34,19 @@ export const App = () => {
 
   return (
     <>
+      {isRefreshing && (
+        <div
+          style={{
+            position: "fixed",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 1)",
+            zIndex: 1000,
+          }}
+        ></div>
+      )}
       {(isLoadingWaterTrack || isLoadingUsers) && (
         <>
           <div
