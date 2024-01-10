@@ -33,11 +33,14 @@ export const CounterEditWater = ({ newCount, onCountChange }) => {
     setCount(roundCount);
     onCountChange(roundCount);
   };
-
   return (
     <AcounterWater>
       <MinusCount onClick={decrement}>
-        <MinusIcon width={24} height={24} fill={colors.BLUE} />
+        <MinusIcon
+          width={24}
+          height={24}
+          fill={count === 0 ? colors.LIGHT_GRAY : colors.BLUE}
+        />
       </MinusCount>
       <BackgroundValueWater>
         <ValueWaterCounter>{count} ml</ValueWaterCounter>
