@@ -47,7 +47,7 @@ export const App = () => {
           }}
         ></div>
       )}
-      {(isLoadingWaterTrack || isLoadingUsers) && (
+      {(isLoadingWaterTrack || isLoadingUsers || isRefreshing) && (
         <>
           <div
             style={{
