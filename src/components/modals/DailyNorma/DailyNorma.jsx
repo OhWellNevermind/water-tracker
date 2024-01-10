@@ -125,8 +125,8 @@ const DailyNorma = ({ onClose }) => {
             values.volume === 0
               ? dispatch(updateDailyNorma(result))
               : dispatch(updateDailyNorma(values.volume));
-            const notify = () => toast("Successfully updated!");
-            notify();
+            // const notify = () => toast("Successfully updated!");
+            // notify();
             onClose();
           }}
           validationSchema={schema}
